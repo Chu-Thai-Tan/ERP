@@ -67,7 +67,7 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
       <Button
         title="Stop scan"
         onPress={stopCaptureHandler}
-        // style={styles.button}
+        style={styles.button}
       />
     </View>
   );
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width,
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
     position: 'absolute',
