@@ -1,7 +1,11 @@
 module.exports = {
   root: true,
   extends: '@react-native',
-  plugins: ['react'],
+  plugins: [
+    'eslint-plugin-react',
+    'eslint-plugin-simple-import-sort',
+    'eslint-plugin-import',
+  ],
   parserOptions: {
     parser: '@babel/eslint-parser',
     requireConfigFile: false, // <== ADD THIS

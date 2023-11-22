@@ -1,15 +1,28 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   StatusBar,
   ViewStyle,
   useColorScheme,
   View,
+  ScrollView,
+  StyleSheet,
 } from 'react-native';
+import notifee from '@notifee/react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {Button} from './components/atoms/Button';
-import {Camera} from './components/molecules/Camera';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Button } from './components/atoms/Button';
+import { Camera } from './components/molecules/Camera';
+import { registerGlobals } from 'react-native-webrtc';
+
+registerGlobals();
+
+notifee.registerForegroundService(notification => {
+  console.log('notifi', notification);
+  return new Promise(() => {
+    //
+  });
+});
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -34,19 +47,21 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <View style={backgroundStyle}>
-        <Button title={'Check In'} onPress={checkInHandler} />
-        <Button title={'Check Out'} />
-        {isCheckingIn && <Camera onTakePhoto={() => setIsCheckingIn(false)} />}
-      </View>
+        <View style={backgroundStyle}>
+          <Button title={'Check In'} onPress={checkInHandler} />
+          <Button title={'Check Out'} />
+          {isCheckingIn && (
+            <Camera onTakePhoto={() => setIsCheckingIn(false)} />
+          )}
+        </View>
     </SafeAreaView>
   );
 }
 
-// const styles = StyleSheet.create({
-//   content: {
-//     flexGrow: 1,
-//   },
-// });
+const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+  },
+});
 
 export default App;
