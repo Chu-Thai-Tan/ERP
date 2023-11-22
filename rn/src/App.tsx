@@ -47,13 +47,16 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-        <View style={backgroundStyle}>
-          <Button title={'Check In'} onPress={checkInHandler} />
-          <Button title={'Check Out'} />
-          {isCheckingIn && (
-            <Camera onTakePhoto={() => setIsCheckingIn(false)} />
-          )}
-        </View>
+      <View style={backgroundStyle}>
+        {isCheckingIn ? (
+          <Camera onTakePhoto={() => setIsCheckingIn(false)} />
+        ) : (
+          <>
+            <Button title={'Check In'} onPress={checkInHandler} />
+            <Button title={'Check Out'} />
+          </>
+        )}
+      </View>
     </SafeAreaView>
   );
 }
