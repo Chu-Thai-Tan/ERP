@@ -1,51 +1,49 @@
-import { FC, useEffect, useState } from 'react';
-import { MediaStream, RTCView, mediaDevices } from 'react-native-webrtc';
-import notifee, { AndroidImportance } from '@notifee/react-native';
+import { FC, useRef } from 'react';
+// import { MediaStream, RTCView, mediaDevices } from 'react-native-webrtc';
+// import notifee, { AndroidImportance } from '@notifee/react-native';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Button } from '../atoms/Button';
+import { RNCamera } from 'react-native-camera';
+import RNFS from 'react-native-fs';
 
 type Props = {
   onTakePhoto: () => void;
 };
 
 export const Camera: FC<Props> = ({ onTakePhoto }) => {
-  const [localStream, setLocalStream] = useState<MediaStream>();
-  const startLocalStream = async () => {
-    try {
-      const mediaStream = await mediaDevices.getUserMedia({
-        video: true,
-      });
-      setLocalStream(mediaStream);
-      console.log(mediaStream.toURL());
-    } catch (e) {
-      console.log(e);
+  const camera = useRef<RNCamera>(null);
+  // const [localStream, setLocalStream] = useState<MediaStream>();
+
+  const takePictureHandler = async () => {
+    if (camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await camera.current?.takePictureAsync(options);
+      if (data) {
+        const base64 = await getBase64(data.uri);
+        console.log(base64);
+      }
+      onTakePhoto();
+      camera.current?.recordAsync();
     }
   };
-  useEffect(() => {
-    startLocalStream();
-  }, []);
-
-  const stopCaptureHandler = () => {
-    if (localStream) {
-      localStream.release();
-      setLocalStream(undefined);
-      onTakePhoto();
-    }
+  const getBase64 = async (imageUri: string) => {
+    const filepath = imageUri.split('//')[1];
+    const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
+    return `data:image/jpeg;base64,${imageUriBase64}`;
   };
   return (
     <View style={styles.wrapper}>
-      {localStream && (
-        <RTCView
-          style={styles.camera}
-          objectFit={'cover'}
-          streamURL={localStream?.toURL() || ''}
-        ></RTCView>
-      )}
-      <Button
-        title="Stop scan"
-        onPress={stopCaptureHandler}
-        style={styles.button}
-      />
+      <RNCamera
+        ref={camera}
+        style={styles.camera}
+        type={RNCamera.Constants.Type.front}
+      >
+        <Button
+          title="Take picture"
+          onPress={takePictureHandler}
+          // style={styles.button}
+        />
+      </RNCamera>
     </View>
   );
 };
@@ -62,8 +60,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button: {
-    position: 'absolute',
-    top: 10,
-  },
+  // button: {
+  //   position: 'absolute',
+  //   top: 10,
+  // },
 });
