@@ -31,6 +31,7 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
     return `data:image/jpeg;base64,${imageUriBase64}`;
   };
+
   return (
     <View style={styles.wrapper}>
       <RNCamera
