@@ -7,18 +7,29 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "node_modules/.bin/rn-nodeify --install fs --hack"
   },
   "dependencies": {
     "@exadel/compreface-js-sdk": "^1.0.0",
     "@notifee/react-native": "^7.8.0",
+    "@react-native-async-storage/async-storage": "^1.19.8",
+    "axios": "^1.6.2",
+    "buffer": "^6.0.3",
+    "deprecated-react-native-prop-types": "^5.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "events": "^3.3.0",
+    "path": "^0.12.7",
     "react": "18.2.0",
     "react-native": "0.72.7",
     "react-native-camera": "^4.2.1",
     "react-native-fs": "^2.20.0",
-    "react-native-webrtc": "^111.0.6"
+    "react-native-level-fs": "^3.0.1",
+    "react-native-webrtc": "^111.0.6",
+    "rn-nodeify": "^10.3.0",
+    "stream": "^0.0.2",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -37,5 +48,11 @@
   },
   "engines": {
     "node": ">=16"
+  },
+  "react-native": {
+    "fs": "react-native-level-fs"
+  },
+  "browser": {
+    "fs": "react-native-level-fs"
   }
 }
