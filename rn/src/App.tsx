@@ -78,11 +78,7 @@ function App(): JSX.Element {
   const checkInHandler = async () => {
     let server = 'http://localhost:8000';
     let port = 8000;
-<<<<<<< HEAD
     let api_key = '0dea63dd-53e9-4e66-8ad9-02b5ec3070a9';
-=======
-    let api_key = 'e15fb325-2ed9-4bb1-a03e-a0aa1753a538';
->>>>>>> 357f84c (update)
 
     let compreFace = new CompreFace(server, port); // set CompreFace url and port
     let recognitionService = compreFace.initFaceRecognitionService(api_key); // initialize service
@@ -102,62 +98,6 @@ function App(): JSX.Element {
 
     // const response = await fetch(path_to_image_add_collection);
     // const blob = await response.blob().then();
-<<<<<<< HEAD
-    // const blob = await uriToBlob(path_to_image_add_collection);
-    
-
-    // let bf = Buffer.from(base64Mock, 'base64');
-    // console.log('#Duy Phan console', bf)
-    // formData.append('file', {
-    //   uri: path_to_image_add_collection,
-    //   type: 'image/png',
-    //   name: 'abc.png',
-    // } as any);
-
-    // formData.append('file', base64Mock);
-
-    const axiosInstance = axios.create({
-      baseURL: 'http://localhost:8000', // use with scheme
-      timeout: 30000,
-      headers: {
-        ['x-api-key']: api_key,
-        'Content-Type': 'application/json',
-      },
-    });
-
-
-
-    // const response = await axiosInstance.request(config);
-
-    axiosInstance
-      .get(path_to_image_add_collection, { responseType: 'json' })
-      .then(async response => {
-        console.log('#Duy Phan console', response.data)
-        let formData = new FormData();
-        const image_extention = response.headers['content-type'].split('/')[1];
-        formData.append('file', response.data, `example.${image_extention}`);
-        try {
-          let data = {
-            file: base64Mock
-        }
-          const res = await axiosInstance.post(
-            '/api/v1/recognition/faces/?subject=Duy',
-            formData,
-            {
-              headers: {
-                'x-api-key': api_key,
-                'Content-Type': 'multipart/form-data',
-              },
-            },
-          );
-          console.log('#Duy Phan console', res)
-        } catch (error) {
-          console.log('#Duy Phan console', error)
-        }
-      })
-      .catch(error => console.log('#Duy Phan console', error));
-    // console.log('#Duy Phan console res', response);
-=======
     const blob = await uriToBlob(path_to_image_add_collection);
 
     faceCollection
@@ -208,7 +148,6 @@ function App(): JSX.Element {
         console.log(`Oops! There is problem with recognizing image ${error}`);
         console.error(JSON.stringify(error));
       });
->>>>>>> 357f84c (update)
 
     setIsCheckingIn(true);
   };
