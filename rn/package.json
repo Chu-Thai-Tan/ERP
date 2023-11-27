@@ -14,6 +14,7 @@
     "@exadel/compreface-js-sdk": "^1.0.0",
     "@notifee/react-native": "^7.8.0",
     "@react-native-async-storage/async-storage": "^1.19.8",
+    "asyncstorage-down": "^4.2.0",
     "axios": "^1.6.2",
     "buffer": "^6.0.3",
     "deprecated-react-native-prop-types": "^5.0.0",
