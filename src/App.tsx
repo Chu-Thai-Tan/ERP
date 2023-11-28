@@ -18,6 +18,7 @@ import { Button } from './components/atoms/Button';
 import { Camera } from './components/molecules/Camera';
 import { registerGlobals } from 'react-native-webrtc';
 import { CompreFace } from '@exadel/compreface-js-sdk';
+import { Input } from './components/atoms/Input';
 
 registerGlobals();
 const server = 'http://localhost';
@@ -78,6 +79,7 @@ function App(): JSX.Element {
           <>
             <Button title={'Check In'} onPress={checkInHandler} />
             <Button title={'Check Out'} />
+            <Input placeholder="Fill in name" label="Your name" />
           </>
         )}
       </View>
