@@ -87,3 +87,4 @@ yarn.lock
 *.sqlite
 *.sqlite3
 *.debug.png
+*.env.example

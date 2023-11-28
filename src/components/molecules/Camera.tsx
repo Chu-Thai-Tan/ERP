@@ -7,7 +7,7 @@ import { RNCamera } from 'react-native-camera';
 import RNFS from 'react-native-fs';
 
 type Props = {
-  onTakePhoto: () => void;
+  onTakePhoto: (data: string) => void;
 };
 
 export const Camera: FC<Props> = ({ onTakePhoto }) => {
@@ -17,19 +17,21 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
   const takePictureHandler = async () => {
     if (camera) {
       const options = { quality: 0.5, base64: true };
-      const data = await camera.current?.takePictureAsync(options);
-      if (data) {
-        const base64 = await getBase64(data.uri);
-        console.log(base64);
-      }
-      onTakePhoto();
-      camera.current?.recordAsync();
+      const data = await camera.current
+        ?.takePictureAsync(options)
+        .catch(e => console.log(JSON.stringify(e)));
+      console.log(data);
+      const base64 = await getBase64(data?.uri ?? '').catch(e =>
+        console.log(e),
+      );
+      console.log(base64);
+      onTakePhoto(base64 ?? '');
     }
   };
   const getBase64 = async (imageUri: string) => {
     const filepath = imageUri.split('//')[1];
     const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
-    return `data:image/jpeg;base64,${imageUriBase64}`;
+    return `${imageUriBase64}`;
   };
 
   return (
@@ -53,6 +55,8 @@ const styles = StyleSheet.create({
   camera: {
     flex: 1,
     width: Dimensions.get('screen').width,
+    flexDirection: 'column-reverse',
+    alignItems: 'center',
   },
   wrapper: {
     flex: 1,
