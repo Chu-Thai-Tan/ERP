@@ -50,7 +50,7 @@ function App(): JSX.Element {
     let recognitionService = compreFace.initFaceRecognitionService(api_key); // initialize service
 
     recognitionService
-      .recognize(data, { limit: 10 })
+      .recognize(data, { limit: 1 })
       .then((res: any) => {
         console.log(res.result[0].subjects);
         setIsCheckingIn(false);
