@@ -1,19 +1,16 @@
 import { FC, useRef } from 'react';
-// import { MediaStream, RTCView, mediaDevices } from 'react-native-webrtc';
-// import notifee, { AndroidImportance } from '@notifee/react-native';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { Button } from '../atoms/Button';
+import { Button } from '../components/atoms/Button';
 import { RNCamera } from 'react-native-camera';
 import RNFS from 'react-native-fs';
 
 type Props = {
   onTakePhoto: (data: string) => void;
+  navigation: any;
 };
-
-export const Camera: FC<Props> = ({ onTakePhoto }) => {
+const CheckIn: FC<Props> = ({ navigation }) => {
   const camera = useRef<RNCamera>(null);
-  // const [localStream, setLocalStream] = useState<MediaStream>();
-
+  const onTakePhoto = navigation.getParam('onTakePhoto');
   const takePictureHandler = async () => {
     if (camera) {
       const options = { quality: 0.5, base64: true };
@@ -33,6 +30,9 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
     return `${imageUriBase64}`;
   };
+  const backToHome = () => {
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={styles.wrapper}>
@@ -41,15 +41,13 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
         style={styles.camera}
         type={RNCamera.Constants.Type.front}
       >
-        <Button
-          title="Take picture"
-          onPress={takePictureHandler}
-          // style={styles.button}
-        />
+        <Button title="Take picture" onPress={takePictureHandler} />
       </RNCamera>
     </View>
   );
 };
+
+export default CheckIn;
 
 const styles = StyleSheet.create({
   camera: {
@@ -65,8 +63,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  // button: {
-  //   position: 'absolute',
-  //   top: 10,
-  // },
 });
