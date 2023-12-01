@@ -4,9 +4,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
 
-const screens = [
+interface Screen {
+  component: React.FC<any>;
+  name: string;
+  title: string;
+}
+
+const screens: Screen[] = [
   {
-    component: Login as any,
+    component: Login,
     name: 'Login',
     title: 'Login',
   },
