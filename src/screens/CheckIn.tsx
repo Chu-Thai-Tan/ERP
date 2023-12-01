@@ -8,9 +8,9 @@ type Props = {
   onTakePhoto: (data: string) => void;
   navigation: any;
 };
-const CheckIn: FC<Props> = ({ navigation }) => {
+const CheckIn: FC<Props> = ({ navigation, route }: any) => {
   const camera = useRef<RNCamera>(null);
-  const onTakePhoto = navigation.getParam('onTakePhoto');
+  const { onTakePhoto } = route.params;
   const takePictureHandler = async () => {
     if (camera) {
       const options = { quality: 0.5, base64: true };
