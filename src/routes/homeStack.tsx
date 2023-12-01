@@ -25,6 +25,7 @@ const HomeStack = () => {
       <Stack.Navigator>
         {screens.map(screen => (
           <Stack.Screen
+            key={`${screen.name}`}
             name={`${screen.name}`}
             options={{ title: `${screen.title}` }}
             component={screen.component}
