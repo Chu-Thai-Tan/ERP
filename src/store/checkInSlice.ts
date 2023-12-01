@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '.';
+import { AppDispatch, RootState } from '.';
 import { recognitionService } from '../config';
 
 interface FaceCheckState {
@@ -24,7 +24,7 @@ const initialState: FaceCheckState = {
 };
 
 export const checkInSlice = createSlice({
-  name: 'auth',
+  name: 'checkIn',
   initialState,
   reducers: {
     recognize: (state, action: PayloadAction<any>) => {

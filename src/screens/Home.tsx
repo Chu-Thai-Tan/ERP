@@ -9,12 +9,11 @@ import { Button } from '../components/atoms/Button';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import notifee from '@notifee/react-native';
 import { registerGlobals } from 'react-native-webrtc';
-import { CompreFace } from '@exadel/compreface-js-sdk';
+import { recognizeFace } from '../store/checkInSlice';
+import { ThunkDispatch } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 
 registerGlobals();
-const server = 'http://localhost';
-const port = 8000;
-const api_key = process.env.API_KEY ?? 'c92277cb-8381-40f7-a0c3-d60b1b74e450';
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification);
@@ -26,6 +25,7 @@ notifee.registerForegroundService(notification => {
 const Home = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const dispatch = useDispatch<ThunkDispatch<string, any, any>>()
   const backgroundStyle: ViewStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     flexDirection: 'column',
@@ -36,17 +36,7 @@ const Home = ({ navigation }: any) => {
   };
 
   const onTakePhoto = (data: string) => {
-    let compreFace = new CompreFace(server, port); // set CompreFace url and port
-    let recognitionService = compreFace.initFaceRecognitionService(api_key); // initialize service
-
-    recognitionService
-      .recognize(data, { limit: 1 })
-      .then((res: any) => {
-        console.log(res.result[0].subjects);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    dispatch(recognizeFace(data));
   };
 
   const handleCheckIn = () => {

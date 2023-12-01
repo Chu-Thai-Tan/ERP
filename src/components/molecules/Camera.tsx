@@ -17,11 +17,9 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
       const data = await camera.current
         ?.takePictureAsync(options)
         .catch(e => console.log(JSON.stringify(e)));
-      console.log(data);
       const base64 = await getBase64(data?.uri ?? '').catch(e =>
         console.log(e),
       );
-      console.log(base64);
       onTakePhoto(base64 ?? '');
     }
   };
