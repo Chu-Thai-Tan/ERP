@@ -45,14 +45,13 @@ export const checkInSlice = createSlice({
   },
 });
 
-export const recognizeFace = createAsyncThunk<
-  object,
-  string,
-  { state: { checkIn: FaceCheckState } }
->('checkIn/login', async (data: string, {}) => {
-  const response = await recognitionService.recognize(data, { limit: 1 });
-  return response;
-});
+export const recognizeFace = createAsyncThunk(
+  'checkIn/login',
+  async (data: string) => {
+    const response = await recognitionService.recognize(data, { limit: 1 });
+    return response;
+  },
+);
 
 export const { recognize } = checkInSlice.actions;
 

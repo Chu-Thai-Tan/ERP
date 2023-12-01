@@ -3,6 +3,7 @@ import { authReducer } from './authSlice';
 import { checkInReducer } from './checkInSlice';
 import { useDispatch } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
+import { ThunkDispatch } from 'redux-thunk';
 
 export const store = configureStore({
   reducer: {
@@ -14,7 +15,8 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = () => useDispatch<AppDispatch>()
+export type AppThunkDispatch = ThunkDispatch<RootState, any, Action<any>>;
+export const useAppDispatch = () => useDispatch<AppThunkDispatch>()
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,

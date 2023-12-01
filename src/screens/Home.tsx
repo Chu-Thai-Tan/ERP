@@ -12,6 +12,7 @@ import { registerGlobals } from 'react-native-webrtc';
 import { recognizeFace } from '../store/checkInSlice';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../store';
 
 registerGlobals();
 
@@ -25,7 +26,7 @@ notifee.registerForegroundService(notification => {
 const Home = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const dispatch = useDispatch<ThunkDispatch<string, any, any>>()
+  const dispatch = useAppDispatch()
   const backgroundStyle: ViewStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     flexDirection: 'column',
