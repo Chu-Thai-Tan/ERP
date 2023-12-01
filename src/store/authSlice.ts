@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, store } from '..';
+import { RootState, store } from '.';
 
 interface AuthState {
   status: ELoginStatus;
@@ -7,8 +7,8 @@ interface AuthState {
 }
 
 enum ELoginStatus {
-  LOGGEDIN = 'LOGGEDIN',
-  LOGGEDOUT = 'LOGGEDOUT',
+  LOGGED_IN = 'LOGGEDIN',
+  LOGGED_OUT = 'LOGGEDOUT',
   PENDING = 'PENDING',
   FAILED = 'FAILED',
 }
@@ -19,7 +19,7 @@ export type Profile = {
 };
 
 const initialState: AuthState = {
-  status: ELoginStatus.LOGGEDOUT,
+  status: ELoginStatus.LOGGED_OUT,
 };
 
 export const authSlice = createSlice({
@@ -33,7 +33,7 @@ export const authSlice = createSlice({
 });
 
 export const login = createAsyncThunk('auth/login', () => {
-  return ;
+  return;
 });
 
 export const { initProfile } = authSlice.actions;
