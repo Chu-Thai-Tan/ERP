@@ -14,7 +14,6 @@ const CheckIn: FC<Props> = ({ route }) => {
   return (
     <View style={styles.wrapper}>
       <Camera onTakePhoto={onTakePhoto} />
-      {/*<Text>abc</Text>*/}
     </View>
   );
 };

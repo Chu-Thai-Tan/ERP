@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import CheckIn from '../screens/CheckIn';
 import { NavigationContainer } from '@react-navigation/native';
-import { FC, ReactElement } from 'react';
 
 interface Screen {
   component: React.FC<any>;
