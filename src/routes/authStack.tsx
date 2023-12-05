@@ -25,21 +25,17 @@ const screens: Screen[] = [
 
 const Stack = createNativeStackNavigator();
 
-const AuthStack = () => {
+export const AuthStack = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {screens.map(screen => (
-          <Stack.Screen
-            key={`${screen.name}`}
-            name={`${screen.name}`}
-            options={{ title: `${screen.title}` }}
-            component={screen.component}
-          />
-        ))}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+      {screens.map(screen => (
+        <Stack.Screen
+          key={`${screen.name}`}
+          name={`${screen.name}`}
+          options={{ title: `${screen.title}` }}
+          component={screen.component}
+        />
+      ))}
+    </Stack.Navigator>
   );
 };
-
-export default AuthStack;

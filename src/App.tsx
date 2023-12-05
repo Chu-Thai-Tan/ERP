@@ -1,19 +1,15 @@
 import './polyfill';
 
-import {
-  SafeAreaView,
-  StatusBar,
-  View,
-  ViewStyle,
-  useColorScheme,
-} from 'react-native';
+import { StatusBar, View, ViewStyle, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import HomeStack from './routes/homeStack';
-import AuthStack from './routes/authStack';
+import { HomeStack } from './routes/homeStack';
+import { AuthStack } from './routes/authStack';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import notifee from '@notifee/react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification);
@@ -36,15 +32,15 @@ function App(): JSX.Element {
   };
   return (
     <Provider store={store}>
-      <SafeAreaView style={backgroundStyle}>
+      <SafeAreaProvider>
         <StatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}
         />
-        <View style={backgroundStyle}>
+        <NavigationContainer>
           {isLogin ? <HomeStack /> : <AuthStack />}
-        </View>
-      </SafeAreaView>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 }

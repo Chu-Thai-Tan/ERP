@@ -1,5 +1,5 @@
 import { Button } from '../components/atoms/Button';
-import { ViewStyle, useColorScheme } from 'react-native';
+import { View, ViewStyle, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
@@ -32,10 +32,10 @@ const Home = ({ navigation }: any) => {
     navigation.navigate('CheckIn', { onTakePhoto });
   };
   return (
-    <>
+    <View style={backgroundStyle}>
       <Button title={'Check In'} onPress={handleCheckIn} />
       <Button title={'Check Out'} onPress={handleCheckIn} />
-    </>
+    </View>
   );
 };
 

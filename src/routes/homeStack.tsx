@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import CheckIn from '../screens/CheckIn';
 import { NavigationContainer } from '@react-navigation/native';
+import { View } from 'react-native';
 
 interface Screen {
   component: React.FC<any>;
@@ -25,21 +26,17 @@ const screens: Screen[] = [
 
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => {
+export const HomeStack = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {screens.map(screen => (
-          <Stack.Screen
-            key={`${screen.name}`}
-            name={`${screen.name}`}
-            options={{ title: `${screen.title}` }}
-            component={screen.component}
-          />
-        ))}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+      {screens.map(screen => (
+        <Stack.Screen
+          key={`${screen.name}`}
+          name={`${screen.name}`}
+          options={{ title: `${screen.title}` }}
+          component={screen.component}
+        />
+      ))}
+    </Stack.Navigator>
   );
 };
-
-export default HomeStack;
