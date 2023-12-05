@@ -25,7 +25,7 @@ const screens: Screen[] = [
 
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => {
+const AuthStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -42,4 +42,4 @@ const HomeStack = () => {
   );
 };
 
-export default HomeStack;
+export default AuthStack;
