@@ -49,9 +49,6 @@
       // https://nodejs.org/api/packages.html#subpath-imports
       "##/*": [
         "./#/*"
-      ],
-      "#rn-shared/*": [
-        "./rn-shared/*"
       ]
     },
     // "rootDirs": [],

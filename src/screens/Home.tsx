@@ -1,15 +1,16 @@
 import { Button } from '../components/atoms/Button';
-import { recognizeFace } from '../store/checkInSlice';
-import { ThunkDispatch } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
-import { useAppDispatch } from '../store';
 import { ViewStyle, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { useRecognitionData } from '../hooks/useFaceApi';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { faceStatus } from '../store/checkin/selectors';
 
 const Home = ({ navigation }: any) => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [setDataImage] = useRecognitionData();
+  const response = useSelector(faceStatus);
 
-  const dispatch = useAppDispatch();
   const backgroundStyle: ViewStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     flexDirection: 'column',
@@ -18,11 +19,14 @@ const Home = ({ navigation }: any) => {
     gap: 16,
     flex: 1,
   };
-  const dispatch = useDispatch<ThunkDispatch<string, any, any>>();
 
   const onTakePhoto = (data: string) => {
-    dispatch(recognizeFace(data));
+    setDataImage(data);
   };
+
+  useEffect(() => {
+    if (response) console.log(response);
+  }, [response]);
 
   const handleCheckIn = () => {
     navigation.navigate('CheckIn', { onTakePhoto });
