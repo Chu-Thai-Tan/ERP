@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    /* basic options */
     "module": "esnext",
     "target": "es5",
     "lib": [
@@ -16,18 +15,10 @@
     "declarationMap": false,
     "sourceMap": false,
     "outDir": "dist",
-    // "outFile": "./",
-    // "outDir": "lib",
-    // "rootDir": "./",
-    // "composite": true,
-    // "removeComments": true,
     "noEmit": true,
-    // "importHelpers": true,
-    // "downlevelIteration": true,
     "isolatedModules": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
-    /* strict type-checking options */
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -36,35 +27,11 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
-    /* additional checks */
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    /* module resolution options */
     "moduleResolution": "node",
-    // "baseUrl": "./",
-    "paths": {
-      // custom module starts with #
-      // https://nodejs.org/api/packages.html#subpath-imports
-      "##/*": [
-        "./#/*"
-      ]
-    },
-    // "rootDirs": [],
-    // "typeRoots": [],
-    // "types": [],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    // "preserveSymlinks": true,
-    /* source map options */
-    // "sourceRoot": "./",
-    // "mapRoot": "./",
-    // "inlineSourceMap": true,
-    // "inlineSources": true,
-    /* advanced options */
-    // "declarationDir": "lib",
-    /* experimental options */
     "experimentalDecorators": false,
     "emitDecoratorMetadata": false
   },

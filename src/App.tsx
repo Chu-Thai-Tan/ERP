@@ -13,10 +13,7 @@ import HomeStack from './routes/homeStack';
 import AuthStack from './routes/authStack';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { registerGlobals } from 'react-native-webrtc';
 import notifee from '@notifee/react-native';
-
-registerGlobals();
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification);

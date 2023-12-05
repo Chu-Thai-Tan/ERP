@@ -1,6 +1,11 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+  ThunkDispatch,
+} from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
+// import { ThunkDispatch } from 'redux-thunk';
 import { useSelector } from 'react-redux';
 import { checkInReducer } from './checkin/slice';
 
