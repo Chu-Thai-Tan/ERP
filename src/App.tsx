@@ -10,6 +10,8 @@ import { store } from './store';
 import notifee from '@notifee/react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { TamaguiProvider } from 'tamagui';
+import tamaguiConfig from '../tamagui.config';
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification);
@@ -32,15 +34,17 @@ export function App(): JSX.Element {
   };
   return (
     <Provider store={store}>
-      <SafeAreaProvider>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <NavigationContainer>
-          {isLogin ? <HomeStack /> : <AuthStack />}
-        </NavigationContainer>
-      </SafeAreaProvider>
+      <TamaguiProvider config={tamaguiConfig}>
+        <SafeAreaProvider>
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={backgroundStyle.backgroundColor}
+          />
+          <NavigationContainer>
+            {isLogin ? <HomeStack /> : <AuthStack />}
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </TamaguiProvider>
     </Provider>
   );
 }
