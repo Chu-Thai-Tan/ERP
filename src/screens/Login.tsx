@@ -1,6 +1,6 @@
 import { TouchableOpacity } from 'react-native';
 import { Stack, Text, Input, styled, Button, Image } from 'tamagui';
-import Logo from '../assets/image/Logo.png';
+import Logo from '../assets/images/Logo.png';
 
 export function Login({ navigation }: any) {
   const handleOnPress = () => {

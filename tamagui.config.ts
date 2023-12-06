@@ -87,25 +87,23 @@ const media = {
   hoverNone: { hover: 'none' },
   pointerCoarse: { pointer: 'coarse' },
 };
-const tamaguiConfig = createTamagui({
-  ...config,
-  //  defaultTheme: 'light',
-  //  shorthands,
-  //  media,
-  //  tokens,
-  //  fonts: {
-  //    body: defaultFont,
-  //    title: defaultFont,
-  //  },
-  //  themes: {
-  //    light: {
-  //      bg: tokens.color.lightPurple,
-  //    },
-  //    dark: {
-  //      bg: tokens.color.darkPurple,
-  //    },
-  //  },
-});
+const tamaguiConfig = createTamagui(config);
+// defaultTheme: 'light',
+// shorthands,
+// media,
+// tokens,
+// fonts: {
+//   body: defaultFont,
+//   title: defaultFont,
+// },
+// themes: {
+//   light: {
+//     bg: tokens.color.lightPurple,
+//   },
+//   dark: {
+//     bg: tokens.color.darkPurple,
+//   },
+// },
 type Conf = typeof tamaguiConfig;
 declare module 'tamagui' {
   interface TamaguiCustomConfig extends Conf {}
