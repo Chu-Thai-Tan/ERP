@@ -15,13 +15,14 @@ export function Login({ navigation }: any) {
   });
 
   const CustomInput = styled(Input, {
-    size: '$4',
+    size: '$3',
     width: '70%',
     marginTop: 10,
+    padding: '20',
   });
 
   const CustomButton = styled(Button, {
-    size: '$4',
+    size: '$3',
     width: '70%',
     marginTop: 10,
     backgroundColor: '#DA70D6',
@@ -44,7 +45,6 @@ export function Login({ navigation }: any) {
   return (
     <Wrapper>
       <CustomImage alt="Logo" />
-
       <CustomInput placeholder="Email" />
       <CustomInput placeholder="Password" />
       <CustomButton>Login</CustomButton>

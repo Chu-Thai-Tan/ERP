@@ -32,7 +32,7 @@ export function App(): JSX.Element {
   return (
     <Provider store={store}>
       <TamaguiProvider config={tamaguiConfig} defaultTheme="light">
-        <Theme name={'dark'}>
+        <Theme name={'light'}>
           <SafeAreaProvider>
             <StatusBar
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}

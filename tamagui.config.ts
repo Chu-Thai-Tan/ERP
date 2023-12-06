@@ -6,6 +6,7 @@ const size = {
   true: 4,
   1: 8,
   2: 12,
+  3: 44,
 };
 const space = {
   ...size,
@@ -88,22 +89,22 @@ const media = {
 };
 const tamaguiConfig = createTamagui({
   ...config,
-  defaultTheme: 'light',
-  shorthands,
-  media,
-  tokens,
-  fonts: {
-    body: defaultFont,
-    title: defaultFont,
-  },
-  themes: {
-    light: {
-      bg: tokens.color.lightPurple,
-    },
-    dark: {
-      bg: tokens.color.darkPurple,
-    },
-  },
+  //  defaultTheme: 'light',
+  //  shorthands,
+  //  media,
+  //  tokens,
+  //  fonts: {
+  //    body: defaultFont,
+  //    title: defaultFont,
+  //  },
+  //  themes: {
+  //    light: {
+  //      bg: tokens.color.lightPurple,
+  //    },
+  //    dark: {
+  //      bg: tokens.color.darkPurple,
+  //    },
+  //  },
 });
 type Conf = typeof tamaguiConfig;
 declare module 'tamagui' {
