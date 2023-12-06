@@ -1,8 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { NavigationContainer } from '@react-navigation/native';
-import Login from '../screens/Login';
-import Register from '../screens/Register';
+import { Login } from '../screens/Login';
+import { Register } from '../screens/Register';
 
 interface Screen {
   component: React.FC<any>;
