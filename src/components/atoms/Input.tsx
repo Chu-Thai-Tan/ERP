@@ -6,13 +6,14 @@ import {
   Text,
   TextInputProps,
 } from 'react-native';
+import { Input, InputProps } from 'tamagui';
 
-type InputProps = TextInputProps & {
+type AppInputProps = InputProps & {
   label: string;
   placeholder?: string;
 };
 
-export const Input: React.FC<InputProps> = ({
+export const AppInput: React.FC<AppInputProps> = ({
   label,
   value,
   ...inputProps
@@ -20,7 +21,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-      <TextInput style={styles.input} value={value} {...inputProps} />
+      <Input flex={1} value={value} {...inputProps} />
     </View>
   );
 };
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 10,
     width: 300,
+    height: 100
   },
   label: {
     fontSize: 16,

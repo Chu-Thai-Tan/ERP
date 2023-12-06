@@ -5,14 +5,17 @@ import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { faceStatus } from '../store/checkin/selectors';
+import { AppInput } from '../components/atoms/Input';
+import { useTheme } from 'tamagui';
 
 const Home = ({ navigation }: any) => {
-  const isDarkMode = useColorScheme() === 'dark';
+  // const isDarkMode = useColorScheme() === 'dark';
   const [setDataImage] = useRecognitionData();
   const response = useSelector(faceStatus);
+  const theme = useTheme()
 
   const backgroundStyle: ViewStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    // backgroundColor: theme.bg,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -35,6 +38,7 @@ const Home = ({ navigation }: any) => {
     <View style={backgroundStyle}>
       <Button title={'Check In'} onPress={handleCheckIn} />
       <Button title={'Check Out'} onPress={handleCheckIn} />
+      <AppInput label='Name' placeholder={'Please fill your name here'} height={'0'}/>
     </View>
   );
 };

@@ -48,6 +48,7 @@
     "@babel/runtime": "^7.20.0",
     "@react-native/eslint-config": "^0.72.2",
     "@react-native/metro-config": "^0.72.11",
+    "@tamagui/babel-plugin": "^1.79.6",
     "@tsconfig/react-native": "^3.0.0",
     "@types/react": "^18.0.24",
     "@types/react-redux": "^7.1.31",

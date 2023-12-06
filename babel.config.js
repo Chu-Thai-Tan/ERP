@@ -12,5 +12,15 @@ module.exports = {
         verbose: false,
       },
     ],
+    [
+      '@tamagui/babel-plugin',
+      {
+        components: ['tamagui'],
+        config: './tamagui.config.ts',
+        importsWhitelist: ['constants.js', 'colors.js'],
+        logTimings: true,
+        disableExtraction: true,
+      }
+    ],
   ],
 };

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import notifee from '@notifee/react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { TamaguiProvider } from 'tamagui';
+import { TamaguiProvider, Theme } from 'tamagui';
 import tamaguiConfig from '../tamagui.config';
 import { RootNavigation } from './routes/RootNavigation';
 
@@ -31,14 +31,16 @@ export function App(): JSX.Element {
   };
   return (
     <Provider store={store}>
-      <TamaguiProvider config={tamaguiConfig}>
-        <SafeAreaProvider>
-          <StatusBar
-            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            backgroundColor={backgroundStyle.backgroundColor}
-          />
-          <RootNavigation />
-        </SafeAreaProvider>
+      <TamaguiProvider config={tamaguiConfig} defaultTheme="light">
+        <Theme name={'dark'}>
+          <SafeAreaProvider>
+            <StatusBar
+              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+              backgroundColor={backgroundStyle.backgroundColor}
+            />
+            <RootNavigation />
+          </SafeAreaProvider>
+        </Theme>
       </TamaguiProvider>
     </Provider>
   );
