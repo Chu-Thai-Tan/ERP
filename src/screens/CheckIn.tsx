@@ -8,7 +8,7 @@ type Props = {
   route: RouteProp<{}>;
   //  navigation: any;
 };
-const CheckIn: FC<Props> = ({ route }) => {
+export const CheckIn: FC<Props> = ({ route }) => {
   const { onTakePhoto } = route.params;
 
   return (
@@ -17,8 +17,6 @@ const CheckIn: FC<Props> = ({ route }) => {
     </View>
   );
 };
-
-export default CheckIn;
 
 const styles = StyleSheet.create({
   wrapper: {

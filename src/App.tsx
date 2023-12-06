@@ -18,7 +18,7 @@ notifee.registerForegroundService(notification => {
   });
 });
 
-function App(): JSX.Element {
+export function App(): JSX.Element {
   const isLogin = true;
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -44,5 +44,3 @@ function App(): JSX.Element {
     </Provider>
   );
 }
-
-export default App;

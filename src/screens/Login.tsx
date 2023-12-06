@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity } from 'react-native';
 import { Button } from '../components/atoms/Button';
 
-export default function Login({ navigation }: any) {
+export function Login({ navigation }: any) {
   const handleOnPress = () => {
     navigation.navigate('Register');
   };

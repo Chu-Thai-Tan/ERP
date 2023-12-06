@@ -1,5 +1,5 @@
 import { Text } from 'react-native';
 
-export default function Register() {
+export function Register() {
   return <Text>Register</Text>;
 }
