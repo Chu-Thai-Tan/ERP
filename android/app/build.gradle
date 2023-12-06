@@ -73,14 +73,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.rn"
+    namespace "com.erp"
     defaultConfig {
-        applicationId "com.rn"
+        applicationId "com.erp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        missingDimensionStrategy 'react-native-camera', 'general'
     }
     signingConfigs {
         debug {
@@ -101,10 +100,6 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
-    }
-    compileOptions {
-	    sourceCompatibility JavaVersion.VERSION_1_8
-	    targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

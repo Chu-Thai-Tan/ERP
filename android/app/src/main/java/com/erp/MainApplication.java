@@ -1,4 +1,4 @@
-package com.rn;
+package com.erp;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
