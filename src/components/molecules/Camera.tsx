@@ -2,37 +2,33 @@ import { FC, useRef } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Button } from '../atoms/Button';
 import { RNCamera } from 'react-native-camera';
-import RNFS from 'react-native-fs';
+import { convertImageToBase64 } from '../../utils/camera';
 
 type Props = {
   onTakePhoto: (data: string) => void;
 };
 
 export const Camera: FC<Props> = ({ onTakePhoto }) => {
-  const camera = useRef<RNCamera>(null);
+  const cameraRef = useRef<RNCamera>(null);
 
   const takePictureHandler = async () => {
-    if (camera) {
-      const options = { quality: 0.5, base64: true };
-      const data = await camera.current
-        ?.takePictureAsync(options)
-        .catch(e => console.log(JSON.stringify(e)));
-      const base64 = await getBase64(data?.uri ?? '').catch(e =>
-        console.log(e),
-      );
-      onTakePhoto(base64 ?? '');
+    if (cameraRef.current) {
+      try {
+        const data = await cameraRef.current.takePictureAsync({ quality: 0.5, base64: true });
+        const base64 = await convertImageToBase64(data?.uri ?? '').catch(e =>
+          console.log(e),
+        );
+        onTakePhoto(base64 ?? '');
+      } catch (e) {
+        console.log('Camera error', e);
+      }
     }
-  };
-  const getBase64 = async (imageUri: string) => {
-    const filepath = imageUri.split('//')[1];
-    const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
-    return `${imageUriBase64}`;
   };
 
   return (
     <View style={styles.wrapper}>
       <RNCamera
-        ref={camera}
+        ref={cameraRef}
         style={styles.camera}
         type={RNCamera.Constants.Type.front}
       >
