@@ -3,15 +3,13 @@ import './polyfill';
 import { StatusBar, View, ViewStyle, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { HomeStack } from './routes/homeStack';
-import { AuthStack } from './routes/authStack';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import notifee from '@notifee/react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { TamaguiProvider } from 'tamagui';
 import tamaguiConfig from '../tamagui.config';
+import { RootNavigation } from './routes/RootNavigation';
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification);
@@ -21,7 +19,6 @@ notifee.registerForegroundService(notification => {
 });
 
 export function App(): JSX.Element {
-  const isLogin = true;
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle: ViewStyle = {
@@ -40,9 +37,7 @@ export function App(): JSX.Element {
             barStyle={isDarkMode ? 'light-content' : 'dark-content'}
             backgroundColor={backgroundStyle.backgroundColor}
           />
-          <NavigationContainer>
-            {isLogin ? <HomeStack /> : <AuthStack />}
-          </NavigationContainer>
+          <RootNavigation />
         </SafeAreaProvider>
       </TamaguiProvider>
     </Provider>
