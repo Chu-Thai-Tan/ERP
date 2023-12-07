@@ -1,8 +1,8 @@
 import { FC, useRef } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { Button } from '../atoms/Button';
 import { RNCamera } from 'react-native-camera';
 import { convertImageToBase64 } from '../../utils/camera';
+import { Button, styled } from 'tamagui';
 
 type Props = {
   onTakePhoto: (data: string) => void;
@@ -14,7 +14,10 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
   const takePictureHandler = async () => {
     if (cameraRef.current) {
       try {
-        const data = await cameraRef.current.takePictureAsync({ quality: 0.5, base64: true });
+        const data = await cameraRef.current.takePictureAsync({
+          quality: 0.5,
+          base64: true,
+        });
         const base64 = await convertImageToBase64(data?.uri ?? '').catch(e =>
           console.log(e),
         );
@@ -25,6 +28,13 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     }
   };
 
+  const TakePhotoBtn = styled(Button, {
+    width: 75,
+    height: 75,
+    borderRadius: 100,
+    marginBottom: 20,
+  });
+
   return (
     <View style={styles.wrapper}>
       <RNCamera
@@ -32,7 +42,7 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
         style={styles.camera}
         type={RNCamera.Constants.Type.front}
       >
-        <Button title="Take picture" onPress={takePictureHandler} />
+        <TakePhotoBtn onPress={takePictureHandler} />
       </RNCamera>
     </View>
   );

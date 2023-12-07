@@ -18,7 +18,7 @@ notifee.registerForegroundService(notification => {
   });
 });
 
-export function App(): JSX.Element {
+export const App = (): JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle: ViewStyle = {
@@ -44,4 +44,4 @@ export function App(): JSX.Element {
       </TamaguiProvider>
     </Provider>
   );
-}
+};

@@ -1,12 +1,18 @@
-import { TouchableOpacity } from 'react-native';
-import { Stack, Text, Input, styled, Button, Image } from 'tamagui';
-import Logo from '../assets/images/Logo.png';
 import { navigate } from '../utils/navigateService';
 import { useAppDispatch } from '../store';
 import { login } from '../store/auth/slice';
 
-export function Login({ navigation }: any) {
+import { TouchableOpacity } from 'react-native';
+import { Stack, styled } from 'tamagui';
+import { LogoApp } from '../components/atoms/Logo';
+import { CustomInput } from '../components/atoms/CustomInput';
+import { CustomText } from '../components/atoms/CustomText';
+import { CustomButton } from '../components/atoms/CustomButton';
+import { background } from '../assets/images/city.svg';
+
+export const Login = ({ navigation }: any) => {
   const dispatch = useAppDispatch();
+
   const handleOnPress = () => {
     navigation.navigate('Register');
   };
@@ -23,43 +29,17 @@ export function Login({ navigation }: any) {
     height: '100%',
   });
 
-  const CustomInput = styled(Input, {
-    size: '$3',
-    width: '70%',
-    marginTop: 10,
-    padding: '20',
-  });
-
-  const CustomButton = styled(Button, {
-    size: '$3',
-    width: '70%',
-    marginTop: 10,
-    backgroundColor: '#DA70D6',
-  });
-
-  const CustomText = styled(Text, {
-    marginTop: 10,
-    color: 'red',
-  });
-
-  const CustomImage = styled(Image, {
-    marginBottom: 60,
-    source: {
-      width: '59%',
-      height: 38,
-      uri: Logo,
-    },
-  });
-
   return (
     <Wrapper>
-      <CustomImage alt="Logo" />
+      <LogoApp />
       <CustomInput placeholder="Email" />
       <CustomInput placeholder="Password" />
-      <CustomButton onPress={loginHandler}>Login</CustomButton>
+      <CustomButton>
+        <CustomText marginTop={0}>Login</CustomText>
+      </CustomButton>
       <TouchableOpacity onPress={handleOnPress}>
         <CustomText>Register</CustomText>
       </TouchableOpacity>
     </Wrapper>
   );
-}
+};

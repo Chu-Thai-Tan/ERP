@@ -1,8 +1,11 @@
 import { TouchableOpacity } from 'react-native';
-//import { Button } from '../components/atoms/Button';
-import { Stack, Text, Input, styled, Button } from 'tamagui';
+import { Stack, styled } from 'tamagui';
+import { LogoApp } from '../components/atoms/Logo';
+import { CustomInput } from '../components/atoms/CustomInput';
+import { CustomButton } from '../components/atoms/CustomButton';
+import { CustomText } from '../components/atoms/CustomText';
 
-export function Register({ navigation }: any) {
+export const Register = ({ navigation }: any) => {
   const handleOnPress = () => {
     navigation.navigate('Login');
   };
@@ -14,34 +17,19 @@ export function Register({ navigation }: any) {
     height: '100%',
   });
 
-  const CustomInput = styled(Input, {
-    size: '$4',
-    width: '70%',
-    marginTop: 10,
-  });
-
-  const CustomButton = styled(Button, {
-    size: '$4',
-    width: '70%',
-    marginTop: 10,
-    backgroundColor: '#DA70D6',
-  });
-
-  const CustomText = styled(Text, {
-    marginTop: 10,
-    color: 'red',
-  });
-
   return (
     <Wrapper>
+      <LogoApp />
       <CustomInput placeholder="Name" />
       <CustomInput placeholder="Email" />
       <CustomInput placeholder="Password" />
       <CustomInput placeholder="Confirm Password" />
-      <CustomButton>Register</CustomButton>
+      <CustomButton>
+        <CustomText marginTop={0}>Next</CustomText>
+      </CustomButton>
       <TouchableOpacity onPress={handleOnPress}>
         <CustomText>Login</CustomText>
       </TouchableOpacity>
     </Wrapper>
   );
-}
+};
