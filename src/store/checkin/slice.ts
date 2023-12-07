@@ -3,7 +3,7 @@ import { FaceCheckState } from './types';
 
 const initialState: FaceCheckState = {};
 
-export const checkInSlice = createSlice({
+const checkInSlice = createSlice({
   name: 'checkIn',
   initialState,
   reducers: {

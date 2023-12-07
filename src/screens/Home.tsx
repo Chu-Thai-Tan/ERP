@@ -7,12 +7,16 @@ import { useEffect } from 'react';
 import { faceStatus } from '../store/checkin/selectors';
 import { AppInput } from '../components/atoms/Input';
 import { useTheme } from 'tamagui';
+import { navigate } from '../utils/navigateService';
+import { useAppDispatch } from '../store';
+import { logout } from '../store/auth/slice';
 
 const Home = ({ navigation }: any) => {
   // const isDarkMode = useColorScheme() === 'dark';
+  const dispatch = useAppDispatch();
   const [setDataImage] = useRecognitionData();
   const response = useSelector(faceStatus);
-  const theme = useTheme()
+  const theme = useTheme();
 
   const backgroundStyle: ViewStyle = {
     // backgroundColor: theme.bg,
@@ -34,11 +38,21 @@ const Home = ({ navigation }: any) => {
   const handleCheckIn = () => {
     navigation.navigate('CheckIn', { onTakePhoto });
   };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('Login');
+  };
   return (
     <View style={backgroundStyle}>
       <Button title={'Check In'} onPress={handleCheckIn} />
       <Button title={'Check Out'} onPress={handleCheckIn} />
-      <AppInput label='Name' placeholder={'Please fill your name here'} height={'0'}/>
+      <Button title={'Log Out'} onPress={handleLogout} />
+      <AppInput
+        label="Name"
+        placeholder={'Please fill your name here'}
+        height={'0'}
+      />
     </View>
   );
 };

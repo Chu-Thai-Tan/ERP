@@ -1,10 +1,19 @@
 import { TouchableOpacity } from 'react-native';
 import { Stack, Text, Input, styled, Button, Image } from 'tamagui';
 import Logo from '../assets/images/Logo.png';
+import { navigate } from '../utils/navigateService';
+import { useAppDispatch } from '../store';
+import { login } from '../store/auth/slice';
 
 export function Login({ navigation }: any) {
+  const dispatch = useAppDispatch();
   const handleOnPress = () => {
     navigation.navigate('Register');
+  };
+
+  const loginHandler = () => {
+    dispatch(login());
+    navigate('Home');
   };
 
   const Wrapper = styled(Stack, {
@@ -47,7 +56,7 @@ export function Login({ navigation }: any) {
       <CustomImage alt="Logo" />
       <CustomInput placeholder="Email" />
       <CustomInput placeholder="Password" />
-      <CustomButton>Login</CustomButton>
+      <CustomButton onPress={loginHandler}>Login</CustomButton>
       <TouchableOpacity onPress={handleOnPress}>
         <CustomText>Register</CustomText>
       </TouchableOpacity>
