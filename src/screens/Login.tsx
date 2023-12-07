@@ -3,7 +3,7 @@ import { useAppDispatch } from '../store';
 import { login } from '../store/auth/slice';
 
 import { TouchableOpacity } from 'react-native';
-import { Stack, styled } from 'tamagui';
+import { Stack, styled, Text } from 'tamagui';
 import { LogoApp } from '../components/atoms/Logo';
 import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomText } from '../components/atoms/CustomText';
@@ -35,9 +35,12 @@ export const Login = () => {
       <CustomButton onPress={loginHandler}>
         <CustomText marginTop={0}>Login</CustomText>
       </CustomButton>
-      <TouchableOpacity onPress={handleOnPress}>
-        <CustomText>Register</CustomText>
-      </TouchableOpacity>
+      <Stack marginTop={10} display="flex" flexDirection="row">
+        <Text marginLeft={5}>You don't have an account? </Text>
+        <TouchableOpacity onPress={handleOnPress}>
+          <CustomText>Register</CustomText>
+        </TouchableOpacity>
+      </Stack>
     </Wrapper>
   );
 };

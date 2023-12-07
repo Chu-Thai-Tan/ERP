@@ -1,5 +1,5 @@
 import { TouchableOpacity } from 'react-native';
-import { Stack, styled } from 'tamagui';
+import { Stack, styled, Text } from 'tamagui';
 import { LogoApp } from '../components/atoms/Logo';
 import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomButton } from '../components/atoms/CustomButton';
@@ -28,9 +28,12 @@ export const Register = () => {
       <CustomButton>
         <CustomText marginTop={0}>Next</CustomText>
       </CustomButton>
-      <TouchableOpacity onPress={handleOnPress}>
-        <CustomText>Login</CustomText>
-      </TouchableOpacity>
+      <Stack marginTop={10} display="flex" flexDirection="row">
+        <Text marginLeft={5}>You have an account? </Text>
+        <TouchableOpacity onPress={handleOnPress}>
+          <CustomText>Login</CustomText>
+        </TouchableOpacity>
+      </Stack>
     </Wrapper>
   );
 };
