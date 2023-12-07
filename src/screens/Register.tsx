@@ -4,10 +4,11 @@ import { LogoApp } from '../components/atoms/Logo';
 import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
+import { navigate } from '../utils/navigateService';
 
 export const Register = ({ navigation }: any) => {
   const handleOnPress = () => {
-    navigation.navigate('Login');
+    navigate('Login');
   };
 
   const Wrapper = styled(Stack, {

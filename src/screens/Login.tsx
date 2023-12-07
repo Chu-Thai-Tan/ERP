@@ -14,7 +14,7 @@ export const Login = ({ navigation }: any) => {
   const dispatch = useAppDispatch();
 
   const handleOnPress = () => {
-    navigation.navigate('Register');
+    navigate('Register');
   };
 
   const loginHandler = () => {
@@ -34,7 +34,7 @@ export const Login = ({ navigation }: any) => {
       <LogoApp />
       <CustomInput placeholder="Email" />
       <CustomInput placeholder="Password" />
-      <CustomButton>
+      <CustomButton onPress={loginHandler}>
         <CustomText marginTop={0}>Login</CustomText>
       </CustomButton>
       <TouchableOpacity onPress={handleOnPress}>

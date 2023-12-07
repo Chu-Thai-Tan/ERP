@@ -1,4 +1,3 @@
-import { View, ViewStyle, useColorScheme } from 'react-native';
 import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -10,12 +9,11 @@ import { Stack, styled, useTheme } from 'tamagui';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 
-export const Home = ({ navigation }: any) => {
-  // const isDarkMode = useColorScheme() === 'dark';
+export const Home = () => {
   const dispatch = useAppDispatch();
   const [setDataImage] = useRecognitionData();
   const response = useSelector(faceStatus);
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const onTakePhoto = (data: string) => {
     setDataImage(data);
@@ -26,8 +24,13 @@ export const Home = ({ navigation }: any) => {
   }, [response]);
 
   const handleCheckIn = () => {
-    navigation.navigate('CheckIn', { onTakePhoto });
+    navigate('CheckIn', { onTakePhoto });
   };
+
+  const logoutHandler =() => {
+    dispatch(logout())
+    navigate('Login')
+  }
 
   const Wrapper = styled(Stack, {
     alignItems: 'center',
@@ -45,6 +48,11 @@ export const Home = ({ navigation }: any) => {
       <CustomButton>
         <CustomText onPress={handleCheckIn} marginTop={0}>
           Check Out
+        </CustomText>
+      </CustomButton>
+      <CustomButton>
+        <CustomText onPress={logoutHandler} marginTop={0}>
+          Log Out
         </CustomText>
       </CustomButton>
     </Wrapper>

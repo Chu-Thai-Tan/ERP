@@ -6,7 +6,6 @@ import { RouteProp } from '@react-navigation/native';
 type Props = {
   onTakePhoto: (data: string) => void;
   route: RouteProp<{}>;
-  //  navigation: any;
 };
 export const CheckIn: FC<Props> = ({ route }) => {
   const { onTakePhoto } = route.params;
