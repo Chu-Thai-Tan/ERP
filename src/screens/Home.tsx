@@ -28,20 +28,14 @@ export const Home = () => {
   });
   return (
     <Wrapper>
-      <CustomButton>
-        <CustomText onPress={handleCheckIn} marginTop={0}>
-          Check In
-        </CustomText>
+      <CustomButton onPress={handleCheckIn}>
+        <CustomText marginTop={0}>Check In</CustomText>
       </CustomButton>
-      <CustomButton>
-        <CustomText onPress={handleCheckIn} marginTop={0}>
-          Check Out
-        </CustomText>
+      <CustomButton onPress={handleCheckIn}>
+        <CustomText marginTop={0}>Check Out</CustomText>
       </CustomButton>
-      <CustomButton>
-        <CustomText onPress={logoutHandler} marginTop={0}>
-          Log Out
-        </CustomText>
+      <CustomButton onPress={logoutHandler}>
+        <CustomText marginTop={0}>Log Out</CustomText>
       </CustomButton>
     </Wrapper>
   );

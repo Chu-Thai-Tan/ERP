@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Login } from '../screens/Login';
 import { Register } from '../screens/Register';
+import { RegisterSecondStep } from '../screens/RegisterSecondStep';
 
 interface Screen {
   component: React.FC<any>;
@@ -18,6 +19,11 @@ const screens: Screen[] = [
   {
     component: Register,
     name: 'Register',
+    title: 'Register',
+  },
+  {
+    component: RegisterSecondStep,
+    name: 'RegisterSecondStep',
     title: 'Register',
   },
 ];

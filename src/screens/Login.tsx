@@ -31,7 +31,7 @@ export const Login = () => {
     <Wrapper>
       <LogoApp />
       <CustomInput placeholder="Email" />
-      <CustomInput placeholder="Password" />
+      <CustomInput secureTextEntry placeholder="Password" />
       <CustomButton onPress={loginHandler}>
         <CustomText marginTop={0}>Login</CustomText>
       </CustomButton>

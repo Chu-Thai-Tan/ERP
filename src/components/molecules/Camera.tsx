@@ -2,7 +2,7 @@ import { FC, useRef } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { convertImageToBase64 } from '../../utils/camera';
-import { Button, styled } from 'tamagui';
+import { Button, Stack, styled } from 'tamagui';
 
 type Props = {
   onTakePhoto: (data: string) => void;
@@ -28,6 +28,21 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     }
   };
 
+  const Wrapper = styled(Stack, {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#CCCCFF',
+    height: '100%',
+    width: '100%',
+  });
+  const CameraSlot = styled(Stack, {
+    width: 350,
+    height: 350,
+    borderRadius: 999,
+    overflow: 'hidden',
+    marginTop: 60,
+  });
+
   const TakePhotoBtn = styled(Button, {
     width: 75,
     height: 75,
@@ -36,15 +51,16 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
   });
 
   return (
-    <View style={styles.wrapper}>
-      <RNCamera
-        ref={cameraRef}
-        style={styles.camera}
-        type={RNCamera.Constants.Type.front}
-      >
-        <TakePhotoBtn onPress={takePictureHandler} />
-      </RNCamera>
-    </View>
+    <Wrapper>
+      <CameraSlot>
+        <RNCamera
+          ref={cameraRef}
+          style={styles.camera}
+          type={RNCamera.Constants.Type.front}
+        />
+      </CameraSlot>
+      <TakePhotoBtn onPress={takePictureHandler} />
+    </Wrapper>
   );
 };
 
@@ -53,13 +69,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Dimensions.get('screen').width,
     flexDirection: 'column-reverse',
-    alignItems: 'center',
-  },
-  wrapper: {
-    flex: 1,
-    width: Dimensions.get('screen').width,
-    flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
   },
 });

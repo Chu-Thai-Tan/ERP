@@ -7,8 +7,11 @@ import { CustomText } from '../components/atoms/CustomText';
 import { navigate } from '../utils/navigateService';
 
 export const Register = () => {
-  const handleOnPress = () => {
+  const handleLogin = () => {
     navigate('Login');
+  };
+  const handleNextStep = () => {
+    navigate('RegisterSecondStep');
   };
 
   const Wrapper = styled(Stack, {
@@ -23,14 +26,14 @@ export const Register = () => {
       <LogoApp />
       <CustomInput placeholder="Name" />
       <CustomInput placeholder="Email" />
-      <CustomInput placeholder="Password" />
-      <CustomInput placeholder="Confirm Password" />
-      <CustomButton>
+      <CustomInput secureTextEntry placeholder="Password" />
+      <CustomInput secureTextEntry placeholder="Confirm Password" />
+      <CustomButton onPress={handleNextStep}>
         <CustomText marginTop={0}>Next</CustomText>
       </CustomButton>
       <Stack marginTop={10} display="flex" flexDirection="row">
         <Text marginLeft={5}>You have an account? </Text>
-        <TouchableOpacity onPress={handleOnPress}>
+        <TouchableOpacity onPress={handleLogin}>
           <CustomText>Login</CustomText>
         </TouchableOpacity>
       </Stack>
