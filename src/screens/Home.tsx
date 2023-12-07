@@ -8,6 +8,7 @@ import { logout } from '../store/auth/slice';
 import { Stack, styled, useTheme } from 'tamagui';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
+import { Clock } from '../components/molecules/Clock';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -28,6 +29,7 @@ export const Home = () => {
   });
   return (
     <Wrapper>
+      <Clock />
       <CustomButton onPress={handleCheckIn}>
         <CustomText marginTop={0}>Check In</CustomText>
       </CustomButton>
