@@ -8,9 +8,8 @@ import { LogoApp } from '../components/atoms/Logo';
 import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomText } from '../components/atoms/CustomText';
 import { CustomButton } from '../components/atoms/CustomButton';
-import { background } from '../assets/images/city.svg';
 
-export const Login = ({ navigation }: any) => {
+export const Login = () => {
   const dispatch = useAppDispatch();
 
   const handleOnPress = () => {

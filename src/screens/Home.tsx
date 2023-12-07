@@ -11,26 +11,15 @@ import { CustomText } from '../components/atoms/CustomText';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
-  const [setDataImage] = useRecognitionData();
-  const response = useSelector(faceStatus);
-  // const theme = useTheme();
-
-  const onTakePhoto = (data: string) => {
-    setDataImage(data);
-  };
-
-  useEffect(() => {
-    if (response) console.log(response);
-  }, [response]);
 
   const handleCheckIn = () => {
-    navigate('CheckIn', { onTakePhoto });
+    navigate('CheckIn');
   };
 
-  const logoutHandler =() => {
-    dispatch(logout())
-    navigate('Login')
-  }
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate('Login');
+  };
 
   const Wrapper = styled(Stack, {
     alignItems: 'center',

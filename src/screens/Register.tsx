@@ -6,7 +6,7 @@ import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { navigate } from '../utils/navigateService';
 
-export const Register = ({ navigation }: any) => {
+export const Register = () => {
   const handleOnPress = () => {
     navigate('Login');
   };
