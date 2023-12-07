@@ -18,7 +18,6 @@ export const Home = () => {
 
   const logoutHandler = () => {
     dispatch(logout());
-    navigate('Login');
   };
 
   const Wrapper = styled(Stack, {
