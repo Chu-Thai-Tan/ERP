@@ -48,6 +48,21 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     height: 75,
     borderRadius: 100,
     marginBottom: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  });
+
+  const TakePhotoBtnInside = styled(Button, {
+    position: 'absolute',
+    width: 68,
+    height: 68,
+    borderRadius: 100,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: 'black',
+    borderStyle: 'solid',
   });
 
   return (
@@ -59,7 +74,9 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
           type={RNCamera.Constants.Type.front}
         />
       </CameraSlot>
-      <TakePhotoBtn onPress={takePictureHandler} />
+      <TakePhotoBtn onPress={takePictureHandler}>
+        <TakePhotoBtnInside />
+      </TakePhotoBtn>
     </Wrapper>
   );
 };
