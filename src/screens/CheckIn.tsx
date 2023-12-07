@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { Dimensions, StyleSheet, View, Text } from 'react-native';
 import { Camera } from '../components/molecules/Camera';
 import { RouteProp } from '@react-navigation/native';
 import { useRecognitionData } from '../hooks/useFaceApi';

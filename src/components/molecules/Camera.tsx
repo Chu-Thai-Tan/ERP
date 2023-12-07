@@ -40,14 +40,14 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     height: 350,
     borderRadius: 999,
     overflow: 'hidden',
-    marginTop: 60,
+    marginTop: '20%',
   });
 
   const TakePhotoBtn = styled(Button, {
     width: 75,
     height: 75,
     borderRadius: 100,
-    marginBottom: 20,
+    marginBottom: '12%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
