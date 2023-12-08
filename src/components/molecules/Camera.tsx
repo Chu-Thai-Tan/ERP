@@ -72,6 +72,7 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
           ref={cameraRef}
           style={styles.camera}
           type={RNCamera.Constants.Type.front}
+          captureAudio={false}
         />
       </CameraSlot>
       <TakePhotoBtn onPress={takePictureHandler}>
