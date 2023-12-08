@@ -1,7 +1,8 @@
 import { FC, useRef } from 'react';
+import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { convertImageToBase64 } from '../../utils/camera';
-import { Button, Stack, styled } from 'tamagui';
+import { Stack, styled } from 'tamagui';
 
 type Props = {
   onTakePhoto: (data: string) => void;
@@ -42,28 +43,6 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     marginTop: '20%',
   });
 
-  const TakePhotoBtn = styled(Button, {
-    width: 75,
-    height: 75,
-    borderRadius: 100,
-    marginBottom: '12%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-  });
-
-  const TakePhotoBtnInside = styled(Button, {
-    position: 'absolute',
-    width: 68,
-    height: 68,
-    borderRadius: 100,
-    marginBottom: 20,
-    borderWidth: 2,
-    borderColor: 'black',
-    borderStyle: 'solid',
-  });
-
   return (
     <Wrapper>
       <CameraSlot>
@@ -76,9 +55,43 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
           captureAudio={false}
         />
       </CameraSlot>
-      <TakePhotoBtn onPress={takePictureHandler}>
-        <TakePhotoBtnInside />
-      </TakePhotoBtn>
+
+      <Pressable
+        style={({ pressed }) => [styles.button, pressed && { opacity: 0.8 }]}
+        onPress={takePictureHandler}
+      >
+        <View style={styles.buttonInside} />
+      </Pressable>
     </Wrapper>
   );
 };
+
+const styles = StyleSheet.create({
+  camera: {
+    flex: 1,
+    width: Dimensions.get('screen').width,
+    flexDirection: 'column-reverse',
+    alignItems: 'center',
+  },
+  button: {
+    width: 80,
+    height: 80,
+    borderRadius: 100,
+    backgroundColor: 'white',
+    marginBottom: '12%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  buttonInside: {
+    position: 'absolute',
+    width: 73,
+    height: 73,
+    borderRadius: 100,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderStyle: 'solid',
+  },
+});
