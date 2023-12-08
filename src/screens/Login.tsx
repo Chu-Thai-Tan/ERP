@@ -33,10 +33,10 @@ export const Login = () => {
       <CustomInput placeholder="Email" />
       <CustomInput secureTextEntry placeholder="Password" />
       <CustomButton onPress={loginHandler}>
-        <CustomText marginTop={0}>Login</CustomText>
+        <CustomText mt={0}>Login</CustomText>
       </CustomButton>
-      <Stack marginTop={10} display="flex" flexDirection="row">
-        <Text marginLeft={5}>You don't have an account? </Text>
+      <Stack mt={10} dsp="flex" fd="row">
+        <Text ml={5}>You don't have an account? </Text>
         <TouchableOpacity onPress={handleOnPress}>
           <CustomText>Register</CustomText>
         </TouchableOpacity>

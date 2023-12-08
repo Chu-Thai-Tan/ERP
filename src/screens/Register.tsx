@@ -29,10 +29,10 @@ export const Register = () => {
       <CustomInput secureTextEntry placeholder="Password" />
       <CustomInput secureTextEntry placeholder="Confirm Password" />
       <CustomButton onPress={handleNextStep}>
-        <CustomText marginTop={0}>Next</CustomText>
+        <CustomText mt={0}>Next</CustomText>
       </CustomButton>
-      <Stack marginTop={10} display="flex" flexDirection="row">
-        <Text marginLeft={5}>You have an account? </Text>
+      <Stack mt={10} dsp="flex" fd="row">
+        <Text ml={5}>You have an account? </Text>
         <TouchableOpacity onPress={handleLogin}>
           <CustomText>Login</CustomText>
         </TouchableOpacity>

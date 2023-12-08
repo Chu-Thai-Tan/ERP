@@ -29,18 +29,18 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
   };
 
   const Wrapper = styled(Stack, {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#CCCCFF',
-    height: '100%',
-    width: '100%',
+    ai: 'center',
+    jc: 'space-between',
+    bg: '#CCCCFF',
+    h: '100%',
+    w: '100%',
   });
   const CameraSlot = styled(Stack, {
-    width: 350,
-    height: 350,
-    borderRadius: 999,
-    overflow: 'hidden',
-    marginTop: '15%',
+    w: 350,
+    h: 350,
+    br: 999,
+    ov: 'hidden',
+    mt: '15%',
   });
 
   return (

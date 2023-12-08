@@ -31,13 +31,13 @@ export const Home = () => {
     <Wrapper>
       <Clock />
       <CustomButton onPress={handleCheckIn}>
-        <CustomText marginTop={0}>Check In</CustomText>
+        <CustomText mt={0}>Check In</CustomText>
       </CustomButton>
       <CustomButton onPress={handleCheckIn}>
-        <CustomText marginTop={0}>Check Out</CustomText>
+        <CustomText mt={0}>Check Out</CustomText>
       </CustomButton>
       <CustomButton onPress={logoutHandler}>
-        <CustomText marginTop={0}>Log Out</CustomText>
+        <CustomText mt={0}>Log Out</CustomText>
       </CustomButton>
     </Wrapper>
   );
