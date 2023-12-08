@@ -40,7 +40,7 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     height: 350,
     borderRadius: 999,
     overflow: 'hidden',
-    marginTop: '20%',
+    marginTop: '15%',
   });
 
   return (

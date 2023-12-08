@@ -1,8 +1,9 @@
-import { Stack, styled } from 'tamagui';
+import { Stack, styled, Text } from 'tamagui';
 import { Camera } from '../components/molecules/Camera';
 import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { faceStatus } from '../store/checkin/selectors';
+import { CustomText } from '../components/atoms/CustomText';
 
 export const RegisterSecondStep = () => {
   const Wrapper = styled(Stack, {
@@ -19,9 +20,15 @@ export const RegisterSecondStep = () => {
     setDataImage(data);
   };
 
+  const Description = styled(Text, {
+    color: 'black',
+    marginTop: 20,
+    fontSize: '$6',
+  });
   return (
-    <>
+    <Wrapper>
+      <Description>Please take photo to register your face ID</Description>
       <Camera onTakePhoto={onTakePhoto} />
-    </>
+    </Wrapper>
   );
 };
