@@ -1,5 +1,4 @@
 import { FC, useRef } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { convertImageToBase64 } from '../../utils/camera';
 import { Button, Stack, styled } from 'tamagui';
@@ -70,7 +69,9 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
       <CameraSlot>
         <RNCamera
           ref={cameraRef}
-          style={styles.camera}
+          style={{
+            flex: 1,
+          }}
           type={RNCamera.Constants.Type.front}
           captureAudio={false}
         />
@@ -81,12 +82,3 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
     </Wrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  camera: {
-    flex: 1,
-    width: Dimensions.get('screen').width,
-    flexDirection: 'column-reverse',
-    alignItems: 'center',
-  },
-});
