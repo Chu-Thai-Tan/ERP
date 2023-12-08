@@ -8,7 +8,7 @@ export const getTimeAmount = (
     amount / 60 < 60 ? amount / 60 : amount / 60 - hour * 60,
   );
   const amountObj = {
-    hour: Math.floor(amount / 3600),
+    hour: hour,
     minute: minute,
     second: Math.floor(
       amount < 60 ? amount : amount - minute * 60 - hour * 3600,
