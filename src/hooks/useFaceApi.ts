@@ -18,16 +18,30 @@ export const useRecognitionData: () => [
     recognitionService
       .recognize(dataImage, { limit: 1 })
       .then(res => {
-        // @ts-ignore
-        dispatch(recognize(res?.result?.[0].subjects[0]));
+        dispatch(
+          recognize({
+            response: (res as any).result?.[0].subjects[0],
+            status: 'Success',
+          }),
+        );
       })
       .catch(e => {
-        dispatch(recognize(e.message));
+        dispatch(
+          recognize({
+            response: e.message,
+            status: 'Error',
+          }),
+        );
       });
   }, [dataImage]);
   useEffect(() => {
     if (dataImage) {
       recognizeHandler();
+      dispatch(
+        recognize({
+          status: 'Loading',
+        }),
+      );
     }
   }, [dataImage]);
   return [setDataImage];

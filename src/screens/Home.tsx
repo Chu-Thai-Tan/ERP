@@ -9,6 +9,8 @@ import { CustomImageBackground } from '../components/atoms/ImageBackground';
 import Background from '../assets/images/Background.png';
 import { Calendar } from '../components/molecules/Calendar';
 import { View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { isFaceMatch } from '../store/checkin/selectors';
 
 const Wrapper = styled(Stack, {
   alignItems: 'center',
@@ -19,6 +21,7 @@ const Wrapper = styled(Stack, {
 
 export const Home = () => {
   const dispatch = useAppDispatch();
+  const isMatch = useSelector(isFaceMatch);
 
   const handleCheckIn = () => {
     navigate('CheckIn');
@@ -30,13 +33,18 @@ export const Home = () => {
 
   return (
     <CustomImageBackground source={Background}>
-      <Clock />
-      <CustomButton onPress={handleCheckIn}>
-        <CustomText mt={0}>Check In</CustomText>
-      </CustomButton>
-      <CustomButton onPress={handleCheckIn}>
-        <CustomText mt={0}>Check Out</CustomText>
-      </CustomButton>
+      {isMatch ? (
+        <>
+          <Clock />
+          <CustomButton onPress={handleCheckIn}>
+            <CustomText mt={0}>Check Out</CustomText>
+          </CustomButton>
+        </>
+      ) : (
+        <CustomButton onPress={handleCheckIn}>
+          <CustomText mt={0}>Check In</CustomText>
+        </CustomButton>
+      )}
       <CustomButton onPress={logoutHandler}>
         <CustomText mt={0}>Log Out</CustomText>
       </CustomButton>
