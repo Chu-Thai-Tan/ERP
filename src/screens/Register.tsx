@@ -5,7 +5,7 @@ import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { navigate } from '../utils/navigateService';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 
 export const Register = () => {
   const handleLogin = () => {
@@ -18,17 +18,21 @@ export const Register = () => {
   const Wrapper = styled(Stack, {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#CCCCFF',
+    backgroundColor: '#ffffff',
     height: '100%',
   });
 
   return (
     <Wrapper>
       <LogoApp />
-      <CustomInput placeholder="Name" />
+      <CustomInput placeholder="Name" icon={faUser} />
       <CustomInput placeholder="Email" icon={faEnvelope} />
-      <CustomInput secureTextEntry placeholder="Password" />
-      <CustomInput secureTextEntry placeholder="Confirm Password" />
+      <CustomInput secureTextEntry placeholder="Password" icon={faKey} />
+      <CustomInput
+        secureTextEntry
+        placeholder="Confirm Password"
+        icon={faKey}
+      />
       <CustomButton onPress={handleNextStep}>
         <CustomText mt={0}>Next</CustomText>
       </CustomButton>
