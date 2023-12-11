@@ -1,13 +1,16 @@
-import { Button, styled } from 'tamagui';
+import { Button as TamaguiButton, ButtonProps, styled } from 'tamagui';
 
-export const CustomButton = (props: any) => {
-  const CustomButton = styled(Button, {
-    size: '$3',
-    mt: 10,
-    w: '80%',
-    bg: '#DA70D6',
-    br: '$6',
-  });
+type CustomButtonProps = ButtonProps;
 
-  return <CustomButton {...props} />;
+const Button = styled(TamaguiButton, {
+  size: '$3',
+  mt: 10,
+  w: '80%',
+  bg: '#DA70D6',
+  br: '$6',
+  textAlign: 'center',
+});
+export const CustomButton: React.FC<CustomButtonProps> = props => {
+
+  return <Button {...props} />;
 };

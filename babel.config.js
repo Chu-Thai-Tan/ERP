@@ -22,5 +22,6 @@ module.exports = {
         disableExtraction: true,
       }
     ],
+    ['macros'],
   ],
 };

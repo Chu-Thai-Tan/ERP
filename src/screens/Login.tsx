@@ -8,6 +8,14 @@ import { LogoApp } from '../components/atoms/Logo';
 import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomText } from '../components/atoms/CustomText';
 import { CustomButton } from '../components/atoms/CustomButton';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+
+const Wrapper = styled(Stack, {
+  ai: 'center',
+  jc: 'center',
+  bg: 'white',
+  h: '100%',
+});
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -20,19 +28,12 @@ export const Login = () => {
     dispatch(login());
   };
 
-  const Wrapper = styled(Stack, {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#CCCCFF',
-    height: '100%',
-  });
-
   return (
     <Wrapper>
       <LogoApp />
-      <CustomInput placeholder="Email" />
-      <CustomInput secureTextEntry placeholder="Password" />
-      <CustomButton onPress={loginHandler}>
+      <CustomInput placeholder="Email" icon={faUser} />
+      <CustomInput secureTextEntry placeholder="Password" icon={faLock} />
+      <CustomButton mt={60} onPress={loginHandler}>
         <CustomText mt={0}>Login</CustomText>
       </CustomButton>
       <Stack mt={10} dsp="flex" fd="row">

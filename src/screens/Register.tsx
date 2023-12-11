@@ -25,7 +25,7 @@ export const Register = () => {
     <Wrapper>
       <LogoApp />
       <CustomInput placeholder="Name" />
-      <CustomInput placeholder="Email" />
+      <CustomInput placeholder="Email" icon={faEmail}/>
       <CustomInput secureTextEntry placeholder="Password" />
       <CustomInput secureTextEntry placeholder="Confirm Password" />
       <CustomButton onPress={handleNextStep}>
