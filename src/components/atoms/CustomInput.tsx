@@ -1,9 +1,10 @@
 import { Input as TamaInput, InputProps, View, styled } from 'tamagui';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
+import { Icon } from './Icon';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 type IInputProps = InputProps & {
-  icon?: IconDefinition;
+  icon?: IconProp;
 };
 
 const Input = styled(TamaInput, {
@@ -25,7 +26,7 @@ export const CustomInput: React.FC<IInputProps> = ({ icon, ...inputProps }) => {
     <View w={'80%'}>
       {icon && (
         <View pos="absolute" t="$4" l="$2.5">
-          <FontAwesomeIcon icon={icon} color="#800080" />
+          <Icon icon={icon} color="#800080" />
         </View>
       )}
       <Input {...inputProps} />

@@ -31,9 +31,9 @@ export const Login = () => {
   return (
     <Wrapper>
       <LogoApp />
-      <CustomInput placeholder="Email" icon={faUser} />
-      <CustomInput secureTextEntry placeholder="Password" icon={faLock} />
-      <CustomButton mt={60} onPress={loginHandler}>
+      <CustomInput placeholder="Email" icon={'envelope'} />
+      <CustomInput secureTextEntry placeholder="Password" icon={'lock'} />
+      <CustomButton mt={40} onPress={loginHandler}>
         <CustomText mt={0}>Login</CustomText>
       </CustomButton>
       <Stack mt={10} dsp="flex" fd="row">

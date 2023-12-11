@@ -1,7 +1,3 @@
-import { useRecognitionData } from '../hooks/useFaceApi';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { faceStatus } from '../store/checkin/selectors';
 import { navigate } from '../utils/navigateService';
 import { useAppDispatch } from '../store';
 import { logout } from '../store/auth/slice';
