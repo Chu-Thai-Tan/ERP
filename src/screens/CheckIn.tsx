@@ -5,6 +5,7 @@ import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { faceStatus } from '../store/checkin/selectors';
 import { CustomImageBackground } from '../components/atoms/ImageBackground';
+import Background from '../assets/images/Background.png';
 
 type Props = {
   onTakePhoto: (data: string) => void;
@@ -19,7 +20,7 @@ export const CheckIn: FC<Props> = () => {
   };
 
   return (
-    <CustomImageBackground>
+    <CustomImageBackground source={Background}>
       <Camera onTakePhoto={onTakePhoto} />
     </CustomImageBackground>
   );

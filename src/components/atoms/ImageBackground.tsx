@@ -1,10 +1,8 @@
-import { ImageBackground } from 'react-native';
-import Background from '../../assets/images/Background.png';
+import { ImageBackground, ImageBackgroundProps } from 'react-native';
 
-export const CustomImageBackground = (props: any) => {
+export const CustomImageBackground: React.FC<ImageBackgroundProps> = props => {
   return (
     <ImageBackground
-      source={Background}
       resizeMode="cover"
       style={{
         flex: 1,
@@ -12,8 +10,7 @@ export const CustomImageBackground = (props: any) => {
         alignItems: 'center',
         justifyContent: 'center',
       }}
-    >
-      {props.children}
-    </ImageBackground>
+      {...props}
+    />
   );
 };

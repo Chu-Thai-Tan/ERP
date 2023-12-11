@@ -28,7 +28,7 @@ export const Register = () => {
       <IconInput placeholder="Email" icon={'envelope'} />
       <IconInput secureTextEntry placeholder="Password" icon={'key'} />
       <IconInput secureTextEntry placeholder="Confirm Password" icon={'key'} />
-      <CustomButton onPress={handleNextStep}>
+      <CustomButton mt={40} onPress={handleNextStep}>
         <CustomText mt={0}>Next</CustomText>
       </CustomButton>
       <Stack mt={10} dsp="flex" fd="row">

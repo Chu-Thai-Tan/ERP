@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ExpandableCalendar, CalendarProvider } from 'react-native-calendars';
-import moment from 'moment'
+import moment from 'moment';
 
 const CustomWeekday = ({ day }: { day: any }) => {
   console.log('#Duy Phan console', day);
@@ -15,8 +15,9 @@ const CustomWeekday = ({ day }: { day: any }) => {
 };
 
 export const Calendar = () => {
- 
-  const [date, setDate] = useState<string>(moment(new Date()).format('YYYY-MM-DD'));
+  const [date, setDate] = useState<string>(
+    moment(new Date()).format('YYYY-MM-DD'),
+  );
 
   return (
     <View style={styles.container}>
@@ -60,16 +61,12 @@ export const Calendar = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: '100%',
-    position: 'relative',
+    height: 145,
+    width: '100%',
   },
   knobContainer: {
     position: 'absolute',
-    left: 0,
-    right: 0,
-    height: 24,
-    top: 120,
+    top: 0,
     alignItems: 'center',
     justifyContent: 'center',
   },

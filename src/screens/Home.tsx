@@ -6,6 +6,9 @@ import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { Clock } from '../components/molecules/Clock';
 import { CustomImageBackground } from '../components/atoms/ImageBackground';
+import Background from '../assets/images/Background.png';
+import { Calendar } from '../components/molecules/Calendar';
+import { View } from 'react-native';
 
 const Wrapper = styled(Stack, {
   alignItems: 'center',
@@ -26,7 +29,7 @@ export const Home = () => {
   };
 
   return (
-    <CustomImageBackground>
+    <CustomImageBackground source={Background}>
       <Clock />
       <CustomButton onPress={handleCheckIn}>
         <CustomText mt={0}>Check In</CustomText>
