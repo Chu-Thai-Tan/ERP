@@ -1,10 +1,11 @@
-import { styled, Text, TextProps } from 'tamagui';
+import { styled, Text as TamaText, TextProps } from 'tamagui';
+
+const Text = styled(TamaText, {
+  col: '#800080',
+  fow: 'bold',
+  ff: '$body',
+});
 
 export const CustomText: React.FC<TextProps> = props => {
-  const CustomText = styled(Text, {
-    col: '#800080',
-    fow: 'bold',
-    ff: '$body',
-  });
-  return <CustomText {...props} />;
+  return <Text {...props} />;
 };
