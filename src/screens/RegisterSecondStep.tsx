@@ -3,7 +3,7 @@ import { Camera } from '../components/molecules/Camera';
 import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { faceStatus } from '../store/checkin/selectors';
-import { CustomText } from '../components/atoms/CustomText';
+import { CustomImageBackground } from '../components/atoms/ImageBackground';
 
 const Description = styled(Text, {
   color: 'black',
@@ -12,13 +12,6 @@ const Description = styled(Text, {
 });
 
 export const RegisterSecondStep = () => {
-  const Wrapper = styled(Stack, {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#CCCCFF',
-    height: '100%',
-  });
-
   const [setDataImage] = useRecognitionData();
   const response = useSelector(faceStatus);
 
@@ -27,9 +20,9 @@ export const RegisterSecondStep = () => {
   };
 
   return (
-    <Wrapper>
+    <CustomImageBackground>
       <Description>Please take photo to register your face ID</Description>
       <Camera onTakePhoto={onTakePhoto} />
-    </Wrapper>
+    </CustomImageBackground>
   );
 };

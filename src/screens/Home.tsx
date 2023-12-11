@@ -5,6 +5,7 @@ import { Stack, styled, useTheme } from 'tamagui';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { Clock } from '../components/molecules/Clock';
+import { CustomImageBackground } from '../components/atoms/ImageBackground';
 
 const Wrapper = styled(Stack, {
   alignItems: 'center',
@@ -25,7 +26,7 @@ export const Home = () => {
   };
 
   return (
-    <Wrapper>
+    <CustomImageBackground>
       <Clock />
       <CustomButton onPress={handleCheckIn}>
         <CustomText mt={0}>Check In</CustomText>
@@ -36,6 +37,6 @@ export const Home = () => {
       <CustomButton onPress={logoutHandler}>
         <CustomText mt={0}>Log Out</CustomText>
       </CustomButton>
-    </Wrapper>
+    </CustomImageBackground>
   );
 };

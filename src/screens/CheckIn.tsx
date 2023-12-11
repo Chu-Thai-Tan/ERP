@@ -4,6 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { faceStatus } from '../store/checkin/selectors';
+import { CustomImageBackground } from '../components/atoms/ImageBackground';
 
 type Props = {
   onTakePhoto: (data: string) => void;
@@ -18,8 +19,8 @@ export const CheckIn: FC<Props> = () => {
   };
 
   return (
-    <>
+    <CustomImageBackground>
       <Camera onTakePhoto={onTakePhoto} />
-    </>
+    </CustomImageBackground>
   );
 };

@@ -8,6 +8,7 @@ import { LogoApp } from '../components/atoms/Logo';
 import { CustomText } from '../components/atoms/CustomText';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { IconInput } from '../components/molecules/IconInput';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
 const Wrapper = styled(Stack, {
   ai: 'center',

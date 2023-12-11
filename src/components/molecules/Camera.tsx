@@ -11,7 +11,6 @@ type Props = {
 const Wrapper = styled(Stack, {
   ai: 'center',
   jc: 'space-between',
-  bg: '#CCCCFF',
   h: '100%',
   w: '100%',
 });
