@@ -6,6 +6,13 @@ import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { Clock } from '../components/molecules/Clock';
 
+const Wrapper = styled(Stack, {
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#CCCCFF',
+  height: '100%',
+});
+
 export const Home = () => {
   const dispatch = useAppDispatch();
 
@@ -17,12 +24,6 @@ export const Home = () => {
     dispatch(logout());
   };
 
-  const Wrapper = styled(Stack, {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#CCCCFF',
-    height: '100%',
-  });
   return (
     <Wrapper>
       <Clock />

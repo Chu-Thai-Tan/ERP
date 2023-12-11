@@ -6,6 +6,13 @@ import { CustomText } from '../components/atoms/CustomText';
 import { navigate } from '../utils/navigateService';
 import { IconInput } from '../components/molecules/IconInput';
 
+const Wrapper = styled(Stack, {
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#ffffff',
+  height: '100%',
+});
+
 export const Register = () => {
   const handleLogin = () => {
     navigate('Login');
@@ -13,13 +20,6 @@ export const Register = () => {
   const handleNextStep = () => {
     navigate('RegisterSecondStep');
   };
-
-  const Wrapper = styled(Stack, {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffff',
-    height: '100%',
-  });
 
   return (
     <Wrapper>

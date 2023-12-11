@@ -8,6 +8,21 @@ type Props = {
   onTakePhoto: (data: string) => void;
 };
 
+const Wrapper = styled(Stack, {
+  ai: 'center',
+  jc: 'space-between',
+  bg: '#CCCCFF',
+  h: '100%',
+  w: '100%',
+});
+const CameraSlot = styled(Stack, {
+  w: 350,
+  h: 350,
+  br: 999,
+  ov: 'hidden',
+  mt: '15%',
+});
+
 export const Camera: FC<Props> = ({ onTakePhoto }) => {
   const cameraRef = useRef<RNCamera>(null);
 
@@ -27,21 +42,6 @@ export const Camera: FC<Props> = ({ onTakePhoto }) => {
       }
     }
   };
-
-  const Wrapper = styled(Stack, {
-    ai: 'center',
-    jc: 'space-between',
-    bg: '#CCCCFF',
-    h: '100%',
-    w: '100%',
-  });
-  const CameraSlot = styled(Stack, {
-    w: 350,
-    h: 350,
-    br: 999,
-    ov: 'hidden',
-    mt: '15%',
-  });
 
   return (
     <Wrapper>

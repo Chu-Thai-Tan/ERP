@@ -5,6 +5,12 @@ import { useSelector } from 'react-redux';
 import { faceStatus } from '../store/checkin/selectors';
 import { CustomText } from '../components/atoms/CustomText';
 
+const Description = styled(Text, {
+  color: 'black',
+  marginTop: 20,
+  fontSize: '$6',
+});
+
 export const RegisterSecondStep = () => {
   const Wrapper = styled(Stack, {
     alignItems: 'center',
@@ -20,11 +26,6 @@ export const RegisterSecondStep = () => {
     setDataImage(data);
   };
 
-  const Description = styled(Text, {
-    color: 'black',
-    marginTop: 20,
-    fontSize: '$6',
-  });
   return (
     <Wrapper>
       <Description>Please take photo to register your face ID</Description>
