@@ -1,11 +1,10 @@
 import { TouchableOpacity } from 'react-native';
 import { Stack, styled, Text } from 'tamagui';
 import { LogoApp } from '../components/atoms/Logo';
-import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { navigate } from '../utils/navigateService';
-import { faEnvelope, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
+import { IconInput } from '../components/molecules/IconInput';
 
 export const Register = () => {
   const handleLogin = () => {
@@ -25,14 +24,10 @@ export const Register = () => {
   return (
     <Wrapper>
       <LogoApp />
-      <CustomInput placeholder="Name" icon={'user'} />
-      <CustomInput placeholder="Email" icon={'envelope'} />
-      <CustomInput secureTextEntry placeholder="Password" icon={'key'} />
-      <CustomInput
-        secureTextEntry
-        placeholder="Confirm Password"
-        icon={faKey}
-      />
+      <IconInput placeholder="Name" icon={'user'} />
+      <IconInput placeholder="Email" icon={'envelope'} />
+      <IconInput secureTextEntry placeholder="Password" icon={'key'} />
+      <IconInput secureTextEntry placeholder="Confirm Password" icon={'key'} />
       <CustomButton onPress={handleNextStep}>
         <CustomText mt={0}>Next</CustomText>
       </CustomButton>

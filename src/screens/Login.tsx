@@ -5,10 +5,9 @@ import { login } from '../store/auth/slice';
 import { TouchableOpacity } from 'react-native';
 import { Stack, styled, Text } from 'tamagui';
 import { LogoApp } from '../components/atoms/Logo';
-import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomText } from '../components/atoms/CustomText';
 import { CustomButton } from '../components/atoms/CustomButton';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { IconInput } from '../components/molecules/IconInput';
 
 const Wrapper = styled(Stack, {
   ai: 'center',
@@ -31,8 +30,8 @@ export const Login = () => {
   return (
     <Wrapper>
       <LogoApp />
-      <CustomInput placeholder="Email" icon={'envelope'} />
-      <CustomInput secureTextEntry placeholder="Password" icon={'lock'} />
+      <IconInput placeholder="Email" icon={'envelope'} />
+      <IconInput secureTextEntry placeholder="Password" icon={'lock'} />
       <CustomButton mt={40} onPress={loginHandler}>
         <CustomText mt={0}>Login</CustomText>
       </CustomButton>
