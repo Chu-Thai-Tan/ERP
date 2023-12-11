@@ -5,6 +5,7 @@ import { CustomInput } from '../components/atoms/CustomInput';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { navigate } from '../utils/navigateService';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export const Register = () => {
   const handleLogin = () => {
@@ -25,7 +26,7 @@ export const Register = () => {
     <Wrapper>
       <LogoApp />
       <CustomInput placeholder="Name" />
-      <CustomInput placeholder="Email" icon={faEmail}/>
+      <CustomInput placeholder="Email" icon={faEnvelope} />
       <CustomInput secureTextEntry placeholder="Password" />
       <CustomInput secureTextEntry placeholder="Confirm Password" />
       <CustomButton onPress={handleNextStep}>
