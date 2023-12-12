@@ -3,7 +3,7 @@ import { Camera } from '../components/molecules/Camera';
 import { RouteProp } from '@react-navigation/native';
 import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
-import { isFaceMatch } from '../store/checkin/selectors';
+import { faceApiStatus } from '../store/checkin/selectors';
 import { CustomImageBackground } from '../components/atoms/ImageBackground';
 import Background from '../assets/images/Background.png';
 import { navigate } from 'react-navigation-helpers';
@@ -14,14 +14,13 @@ type Props = {
 };
 export const CheckIn: FC<Props> = () => {
   const [setDataImage] = useRecognitionData();
-  // const response = useSelector(faceStatus);
-  const isMatch = useSelector(isFaceMatch);
+  const status = useSelector(faceApiStatus);
 
   useEffect(() => {
-    if (isMatch) {
+    if (status === 'Success') {
       navigate('Home');
     }
-  }, [isMatch]);
+  }, [status]);
 
   const onTakePhoto = (data: string) => {
     setDataImage(data);
@@ -29,7 +28,7 @@ export const CheckIn: FC<Props> = () => {
 
   return (
     <CustomImageBackground source={Background}>
-      <Camera onTakePhoto={onTakePhoto} />
+      <Camera onTakePhoto={onTakePhoto} isLoading={status === 'Loading'} />
     </CustomImageBackground>
   );
 };

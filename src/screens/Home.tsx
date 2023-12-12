@@ -7,10 +7,9 @@ import { CustomText } from '../components/atoms/CustomText';
 import { Clock } from '../components/molecules/Clock';
 import { CustomImageBackground } from '../components/atoms/ImageBackground';
 import Background from '../assets/images/Background.png';
-import { Calendar } from '../components/molecules/Calendar';
-import { View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { isFaceMatch } from '../store/checkin/selectors';
+import { faceApiStatus, faceResponse } from '../store/checkin/selectors';
+import { recognize } from '../store/checkin/slice';
 
 const Wrapper = styled(Stack, {
   alignItems: 'center',
@@ -21,30 +20,50 @@ const Wrapper = styled(Stack, {
 
 export const Home = () => {
   const dispatch = useAppDispatch();
-  const isMatch = useSelector(isFaceMatch);
+  const status = useSelector(faceApiStatus);
+  const response = useSelector(faceResponse);
 
   const handleCheckIn = () => {
     navigate('CheckIn');
+  };
+
+  const handleCheckOut = () => {
+    dispatch(
+      recognize({
+        status: 'NotCheckedIn',
+        response: null,
+      }),
+    );
   };
 
   const logoutHandler = () => {
     dispatch(logout());
   };
 
+  const renderCheckIn = () => {
+    switch (status) {
+      case 'Success':
+        return (
+          <>
+            <CustomText>Hi {response.subject ?? 'User'}!</CustomText>
+            <Clock />
+            <CustomButton onPress={handleCheckOut}>
+              <CustomText mt={0}>Check Out</CustomText>
+            </CustomButton>
+          </>
+        );
+      default:
+        return (
+          <CustomButton onPress={handleCheckIn}>
+            <CustomText mt={0}>Check In</CustomText>
+          </CustomButton>
+        );
+    }
+  };
+
   return (
     <CustomImageBackground source={Background}>
-      {isMatch ? (
-        <>
-          <Clock />
-          <CustomButton onPress={handleCheckIn}>
-            <CustomText mt={0}>Check Out</CustomText>
-          </CustomButton>
-        </>
-      ) : (
-        <CustomButton onPress={handleCheckIn}>
-          <CustomText mt={0}>Check In</CustomText>
-        </CustomButton>
-      )}
+      {renderCheckIn()}
       <CustomButton onPress={logoutHandler}>
         <CustomText mt={0}>Log Out</CustomText>
       </CustomButton>

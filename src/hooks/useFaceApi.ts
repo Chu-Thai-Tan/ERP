@@ -37,11 +37,7 @@ export const useRecognitionData: () => [
   useEffect(() => {
     if (dataImage) {
       recognizeHandler();
-      dispatch(
-        recognize({
-          status: 'Loading',
-        }),
-      );
+      
     }
   }, [dataImage]);
   return [setDataImage];
