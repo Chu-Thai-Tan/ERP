@@ -8,7 +8,7 @@ export const CustomImageBackground: React.FC<ImageBackgroundProps> = props => {
         flex: 1,
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
+        //justifyContent: 'center',
       }}
       {...props}
     />

@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ExpandableCalendar, CalendarProvider } from 'react-native-calendars';
+import {
+  ExpandableCalendar,
+  CalendarProvider,
+  DateData,
+} from 'react-native-calendars';
 import moment from 'moment';
+import { navigate } from '../../utils/navigateService';
 
 const CustomWeekday = ({ day }: { day: any }) => {
   console.log('#Duy Phan console', day);
@@ -19,6 +24,11 @@ export const Calendar = () => {
     moment(new Date()).format('YYYY-MM-DD'),
   );
 
+  const handleOnPress = (d: DateData) => {
+    setDate(d.dateString);
+    navigate('InfoInDay', { date: d.dateString });
+  };
+
   return (
     <View style={styles.container}>
       <CalendarProvider date={date}>
@@ -30,7 +40,7 @@ export const Calendar = () => {
           firstDay={1}
           disablePan={true}
           calendarStyle={styles.calendar}
-          onDayPress={d => setDate(d.dateString)}
+          onDayPress={handleOnPress}
           //   dayComponent={(d) => <CustomWeekday  day={d}/>}
           //   renderHeader={date => <Text>11111</Text>}
           markedDates={{
@@ -46,7 +56,7 @@ export const Calendar = () => {
               customStyles: {
                 container: styles.knob,
                 text: {
-                  color: 'white',
+                  color: '#800080',
                   fontWeight: 'bold',
                 },
               },
@@ -63,6 +73,7 @@ const styles = StyleSheet.create({
   container: {
     height: 145,
     width: '100%',
+    backgroundColor: 'transparent',
   },
   knobContainer: {
     position: 'absolute',
@@ -74,7 +85,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 30,
     borderRadius: 8,
-    backgroundColor: 'red',
+    backgroundColor: '#DA70D6',
   },
   calendar: {
     backgroundColor: 'transparent',

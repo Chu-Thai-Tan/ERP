@@ -1,18 +1,13 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Camera } from '../components/molecules/Camera';
-import { RouteProp } from '@react-navigation/native';
 import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { faceApiStatus } from '../store/checkin/selectors';
-import { CustomImageBackground } from '../components/atoms/ImageBackground';
+import { CustomImageBackground } from '../components/atoms/CustomImageBackground';
 import Background from '../assets/images/Background.png';
 import { navigate } from 'react-navigation-helpers';
 
-type Props = {
-  onTakePhoto: (data: string) => void;
-  route: RouteProp<{}>;
-};
-export const CheckIn: FC<Props> = () => {
+export const CheckIn = () => {
   const [setDataImage] = useRecognitionData();
   const status = useSelector(faceApiStatus);
 

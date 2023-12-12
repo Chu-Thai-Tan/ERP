@@ -5,18 +5,13 @@ import { Stack, styled, useTheme } from 'tamagui';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { Clock } from '../components/molecules/Clock';
-import { CustomImageBackground } from '../components/atoms/ImageBackground';
+import { CustomImageBackground } from '../components/atoms/CustomImageBackground';
 import Background from '../assets/images/Background.png';
 import { useSelector } from 'react-redux';
 import { faceApiStatus, faceResponse } from '../store/checkin/selectors';
 import { recognize } from '../store/checkin/slice';
 
-const Wrapper = styled(Stack, {
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#CCCCFF',
-  height: '100%',
-});
+import { Calendar } from '../components/molecules/Calendar';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -64,6 +59,17 @@ export const Home = () => {
   return (
     <CustomImageBackground source={Background}>
       {renderCheckIn()}
+      <Calendar />
+      <Stack marginTop={50} marginBottom={80}>
+        <Clock />
+      </Stack>
+
+      <CustomButton onPress={handleCheckIn}>
+        <CustomText mt={0}>Check In</CustomText>
+      </CustomButton>
+      <CustomButton onPress={handleCheckIn}>
+        <CustomText mt={0}>Check Out</CustomText>
+      </CustomButton>
       <CustomButton onPress={logoutHandler}>
         <CustomText mt={0}>Log Out</CustomText>
       </CustomButton>

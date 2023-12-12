@@ -2,9 +2,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Home } from '../screens/Home';
 import { CheckIn } from '../screens/CheckIn';
+import { InfoInDay } from '../screens/InfoInDay';
 
 interface Screen {
-  component: React.FC<any>;
+  component: React.FC;
   name: string;
   title: string;
 }
@@ -19,6 +20,11 @@ const screens: Screen[] = [
     component: CheckIn,
     name: 'CheckIn',
     title: 'Check In',
+  },
+  {
+    component: InfoInDay,
+    name: 'InfoInDay',
+    title: 'Status',
   },
 ];
 
