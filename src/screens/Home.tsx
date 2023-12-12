@@ -1,7 +1,7 @@
 import { navigate } from '../utils/navigateService';
 import { useAppDispatch } from '../store';
 import { logout } from '../store/auth/slice';
-import { Stack, styled, useTheme } from 'tamagui';
+import { Stack, Text } from 'tamagui';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { Clock } from '../components/molecules/Clock';
@@ -40,8 +40,7 @@ export const Home = () => {
       case 'Success':
         return (
           <>
-            <CustomText>Hi {response.subject ?? 'User'}!</CustomText>
-            <Clock />
+            <Text>Hi {response.subject ?? 'User'}!</Text>
             <CustomButton onPress={handleCheckOut}>
               <CustomText mt={0}>Check Out</CustomText>
             </CustomButton>
@@ -58,20 +57,13 @@ export const Home = () => {
 
   return (
     <CustomImageBackground source={Background}>
-      {renderCheckIn()}
       <Calendar />
       <Stack marginTop={50} marginBottom={80}>
         <Clock />
       </Stack>
-
-      <CustomButton onPress={handleCheckIn}>
-        <CustomText mt={0}>Check In</CustomText>
-      </CustomButton>
-      <CustomButton onPress={handleCheckIn}>
-        <CustomText mt={0}>Check Out</CustomText>
-      </CustomButton>
+      {renderCheckIn()}
       <CustomButton onPress={logoutHandler}>
-        <CustomText mt={0}>Log Out</CustomText>
+        <CustomText>Log Out</CustomText>
       </CustomButton>
     </CustomImageBackground>
   );

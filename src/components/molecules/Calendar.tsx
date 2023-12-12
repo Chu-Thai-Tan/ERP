@@ -7,6 +7,8 @@ import {
 } from 'react-native-calendars';
 import moment from 'moment';
 import { navigate } from '../../utils/navigateService';
+import { useSelector } from 'react-redux';
+import { faceApiStatus, faceResponse } from '../../store/checkin/selectors';
 
 const CustomWeekday = ({ day }: { day: any }) => {
   console.log('#Duy Phan console', day);
@@ -24,9 +26,14 @@ export const Calendar = () => {
     moment(new Date()).format('YYYY-MM-DD'),
   );
 
+  const status = useSelector(faceApiStatus);
+  const response = useSelector(faceResponse);
+
   const handleOnPress = (d: DateData) => {
     setDate(d.dateString);
+    //if (status === 'Success') {
     navigate('InfoInDay', { date: d.dateString });
+    //}
   };
 
   return (
