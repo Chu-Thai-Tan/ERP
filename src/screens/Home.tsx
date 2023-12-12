@@ -1,4 +1,4 @@
-import { navigate } from '../utils/navigateService';
+import { navigate } from '../helpers/navigateService';
 import { useAppDispatch } from '../store';
 import { logout } from '../store/auth/slice';
 import { Stack, Text } from 'tamagui';
@@ -10,7 +10,6 @@ import Background from '../assets/images/Background.png';
 import { useSelector } from 'react-redux';
 import { faceApiStatus, faceResponse } from '../store/checkin/selectors';
 import { recognize } from '../store/checkin/slice';
-
 import { Calendar } from '../components/molecules/Calendar';
 
 export const Home = () => {
