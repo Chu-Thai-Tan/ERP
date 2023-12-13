@@ -3,7 +3,7 @@ import { Stack, styled, Text } from 'tamagui';
 import { LogoApp } from '../components/atoms/Logo';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
-import { navigate } from '../helpers/navigateService';
+import { navigate } from '../helpers/NavigateService';
 import { IconInput } from '../components/molecules/IconInput';
 
 const Wrapper = styled(Stack, {

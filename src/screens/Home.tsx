@@ -1,4 +1,4 @@
-import { navigate } from '../helpers/navigateService';
+import { navigate } from '../helpers/NavigateService';
 import { useAppDispatch } from '../store';
 import { logout } from '../store/auth/slice';
 import { Stack, Text } from 'tamagui';

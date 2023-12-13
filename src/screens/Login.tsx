@@ -1,4 +1,4 @@
-import { navigate } from '../helpers/navigateService';
+import { navigate } from '../helpers/NavigateService';
 import { useAppDispatch } from '../store';
 import { login } from '../store/auth/slice';
 
