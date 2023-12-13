@@ -8,6 +8,7 @@ import {
 import { useAppDispatch } from '../store';
 import { recognize } from '../store/checkin/slice';
 import { recognitionService } from '../utils/compreFaceService';
+import { ToastService } from '../helpers/ToastService';
 
 export const useRecognitionData: () => [
   Dispatch<SetStateAction<string>>,
@@ -32,12 +33,15 @@ export const useRecognitionData: () => [
             status: 'Error',
           }),
         );
+        ToastService.show('Error', {
+          message: e.message,
+          duration: 2000
+        })
       });
   }, [dataImage]);
   useEffect(() => {
     if (dataImage) {
       recognizeHandler();
-      
     }
   }, [dataImage]);
   return [setDataImage];

@@ -47,7 +47,6 @@ export const App = (): JSX.Element => {
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}
             />
-
             <RootNavigation />
           </SafeAreaProvider>
         </Theme>
