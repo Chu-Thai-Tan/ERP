@@ -1,22 +1,16 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { CustomImageBackground } from '../components/atoms/CustomImageBackground';
-import Background from '../assets/images/Background3.png';
 import { Stack, Text, styled } from 'tamagui';
+import { CustomWrapper } from '../components/atoms/CustomWrapper';
 
 export const InfoInDay = () => {
   const route: RouteProp<{ params: { date: string } }, 'params'> = useRoute();
   const { date } = route.params;
-  const Wrapper = styled(Stack, {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-  });
 
   const ItemWrapper = styled(Stack, {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   });
 
   const data = [
@@ -28,24 +22,22 @@ export const InfoInDay = () => {
 
   const CustomTitle = styled(Text, {
     fontSize: '$6',
-    color: 'white',
+    color: '#800080',
     fontWeight: 'bold',
   });
   const CustomDes = styled(Text, {
     fontSize: '$6',
-    color: 'white',
+    color: '#800080',
     fontWeight: '$400',
   });
   return (
-    <CustomImageBackground source={Background}>
-      <Wrapper>
-        {data.map(item => (
-          <ItemWrapper key={item.title}>
-            <CustomTitle>{item.title}</CustomTitle>
-            <CustomDes>{item.value}</CustomDes>
-          </ItemWrapper>
-        ))}
-      </Wrapper>
-    </CustomImageBackground>
+    <CustomWrapper style={{ justifyContent: 'center' }}>
+      {data.map(item => (
+        <ItemWrapper key={item.title}>
+          <CustomTitle>{item.title}</CustomTitle>
+          <CustomDes>{item.value}</CustomDes>
+        </ItemWrapper>
+      ))}
+    </CustomWrapper>
   );
 };

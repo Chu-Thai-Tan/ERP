@@ -5,12 +5,11 @@ import { Stack, Text } from 'tamagui';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { Clock } from '../components/molecules/Clock';
-import { CustomImageBackground } from '../components/atoms/CustomImageBackground';
-import Background from '../assets/images/Background.png';
 import { useSelector } from 'react-redux';
 import { faceApiStatus, faceResponse } from '../store/checkin/selectors';
 import { recognize } from '../store/checkin/slice';
 import { Calendar } from '../components/molecules/Calendar';
+import { CustomWrapper } from '../components/atoms/CustomWrapper';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -58,12 +57,15 @@ export const Home = () => {
   };
 
   return (
-    <CustomImageBackground source={Background}>
+    <CustomWrapper>
       <Calendar />
+      <Stack marginTop={'40%'} marginBottom={'40%'}>
+        <Clock />
+      </Stack>
       {renderCheckIn()}
       <CustomButton onPress={logoutHandler}>
         <CustomText>Log Out</CustomText>
       </CustomButton>
-    </CustomImageBackground>
+    </CustomWrapper>
   );
 };

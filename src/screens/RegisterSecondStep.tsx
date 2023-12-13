@@ -1,8 +1,6 @@
-import { styled, Text } from 'tamagui';
 import { Camera } from '../components/molecules/Camera';
 import { useRecognitionData } from '../hooks/useFaceApi';
-import { CustomImageBackground } from '../components/atoms/CustomImageBackground';
-import Background from '../assets/images/Background.png';
+import { CustomWrapper } from '../components/atoms/CustomWrapper';
 
 export const RegisterSecondStep = () => {
   const [setDataImage] = useRecognitionData();
@@ -12,8 +10,8 @@ export const RegisterSecondStep = () => {
   };
 
   return (
-    <CustomImageBackground source={Background}>
+    <CustomWrapper style={{ justifyContent: 'center' }}>
       <Camera onTakePhoto={onTakePhoto} />
-    </CustomImageBackground>
+    </CustomWrapper>
   );
 };

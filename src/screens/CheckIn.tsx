@@ -3,11 +3,10 @@ import { Camera } from '../components/molecules/Camera';
 import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { faceApiStatus } from '../store/checkin/selectors';
-import { CustomImageBackground } from '../components/atoms/CustomImageBackground';
-import Background from '../assets/images/Background.png';
 import { navigate } from 'react-navigation-helpers';
 import { CurrentToast } from '../helpers/ToastService';
 import { ToastViewport } from '@tamagui/toast';
+import { CustomWrapper } from '../components/atoms/CustomWrapper';
 
 export const CheckIn = () => {
   const [setDataImage] = useRecognitionData();
@@ -24,9 +23,8 @@ export const CheckIn = () => {
   };
 
   return (
-    <CustomImageBackground source={Background}>
+    <CustomWrapper>
       <Camera onTakePhoto={onTakePhoto} isLoading={status === 'Loading'} />
-      {/* <CurrentToast /> */}
-    </CustomImageBackground>
+    </CustomWrapper>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import {
   ExpandableCalendar,
   CalendarProvider,
@@ -9,17 +9,7 @@ import moment from 'moment';
 import { navigate } from '../../helpers/NavigateService';
 import { useSelector } from 'react-redux';
 import { faceApiStatus, faceResponse } from '../../store/checkin/selectors';
-
-const CustomWeekday = ({ day }: { day: any }) => {
-  console.log('#Duy Phan console', day);
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'blue' }}>
-        {day.children}
-      </Text>
-    </View>
-  );
-};
+import { Button } from 'tamagui';
 
 export const Calendar = () => {
   const [date, setDate] = useState<string>(
@@ -36,6 +26,20 @@ export const Calendar = () => {
     //}
   };
 
+  const CustomWeekday = ({ day }: { day: any }) => {
+    console.log('#Duy Phan console', day);
+    return (
+      <TouchableOpacity
+        onPress={() => handleOnPress(day.date)}
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      >
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#800080' }}>
+          {day.children}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <CalendarProvider date={date}>
@@ -43,13 +47,11 @@ export const Calendar = () => {
           style={styles.knobContainer}
           allowShadow
           horizontal
-          hideArrows
           firstDay={1}
+          onDayPress={handleOnPress}
           disablePan={true}
           calendarStyle={styles.calendar}
-          onDayPress={handleOnPress}
-          //   dayComponent={(d) => <CustomWeekday  day={d}/>}
-          //   renderHeader={date => <Text>11111</Text>}
+          //  dayComponent={d => <CustomWeekday day={d} />}
           markedDates={{
             [date]: {
               selected: true,

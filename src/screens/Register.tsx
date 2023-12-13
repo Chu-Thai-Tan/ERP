@@ -5,13 +5,7 @@ import { CustomButton } from '../components/atoms/CustomButton';
 import { CustomText } from '../components/atoms/CustomText';
 import { navigate } from '../helpers/NavigateService';
 import { IconInput } from '../components/molecules/IconInput';
-
-const Wrapper = styled(Stack, {
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#ffffff',
-  height: '100%',
-});
+import { CustomWrapper } from '../components/atoms/CustomWrapper';
 
 export const Register = () => {
   const handleLogin = () => {
@@ -22,7 +16,7 @@ export const Register = () => {
   };
 
   return (
-    <Wrapper>
+    <CustomWrapper style={{ justifyContent: 'center' }}>
       <LogoApp />
       <IconInput placeholder="Name" icon={'user'} />
       <IconInput placeholder="Email" icon={'envelope'} />
@@ -37,6 +31,6 @@ export const Register = () => {
           <CustomText>Login</CustomText>
         </TouchableOpacity>
       </Stack>
-    </Wrapper>
+    </CustomWrapper>
   );
 };

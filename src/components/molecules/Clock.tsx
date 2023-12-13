@@ -27,7 +27,7 @@ export const Clock = () => {
   }, []);
   return (
     <View>
-      <CustomText fos={'$13'} col={'#ffffff'} fow={'$300'}>
+      <CustomText fos={'$14'} col={'#800080'} fow={'$400'}>
         {hour}:{minute}:{second}
       </CustomText>
     </View>

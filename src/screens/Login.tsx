@@ -3,19 +3,12 @@ import { useAppDispatch } from '../store';
 import { login } from '../store/auth/slice';
 
 import { TouchableOpacity } from 'react-native';
-import { Stack, styled, Text } from 'tamagui';
+import { Stack, Text } from 'tamagui';
 import { LogoApp } from '../components/atoms/Logo';
 import { CustomText } from '../components/atoms/CustomText';
 import { CustomButton } from '../components/atoms/CustomButton';
 import { IconInput } from '../components/molecules/IconInput';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
-
-const Wrapper = styled(Stack, {
-  ai: 'center',
-  jc: 'center',
-  bg: 'white',
-  h: '100%',
-});
+import { CustomWrapper } from '../components/atoms/CustomWrapper';
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -29,7 +22,7 @@ export const Login = () => {
   };
 
   return (
-    <Wrapper>
+    <CustomWrapper style={{ justifyContent: 'center' }}>
       <LogoApp />
       <IconInput placeholder="Email" icon={'envelope'} />
       <IconInput secureTextEntry placeholder="Password" icon={'lock'} />
@@ -42,6 +35,6 @@ export const Login = () => {
           <CustomText>Register</CustomText>
         </TouchableOpacity>
       </Stack>
-    </Wrapper>
+    </CustomWrapper>
   );
 };

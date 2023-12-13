@@ -7,7 +7,7 @@ import { authStatus } from '../store/auth/selectors';
 import { isReadyRef, navigate, navigationRef } from '../helpers/NavigateService';
 import { useEffect } from 'react';
 
-export function RootNavigation() {
+export const RootNavigation = () => {
   const isLogin = useSelector(authStatus);
   useEffect(() => {
     if (!isLogin) {
@@ -27,4 +27,4 @@ export function RootNavigation() {
       {isLogin ? <HomeStack /> : <AuthStack />}
     </NavigationContainer>
   );
-}
+};
