@@ -37,17 +37,18 @@ export const App = (): JSX.Element => {
       <TamaguiProvider config={tamaguiConfig} defaultTheme="light">
         <Theme name={'light'}>
           <SafeAreaProvider>
+          <ToastProvider>
+            <ToastImperativeProvider options={{ native: 'mobile' }}>
+              <CurrentToast />
+            </ToastImperativeProvider>
+            <ToastViewport />
+          </ToastProvider>
             <StatusBar
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}
             />
-            <ToastProvider>
-              <ToastImperativeProvider options={{ native: 'mobile' }}>
-                <CurrentToast />
-                <RootNavigation />
-              </ToastImperativeProvider>
-              <ToastViewport />
-            </ToastProvider>
+
+            <RootNavigation />
           </SafeAreaProvider>
         </Theme>
       </TamaguiProvider>
