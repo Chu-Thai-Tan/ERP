@@ -40,6 +40,9 @@ export const Home = () => {
         return (
           <>
             <Text>Hi {response.subject ?? 'User'}!</Text>
+            <Stack marginTop={50} marginBottom={80}>
+              <Clock />
+            </Stack>
             <CustomButton onPress={handleCheckOut}>
               <CustomText mt={0}>Check Out</CustomText>
             </CustomButton>
@@ -57,9 +60,6 @@ export const Home = () => {
   return (
     <CustomImageBackground source={Background}>
       <Calendar />
-      <Stack marginTop={50} marginBottom={80}>
-        <Clock />
-      </Stack>
       {renderCheckIn()}
       <CustomButton onPress={logoutHandler}>
         <CustomText>Log Out</CustomText>

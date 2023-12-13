@@ -1,15 +1,18 @@
 import './polyfill';
 
-import { StatusBar, View, ViewStyle, useColorScheme } from 'react-native';
+import { StatusBar, ViewStyle, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import { Provider } from 'react-redux';
 import { store } from './store';
 import notifee from '@notifee/react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { TamaguiProvider, Theme } from 'tamagui';
 import tamaguiConfig from '../tamagui.config';
 import { RootNavigation } from './routes/RootNavigation';
+import { ToastProvider, ToastViewport } from '@tamagui/toast';
+import { ToastImperativeProvider } from '@tamagui/toast/src/ToastImperative';
+import { CurrentToast } from './helpers/ToastService';
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification);
@@ -38,7 +41,13 @@ export const App = (): JSX.Element => {
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}
             />
-            <RootNavigation />
+            <ToastProvider>
+              <ToastImperativeProvider options={{ native: 'mobile' }}>
+                <CurrentToast />
+                <RootNavigation />
+              </ToastImperativeProvider>
+              <ToastViewport />
+            </ToastProvider>
           </SafeAreaProvider>
         </Theme>
       </TamaguiProvider>
