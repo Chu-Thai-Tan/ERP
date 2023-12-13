@@ -6,7 +6,7 @@ import {
   DateData,
 } from 'react-native-calendars';
 import moment from 'moment';
-import { navigate } from '../../utils/navigateService';
+import { navigate } from '../../helpers/navigateService';
 import { useSelector } from 'react-redux';
 import { faceApiStatus, faceResponse } from '../../store/checkin/selectors';
 
