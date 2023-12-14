@@ -10,9 +10,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { TamaguiProvider, Theme } from 'tamagui';
 import tamaguiConfig from '../tamagui.config';
 import { RootNavigation } from './routes/RootNavigation';
-import { ToastProvider, ToastViewport } from '@tamagui/toast';
+import { ToastProvider } from '@tamagui/toast';
 import { ToastImperativeProvider } from '@tamagui/toast/src/ToastImperative';
 import { ToastModule } from './helpers/ToastService';
+import { SafeToastViewport } from './helpers/ToastService/SafeToastViewport';
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification);
@@ -41,7 +42,7 @@ export const App = (): JSX.Element => {
               <ToastImperativeProvider options={{ native: 'mobile' }}>
                 <ToastModule />
               </ToastImperativeProvider>
-              <ToastViewport />
+              <SafeToastViewport />
             </ToastProvider>
             <StatusBar
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
