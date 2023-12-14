@@ -4,8 +4,6 @@ import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { faceApiStatus } from '../store/checkin/selectors';
 import { navigate } from 'react-navigation-helpers';
-import { CurrentToast } from '../helpers/ToastService';
-import { ToastViewport } from '@tamagui/toast';
 import { CustomWrapper } from '../components/atoms/CustomWrapper';
 
 export const CheckIn = () => {

@@ -12,7 +12,7 @@ import tamaguiConfig from '../tamagui.config';
 import { RootNavigation } from './routes/RootNavigation';
 import { ToastProvider, ToastViewport } from '@tamagui/toast';
 import { ToastImperativeProvider } from '@tamagui/toast/src/ToastImperative';
-import { CurrentToast } from './helpers/ToastService';
+import { ToastModule } from './helpers/ToastService';
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification);
@@ -37,12 +37,12 @@ export const App = (): JSX.Element => {
       <TamaguiProvider config={tamaguiConfig} defaultTheme="light">
         <Theme name={'light'}>
           <SafeAreaProvider>
-          <ToastProvider>
-            <ToastImperativeProvider options={{ native: 'mobile' }}>
-              <CurrentToast />
-            </ToastImperativeProvider>
-            <ToastViewport />
-          </ToastProvider>
+            <ToastProvider>
+              <ToastImperativeProvider options={{ native: 'mobile' }}>
+                <ToastModule />
+              </ToastImperativeProvider>
+              <ToastViewport />
+            </ToastProvider>
             <StatusBar
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}

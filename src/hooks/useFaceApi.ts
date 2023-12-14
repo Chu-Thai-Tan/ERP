@@ -15,6 +15,7 @@ export const useRecognitionData: () => [
 ] = () => {
   const [dataImage, setDataImage] = useState<string>('');
   const dispatch = useAppDispatch();
+
   const recognizeHandler = useCallback(() => {
     recognitionService
       .recognize(dataImage, { limit: 1 })
@@ -35,8 +36,7 @@ export const useRecognitionData: () => [
         );
         ToastService.show('Error', {
           message: e.message,
-          duration: 2000
-        })
+        });
       });
   }, [dataImage]);
   useEffect(() => {
