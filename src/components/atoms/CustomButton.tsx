@@ -11,6 +11,5 @@ const Button = styled(TamaguiButton, {
   textAlign: 'center',
 });
 export const CustomButton: React.FC<CustomButtonProps> = props => {
-
   return <Button {...props} />;
 };
