@@ -26,6 +26,9 @@ export const useRecognitionData: () => [
             status: 'Success',
           }),
         );
+        ToastService.show({
+          message: 'Face recognize successfully!',
+        });
       })
       .catch(e => {
         dispatch(
@@ -34,7 +37,7 @@ export const useRecognitionData: () => [
             status: 'Error',
           }),
         );
-        ToastService.show('Error', {
+        ToastService.show({
           message: e.message,
         });
       });

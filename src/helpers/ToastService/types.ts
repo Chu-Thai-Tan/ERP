@@ -1,3 +1,5 @@
+import { CreateNativeToastOptions } from '@tamagui/toast/src/types';
+
 export enum EToastType {
   Error = 0,
   Success = 1,
@@ -5,12 +7,11 @@ export enum EToastType {
 
 export type TToastState = {
   open: boolean;
-  title: string;
   id: string;
-  options: {
-    message: string;
-    duration?: number;
-  };
+  options: TToastOptions;
 };
 
-// export 
+export type TToastOptions = CreateNativeToastOptions & {
+  type?: EToastType;
+  message: string;
+};
