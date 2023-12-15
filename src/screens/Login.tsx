@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { navigate } from '../helpers/NavigateService';
 import { useAppDispatch } from '../store';
 import { login } from '../store/auth/slice';
@@ -20,6 +20,8 @@ interface LoginType {
 export const Login = () => {
   const dispatch = useAppDispatch();
 
+  const emailRef = useRef<any>(null);
+
   const [value, setValue] = useState<LoginType>({
     email: '',
     password: '',
@@ -34,6 +36,7 @@ export const Login = () => {
   };
 
   const loginHandler = () => {
+    console.log('#Duy Phan console', emailRef.current.defaultValue)
     const errors = handleValidateInput();
     setErrors(errors);
     if (!errors.email && !errors.password) {
@@ -56,7 +59,7 @@ export const Login = () => {
       errors.email = 'Email is invalid.';
     }
 
-    if (value.password.length == 0) {
+    if (!value.password.length) {
       errors.password = 'Password is required.';
     } else if (value.password.length < 6) {
       errors.password = 'Password must be at least 6 characters';
@@ -77,16 +80,18 @@ export const Login = () => {
       errorCondition: errors.email.length !== 0,
       errorMessage: errors.email,
       isSecure: false,
+      ref: emailRef
     },
-    {
-      type: 'password',
-      placeholder: 'Password',
-      icon: 'lock',
-      value: value.password,
-      errorCondition: errors.password.length !== 0,
-      errorMessage: errors.password,
-      isSecure: true,
-    },
+    // {
+    //   type: 'password',
+    //   placeholder: 'Password',
+    //   icon: 'lock',
+    //   value: value.password,
+    //   errorCondition: errors.password.length !== 0,
+    //   errorMessage: errors.password,
+    //   isSecure: true,
+    //   ref: undefined
+    // },
   ];
 
   return (
@@ -105,6 +110,7 @@ export const Login = () => {
               icon={input.icon as IconProp}
               value={input.value}
               secureTextEntry={input.isSecure}
+              ref={emailRef}
             />
             {input.errorCondition && (
               <Text style={styles.errorText}>{input.errorMessage}</Text>
