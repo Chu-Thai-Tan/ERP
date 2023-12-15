@@ -1,15 +1,15 @@
 import { navigate } from '../helpers/NavigateService';
 import { useAppDispatch } from '../store';
 import { logout } from '../store/auth/slice';
-import { Stack, Text } from 'tamagui';
-import { CustomButton } from '../components/atoms/CustomButton';
-import { CustomText } from '../components/atoms/CustomText';
+import { Stack } from 'tamagui';
+import { Button } from '../components/atoms/Button';
+import { Text } from '../components/atoms/Text';
 import { Clock } from '../components/molecules/Clock';
 import { useSelector } from 'react-redux';
 import { faceApiStatus, faceResponse } from '../store/checkin/selectors';
 import { recognize } from '../store/checkin/slice';
 import { Calendar } from '../components/molecules/Calendar';
-import { CustomWrapper } from '../components/atoms/CustomWrapper';
+import { Wrapper } from '../components/atoms/Wrapper';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -38,34 +38,35 @@ export const Home = () => {
       case 'Success':
         return (
           <>
-            <Text>Hi {response.subject ?? 'User'}!</Text>
-            <Stack marginTop={50} marginBottom={80}>
+            <Text fow={'$normal'}>Hi {response.subject ?? 'User'}!</Text>
+            <Stack marginTop={'40%'} marginBottom={'40%'}>
               <Clock />
             </Stack>
-            <CustomButton onPress={handleCheckOut}>
-              <CustomText mt={0}>Check Out</CustomText>
-            </CustomButton>
+            <Button onPress={handleCheckOut} flex={1}>
+              <Text mt={0}>Check Out</Text>
+            </Button>
           </>
         );
       default:
         return (
-          <CustomButton onPress={handleCheckIn}>
-            <CustomText mt={0}>Check In</CustomText>
-          </CustomButton>
+          <Button onPress={handleCheckIn}>
+            <Text mt={0}>Check In</Text>
+          </Button>
         );
     }
   };
 
   return (
-    <CustomWrapper>
+    <Wrapper>
       <Calendar />
-      <Stack marginTop={'40%'} marginBottom={'40%'}>
-        <Clock />
-      </Stack>
-      {renderCheckIn()}
-      <CustomButton onPress={logoutHandler}>
-        <CustomText>Log Out</CustomText>
-      </CustomButton>
-    </CustomWrapper>
+      {/* <W flex={1} w={'100%'}> */}
+      <Wrapper>
+        {renderCheckIn()}
+        <Button onPress={logoutHandler}>
+          <Text>Log Out</Text>
+        </Button>
+      </Wrapper>
+      {/* </W> */}
+    </Wrapper>
   );
 };

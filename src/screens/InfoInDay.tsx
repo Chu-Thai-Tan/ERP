@@ -1,6 +1,6 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { Stack, Text, styled } from 'tamagui';
-import { CustomWrapper } from '../components/atoms/CustomWrapper';
+import { Wrapper } from '../components/atoms/Wrapper';
 
 const ItemWrapper = styled(Stack, {
   display: 'flex',
@@ -30,13 +30,13 @@ export const InfoInDay = () => {
     { title: 'Working Time:', value: '8 hours' },
   ];
   return (
-    <CustomWrapper style={{ justifyContent: 'center' }}>
+    <Wrapper style={{ justifyContent: 'center' }}>
       {data.map(item => (
         <ItemWrapper key={item.title}>
           <CustomTitle>{item.title}</CustomTitle>
           <CustomDes>{item.value}</CustomDes>
         </ItemWrapper>
       ))}
-    </CustomWrapper>
+    </Wrapper>
   );
 };

@@ -1,7 +1,9 @@
 export const getTimeAmount = (
   initialDate: Date,
 ): { hour: string; minute: string; second: string } => {
+
   const currentDate = new Date();
+  
   const amount = (currentDate.getTime() - initialDate.getTime()) / 1000;
   const hour = Math.floor(amount / 3600);
   const minute = Math.floor(

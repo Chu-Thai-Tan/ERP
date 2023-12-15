@@ -1,12 +1,13 @@
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import { Form, Stack, Text } from 'tamagui';
-import { LogoApp } from '../components/atoms/Logo';
-import { CustomButton } from '../components/atoms/CustomButton';
-import { CustomText } from '../components/atoms/CustomText';
+import { useState } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Form, Stack } from 'tamagui';
+import { Logo } from '../components/atoms/Logo';
+import { Button } from '../components/atoms/Button';
+import { Text } from '../components/atoms/Text';
 import { navigate } from '../helpers/NavigateService';
 import { IconInput } from '../components/molecules/IconInput';
-import { CustomWrapper } from '../components/atoms/CustomWrapper';
-import { useState } from 'react';
+import { Wrapper } from '../components/atoms/Wrapper';
+import AppLogo from '../assets/images/Logo.png';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface RegisterType {
@@ -128,8 +129,8 @@ export const Register = () => {
   ];
 
   return (
-    <CustomWrapper style={{ justifyContent: 'center' }}>
-      <LogoApp />
+    <Wrapper style={{ justifyContent: 'center' }}>
+      <Logo source={AppLogo} />
       <Form onSubmit={handleNextStep} style={styles.form}>
         {Input.map(input => (
           <Stack
@@ -149,18 +150,20 @@ export const Register = () => {
           </Stack>
         ))}
         <Form.Trigger asChild>
-          <CustomButton mt={40}>
-            <CustomText mt={0}>Next</CustomText>
-          </CustomButton>
+          <Button mt={40}>
+            <Text mt={0}>Next</Text>
+          </Button>
         </Form.Trigger>
       </Form>
       <Stack mt={10} dsp="flex" fd="row">
-        <Text ml={5}>You have an account? </Text>
+        <Text ml={5} fow={'$normal'}>
+          You have an account?{' '}
+        </Text>
         <TouchableOpacity onPress={handleLogin}>
-          <CustomText>Login</CustomText>
+          <Text>Login</Text>
         </TouchableOpacity>
       </Stack>
-    </CustomWrapper>
+    </Wrapper>
   );
 };
 

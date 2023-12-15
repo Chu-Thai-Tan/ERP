@@ -1,6 +1,6 @@
 import { Camera } from '../components/molecules/Camera';
 import { useRecognitionData } from '../hooks/useFaceApi';
-import { CustomWrapper } from '../components/atoms/CustomWrapper';
+import { Wrapper } from '../components/atoms/Wrapper';
 
 export const RegisterSecondStep = () => {
   const [setDataImage] = useRecognitionData();
@@ -10,8 +10,8 @@ export const RegisterSecondStep = () => {
   };
 
   return (
-    <CustomWrapper style={{ justifyContent: 'center' }}>
+    <Wrapper style={{ justifyContent: 'center' }}>
       <Camera onTakePhoto={onTakePhoto} />
-    </CustomWrapper>
+    </Wrapper>
   );
 };

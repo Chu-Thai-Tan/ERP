@@ -39,10 +39,10 @@ export const App = (): JSX.Element => {
         <Theme name={'light'}>
           <SafeAreaProvider>
             <ToastProvider>
-              <ToastImperativeProvider options={{ native: 'mobile' }}>
+              {/* <ToastImperativeProvider options={{ native: 'mobile' }}> */}
                 <ToastModule />
-              </ToastImperativeProvider>
-              {/*<SafeToastViewport />*/}
+              {/* </ToastImperativeProvider> */}
+              <SafeToastViewport />
             </ToastProvider>
             <StatusBar
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}

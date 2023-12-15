@@ -1,15 +1,15 @@
+import { useState } from 'react';
 import { navigate } from '../helpers/NavigateService';
 import { useAppDispatch } from '../store';
 import { login } from '../store/auth/slice';
-
-import { TouchableOpacity, StyleSheet } from 'react-native';
-import { Form, Stack, Text } from 'tamagui';
-import { LogoApp } from '../components/atoms/Logo';
-import { CustomText } from '../components/atoms/CustomText';
-import { CustomButton } from '../components/atoms/CustomButton';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Form, Stack } from 'tamagui';
+import { Logo } from '../components/atoms/Logo';
+import { Text } from '../components/atoms/Text';
+import { Button } from '../components/atoms/Button';
 import { IconInput } from '../components/molecules/IconInput';
-import { CustomWrapper } from '../components/atoms/CustomWrapper';
-import { useState } from 'react';
+import { Wrapper } from '../components/atoms/Wrapper';
+import AppLogo from '../assets/images/Logo.png';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface LoginType {
@@ -90,8 +90,9 @@ export const Login = () => {
   ];
 
   return (
-    <CustomWrapper style={{ justifyContent: 'center' }}>
-      <LogoApp />
+
+    <Wrapper style={{ justifyContent: 'center' }}>
+      <Logo source={AppLogo} />
       <Form style={styles.form} onSubmit={loginHandler}>
         {Input.map(input => (
           <Stack
@@ -112,18 +113,20 @@ export const Login = () => {
         ))}
 
         <Form.Trigger asChild>
-          <CustomButton mt={40}>
-            <CustomText mt={0}>Login</CustomText>
-          </CustomButton>
+          <Button mt={40}>
+            <Text mt={0}>Login</Text>
+          </Button>
         </Form.Trigger>
       </Form>
       <Stack mt={10} dsp="flex" fd="row">
-        <Text ml={5}>You don't have an account? </Text>
+        <Text ml={5} fow={'$normal'}>
+          You don't have an account?{' '}
+        </Text>
         <TouchableOpacity onPress={handleNavigate}>
-          <CustomText>Register</CustomText>
+          <Text>Register</Text>
         </TouchableOpacity>
       </Stack>
-    </CustomWrapper>
+    </Wrapper>
   );
 };
 

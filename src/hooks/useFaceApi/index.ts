@@ -1,18 +1,15 @@
 import {
-  Dispatch,
-  SetStateAction,
   useCallback,
   useEffect,
   useState,
 } from 'react';
-import { useAppDispatch } from '../store';
-import { recognize } from '../store/checkin/slice';
-import { recognitionService } from '../utils/compreFaceService';
-import { ToastService } from '../helpers/ToastService';
+import { useAppDispatch } from '../../store';
+import { recognize } from '../../store/checkin/slice';
+import { recognitionService } from '../../utils/compreFaceService';
+import { ToastService } from '../../helpers/ToastService';
+import { THookReturnType } from './types';
 
-export const useRecognitionData: () => [
-  Dispatch<SetStateAction<string>>,
-] = () => {
+export const useRecognitionData: () => THookReturnType = () => {
   const [dataImage, setDataImage] = useState<string>('');
   const dispatch = useAppDispatch();
 
@@ -26,6 +23,10 @@ export const useRecognitionData: () => [
             status: 'Success',
           }),
         );
+        // ToastService.show({
+        //   message: 'Face recognize successfully!',
+        // });
+        // navigate('Home')
       })
       .catch(e => {
         dispatch(
@@ -34,7 +35,7 @@ export const useRecognitionData: () => [
             status: 'Error',
           }),
         );
-        ToastService.show('Error', {
+        ToastService.show({
           message: e.message,
         });
       });
