@@ -1,13 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { View } from 'react-native';
-import { getTimeAmount } from '../../utils/date';
-import { Text } from '../atoms/Text';
-
-interface ITimeRef {
-  hour: string;
-  minute: string;
-  second: string;
-}
+import { Text } from '../../atoms/Text';
+import { ITimeRef } from './types';
+import { getTimeAmount } from './utils/getTimeAmount';
 
 export const Clock = () => {
   const dateObj = new Date();

@@ -1,33 +1,16 @@
 import { FC, useRef } from 'react';
-import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
-import { convertImageToBase64 } from '../../utils/camera';
-import { Stack, styled } from 'tamagui';
+import { Stack } from 'tamagui';
 import { blackA } from '@tamagui/colors/src';
-import { recognize } from '../../store/checkin/slice';
-import { useAppDispatch } from '../../store';
-import { Spinner } from '../atoms/Spinner';
+import { Spinner } from '../../atoms/Spinner';
+import { useAppDispatch } from '../../../store';
+import { recognize } from '../../../store/checkin/slice';
+import { CameraSlot, Wrapper, styles } from './styles';
+import { convertImageToBase64 } from './utils/convertImageToBase64';
+import { TCameraProps } from './types';
 
-type Props = {
-  onTakePhoto: (data: string) => void;
-  isLoading?: boolean;
-};
-
-const Wrapper = styled(Stack, {
-  ai: 'center',
-  jc: 'space-between',
-  h: '100%',
-  w: '100%',
-});
-const CameraSlot = styled(Stack, {
-  w: 350,
-  h: 350,
-  br: 999,
-  ov: 'hidden',
-  mt: '15%',
-});
-
-export const Camera: FC<Props> = ({ onTakePhoto, isLoading }) => {
+export const Camera: FC<TCameraProps> = ({ onTakePhoto, isLoading }) => {
   const cameraRef = useRef<RNCamera>(null);
   const dispatch = useAppDispatch();
 
@@ -97,33 +80,3 @@ export const Camera: FC<Props> = ({ onTakePhoto, isLoading }) => {
     </Wrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  camera: {
-    flex: 1,
-    width: Dimensions.get('screen').width,
-    flexDirection: 'column-reverse',
-    alignItems: 'center',
-  },
-  button: {
-    width: 80,
-    height: 80,
-    borderRadius: 100,
-    backgroundColor: 'white',
-    marginBottom: '12%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-  },
-  buttonInside: {
-    position: 'absolute',
-    width: 73,
-    height: 73,
-    borderRadius: 100,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderColor: 'black',
-    borderStyle: 'solid',
-  },
-});

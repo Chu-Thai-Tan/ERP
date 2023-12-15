@@ -39,10 +39,10 @@ export const Home = () => {
         return (
           <>
             <Text fow={'$normal'}>Hi {response.subject ?? 'User'}!</Text>
-            <Stack marginTop={50} marginBottom={80}>
+            <Stack marginTop={'40%'} marginBottom={'40%'}>
               <Clock />
             </Stack>
-            <Button onPress={handleCheckOut}>
+            <Button onPress={handleCheckOut} flex={1}>
               <Text mt={0}>Check Out</Text>
             </Button>
           </>
@@ -59,13 +59,14 @@ export const Home = () => {
   return (
     <Wrapper>
       <Calendar />
-      <Stack marginTop={'40%'} marginBottom={'40%'}>
-        <Clock />
-      </Stack>
-      {renderCheckIn()}
-      <Button onPress={logoutHandler}>
-        <Text>Log Out</Text>
-      </Button>
+      {/* <W flex={1} w={'100%'}> */}
+      <Wrapper>
+        {renderCheckIn()}
+        <Button onPress={logoutHandler}>
+          <Text>Log Out</Text>
+        </Button>
+      </Wrapper>
+      {/* </W> */}
     </Wrapper>
   );
 };

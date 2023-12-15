@@ -1,13 +1,7 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { Icon } from '../atoms/Icon';
-import { InputProps, View } from 'tamagui';
-import { Input } from '../atoms/Input';
-import { Props as FAProps } from '@fortawesome/react-native-fontawesome';
-
-type TIconInputProps = InputProps & {
-  icon: IconProp;
-  iconProps?: FAProps;
-};
+import { Icon } from '../../atoms/Icon';
+import { View } from 'tamagui';
+import { Input } from '../../atoms/Input';
+import { TIconInputProps } from './types';
 
 export const IconInput: React.FC<TIconInputProps> = ({
   icon,
