@@ -2,7 +2,7 @@ import { navigate } from '../helpers/NavigateService';
 import { useAppDispatch } from '../store';
 import { logout } from '../store/auth/slice';
 import { Stack, Text } from 'tamagui';
-import { CustomButton } from '../components/atoms/CustomButton';
+import { Button } from '../components/atoms/Button';
 import { CustomText } from '../components/atoms/CustomText';
 import { Clock } from '../components/molecules/Clock';
 import { useSelector } from 'react-redux';
@@ -42,16 +42,16 @@ export const Home = () => {
             <Stack marginTop={50} marginBottom={80}>
               <Clock />
             </Stack>
-            <CustomButton onPress={handleCheckOut}>
+            <Button onPress={handleCheckOut}>
               <CustomText mt={0}>Check Out</CustomText>
-            </CustomButton>
+            </Button>
           </>
         );
       default:
         return (
-          <CustomButton onPress={handleCheckIn}>
+          <Button onPress={handleCheckIn}>
             <CustomText mt={0}>Check In</CustomText>
-          </CustomButton>
+          </Button>
         );
     }
   };
@@ -63,9 +63,9 @@ export const Home = () => {
         <Clock />
       </Stack>
       {renderCheckIn()}
-      <CustomButton onPress={logoutHandler}>
+      <Button onPress={logoutHandler}>
         <CustomText>Log Out</CustomText>
-      </CustomButton>
+      </Button>
     </CustomWrapper>
   );
 };

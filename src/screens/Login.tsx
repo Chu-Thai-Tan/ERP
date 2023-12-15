@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native';
 import { Stack, Text } from 'tamagui';
 import { LogoApp } from '../components/atoms/Logo';
 import { CustomText } from '../components/atoms/CustomText';
-import { CustomButton } from '../components/atoms/CustomButton';
+import { Button } from '../components/atoms/Button';
 import { IconInput } from '../components/molecules/IconInput';
 import { CustomWrapper } from '../components/atoms/CustomWrapper';
 
@@ -26,9 +26,9 @@ export const Login = () => {
       <LogoApp />
       <IconInput placeholder="Email" icon={'envelope'} />
       <IconInput secureTextEntry placeholder="Password" icon={'lock'} />
-      <CustomButton mt={40} onPress={loginHandler}>
+      <Button mt={40} onPress={loginHandler}>
         <CustomText mt={0}>Login</CustomText>
-      </CustomButton>
+      </Button>
       <Stack mt={10} dsp="flex" fd="row">
         <Text ml={5}>You don't have an account? </Text>
         <TouchableOpacity onPress={handleOnPress}>

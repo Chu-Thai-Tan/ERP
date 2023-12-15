@@ -1,9 +1,11 @@
-import { Toast } from '@tamagui/toast';
 import { CreateNativeToastOptions } from '@tamagui/toast/src/types';
 import { Component } from 'react';
 import { EToastType, TToastOptions, TToastState } from './types';
 import { Icon } from '../../components/atoms/Icon';
-import { Stack } from 'tamagui';
+import {
+  CustomToastDescription as ToastDescription,
+  CustomToast as Toast,
+} from './styles';
 export class ToastModule extends Component<any, TToastState> {
   constructor(props: any) {
     super(props);
@@ -47,27 +49,9 @@ export class ToastModule extends Component<any, TToastState> {
       return <Icon icon={'circle-exclamation'} color="#EA4335" />;
     };
     return (
-      <Toast
-        open={open}
-        key={id}
-        duration={duration}
-        fd={'row'}
-        gap={'$2'}
-        ai={'center'}
-        paddingHorizontal="$4"
-        shadowColor="#000"
-        shadowOffset={{
-          width: 0,
-          height: 2,
-        }}
-        shadowOpacity={0.25}
-        shadowRadius={3.84}
-        elevation={5}
-      >
+      <Toast open={open} key={id} duration={duration}>
         {renderToastIcon()}
-        <Toast.Description size={'$4'} fow={'$400'} col={'#0F0F0F'}>
-          {message}
-        </Toast.Description>
+        <ToastDescription>{message}</ToastDescription>
       </Toast>
     );
   }

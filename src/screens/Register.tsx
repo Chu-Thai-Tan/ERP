@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native';
 import { Stack, styled, Text } from 'tamagui';
 import { LogoApp } from '../components/atoms/Logo';
-import { CustomButton } from '../components/atoms/CustomButton';
+import { Button } from '../components/atoms/Button';
 import { CustomText } from '../components/atoms/CustomText';
 import { navigate } from '../helpers/NavigateService';
 import { IconInput } from '../components/molecules/IconInput';
@@ -22,9 +22,9 @@ export const Register = () => {
       <IconInput placeholder="Email" icon={'envelope'} />
       <IconInput secureTextEntry placeholder="Password" icon={'key'} />
       <IconInput secureTextEntry placeholder="Confirm Password" icon={'key'} />
-      <CustomButton mt={40} onPress={handleNextStep}>
+      <Button mt={40} onPress={handleNextStep}>
         <CustomText mt={0}>Next</CustomText>
-      </CustomButton>
+      </Button>
       <Stack mt={10} dsp="flex" fd="row">
         <Text ml={5}>You have an account? </Text>
         <TouchableOpacity onPress={handleLogin}>
