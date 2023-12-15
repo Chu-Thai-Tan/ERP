@@ -4,7 +4,11 @@ import { HomeStack } from './homeStack';
 import { AuthStack } from './authStack';
 import { useSelector } from 'react-redux';
 import { authStatus } from '../store/auth/selectors';
-import { isReadyRef, navigate, navigationRef } from '../helpers/NavigateService';
+import {
+  isReadyRef,
+  navigate,
+  navigationRef,
+} from '../helpers/NavigateService';
 import { useEffect } from 'react';
 
 export const RootNavigation = () => {
