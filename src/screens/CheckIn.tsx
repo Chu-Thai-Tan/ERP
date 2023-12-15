@@ -4,7 +4,7 @@ import { useRecognitionData } from '../hooks/useFaceApi';
 import { useSelector } from 'react-redux';
 import { faceApiStatus, faceResponse } from '../store/checkin/selectors';
 import { navigate } from 'react-navigation-helpers';
-import { CustomWrapper } from '../components/atoms/CustomWrapper';
+import { Wrapper } from '../components/atoms/Wrapper';
 import { ToastService } from '../helpers/ToastService';
 
 export const CheckIn = () => {
@@ -32,8 +32,8 @@ export const CheckIn = () => {
   };
 
   return (
-    <CustomWrapper>
+    <Wrapper>
       <Camera onTakePhoto={onTakePhoto} isLoading={status === 'Loading'} />
-    </CustomWrapper>
+    </Wrapper>
   );
 };

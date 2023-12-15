@@ -2,10 +2,11 @@ import { FC, useRef } from 'react';
 import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { convertImageToBase64 } from '../../utils/camera';
-import { Spinner, Stack, styled } from 'tamagui';
+import { Stack, styled } from 'tamagui';
 import { blackA } from '@tamagui/colors/src';
 import { recognize } from '../../store/checkin/slice';
 import { useAppDispatch } from '../../store';
+import { Spinner } from '../atoms/Spinner';
 
 type Props = {
   onTakePhoto: (data: string) => void;
@@ -80,7 +81,7 @@ export const Camera: FC<Props> = ({ onTakePhoto, isLoading }) => {
               ai={'center'}
               jc={'center'}
             >
-              <Spinner size="large" />
+              <Spinner />
             </Stack>
           )}
         </RNCamera>

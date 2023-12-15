@@ -3,12 +3,13 @@ import { useAppDispatch } from '../store';
 import { login } from '../store/auth/slice';
 
 import { TouchableOpacity } from 'react-native';
-import { Stack, Text } from 'tamagui';
-import { LogoApp } from '../components/atoms/Logo';
-import { CustomText } from '../components/atoms/CustomText';
+import { Stack } from 'tamagui';
+import { Logo } from '../components/atoms/Logo';
+import { Text } from '../components/atoms/Text';
 import { Button } from '../components/atoms/Button';
 import { IconInput } from '../components/molecules/IconInput';
-import { CustomWrapper } from '../components/atoms/CustomWrapper';
+import { Wrapper } from '../components/atoms/Wrapper';
+import AppLogo from '../assets/images/Logo.png';
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -22,19 +23,21 @@ export const Login = () => {
   };
 
   return (
-    <CustomWrapper style={{ justifyContent: 'center' }}>
-      <LogoApp />
+    <Wrapper style={{ justifyContent: 'center' }}>
+      <Logo source={AppLogo} />
       <IconInput placeholder="Email" icon={'envelope'} />
       <IconInput secureTextEntry placeholder="Password" icon={'lock'} />
       <Button mt={40} onPress={loginHandler}>
-        <CustomText mt={0}>Login</CustomText>
+        <Text mt={0}>Login</Text>
       </Button>
       <Stack mt={10} dsp="flex" fd="row">
-        <Text ml={5}>You don't have an account? </Text>
+        <Text ml={5} fow={'$normal'}>
+          You don't have an account?{' '}
+        </Text>
         <TouchableOpacity onPress={handleOnPress}>
-          <CustomText>Register</CustomText>
+          <Text>Register</Text>
         </TouchableOpacity>
       </Stack>
-    </CustomWrapper>
+    </Wrapper>
   );
 };

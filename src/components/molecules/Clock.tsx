@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { getTimeAmount } from '../../utils/date';
-import { CustomText } from '../atoms/CustomText';
+import { Text } from '../atoms/Text';
 
 interface ITimeRef {
   hour: string;
@@ -27,9 +27,9 @@ export const Clock = () => {
   }, []);
   return (
     <View>
-      <CustomText fos={'$14'} col={'#800080'} fow={'$400'}>
+      <Text fos={'$14'} col={'#800080'} fow={'$400'}>
         {hour}:{minute}:{second}
-      </CustomText>
+      </Text>
     </View>
   );
 };

@@ -1,15 +1,15 @@
 import { navigate } from '../helpers/NavigateService';
 import { useAppDispatch } from '../store';
 import { logout } from '../store/auth/slice';
-import { Stack, Text } from 'tamagui';
+import { Stack } from 'tamagui';
 import { Button } from '../components/atoms/Button';
-import { CustomText } from '../components/atoms/CustomText';
+import { Text } from '../components/atoms/Text';
 import { Clock } from '../components/molecules/Clock';
 import { useSelector } from 'react-redux';
 import { faceApiStatus, faceResponse } from '../store/checkin/selectors';
 import { recognize } from '../store/checkin/slice';
 import { Calendar } from '../components/molecules/Calendar';
-import { CustomWrapper } from '../components/atoms/CustomWrapper';
+import { Wrapper } from '../components/atoms/Wrapper';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -38,34 +38,34 @@ export const Home = () => {
       case 'Success':
         return (
           <>
-            <Text>Hi {response.subject ?? 'User'}!</Text>
+            <Text fow={'$normal'}>Hi {response.subject ?? 'User'}!</Text>
             <Stack marginTop={50} marginBottom={80}>
               <Clock />
             </Stack>
             <Button onPress={handleCheckOut}>
-              <CustomText mt={0}>Check Out</CustomText>
+              <Text mt={0}>Check Out</Text>
             </Button>
           </>
         );
       default:
         return (
           <Button onPress={handleCheckIn}>
-            <CustomText mt={0}>Check In</CustomText>
+            <Text mt={0}>Check In</Text>
           </Button>
         );
     }
   };
 
   return (
-    <CustomWrapper>
+    <Wrapper>
       <Calendar />
       <Stack marginTop={'40%'} marginBottom={'40%'}>
         <Clock />
       </Stack>
       {renderCheckIn()}
       <Button onPress={logoutHandler}>
-        <CustomText>Log Out</CustomText>
+        <Text>Log Out</Text>
       </Button>
-    </CustomWrapper>
+    </Wrapper>
   );
 };
