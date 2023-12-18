@@ -5,10 +5,10 @@ import { Stack } from 'tamagui';
 import { blackA } from '@tamagui/colors/src';
 import { Spinner } from '../../atoms/Spinner';
 import { useAppDispatch } from '../../../store';
-import { recognize } from '../../../store/checkin/slice';
 import { CameraSlot, Wrapper, styles } from './styles';
 import { convertImageToBase64 } from './utils/convertImageToBase64';
 import { TCameraProps } from './types';
+import { recognize } from '../../../screens/CheckIn/store/slice';
 
 export const Camera: FC<TCameraProps> = ({ onTakePhoto, isLoading }) => {
   const cameraRef = useRef<RNCamera>(null);

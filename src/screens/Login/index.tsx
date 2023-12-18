@@ -1,32 +1,29 @@
 import { useRef, useState } from 'react';
-import { navigate } from '../helpers/NavigateService';
-import { useAppDispatch } from '../store';
-import { login } from '../store/auth/slice';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { navigate } from '../../helpers/NavigateService';
+import { useAppDispatch } from '../../store';
+import { TouchableOpacity } from 'react-native';
 import { Form, Stack } from 'tamagui';
-import { Logo } from '../components/atoms/Logo';
-import { Text } from '../components/atoms/Text';
-import { Button } from '../components/atoms/Button';
-import { IconInput } from '../components/molecules/IconInput';
-import { Wrapper } from '../components/atoms/Wrapper';
-import AppLogo from '../assets/images/Logo.png';
+import { Logo } from '../../components/atoms/Logo';
+import { Text } from '../../components/atoms/Text';
+import { Button } from '../../components/atoms/Button';
+import { IconInput } from '../../components/molecules/IconInput';
+import { Wrapper } from '../../components/atoms/Wrapper';
+import AppLogo from '../../assets/images/Logo.png';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-
-interface LoginType {
-  email: string;
-  password: string;
-}
+import { ILoginType } from './types';
+import { login } from './store/slice';
+import { styles } from './styles';
 
 export const Login = () => {
   const dispatch = useAppDispatch();
 
   const emailRef = useRef<any>(null);
 
-  const [value, setValue] = useState<LoginType>({
+  const [value, setValue] = useState<ILoginType>({
     email: '',
     password: '',
   });
-  const [errors, setErrors] = useState<LoginType>({
+  const [errors, setErrors] = useState<ILoginType>({
     email: '',
     password: '',
   });
@@ -35,8 +32,10 @@ export const Login = () => {
     navigate('Register');
   };
 
+  console.log(errors);
+
   const loginHandler = () => {
-    console.log('#Duy Phan console', emailRef.current.defaultValue)
+    console.log('#Duy Phan console', emailRef.current.defaultValue);
     const errors = handleValidateInput();
     setErrors(errors);
     if (!errors.email && !errors.password) {
@@ -51,7 +50,7 @@ export const Login = () => {
   };
 
   const handleValidateInput = () => {
-    let errors: LoginType = { email: '', password: '' };
+    let errors: ILoginType = { email: '', password: '' };
 
     if (value.email.length == 0) {
       errors.email = 'Email is required';
@@ -80,22 +79,21 @@ export const Login = () => {
       errorCondition: errors.email.length !== 0,
       errorMessage: errors.email,
       isSecure: false,
-      ref: emailRef
+      ref: emailRef,
     },
-    // {
-    //   type: 'password',
-    //   placeholder: 'Password',
-    //   icon: 'lock',
-    //   value: value.password,
-    //   errorCondition: errors.password.length !== 0,
-    //   errorMessage: errors.password,
-    //   isSecure: true,
-    //   ref: undefined
-    // },
+    {
+      type: 'password',
+      placeholder: 'Password',
+      icon: 'lock',
+      value: value.password,
+      errorCondition: errors.password.length !== 0,
+      errorMessage: errors.password,
+      isSecure: true,
+      ref: undefined,
+    },
   ];
 
   return (
-
     <Wrapper style={{ justifyContent: 'center' }}>
       <Logo source={AppLogo} />
       <Form style={styles.form} onSubmit={loginHandler}>
@@ -135,17 +133,3 @@ export const Login = () => {
     </Wrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  form: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  errorText: {
-    color: 'red',
-    width: '80%',
-    marginTop: 5,
-  },
-});

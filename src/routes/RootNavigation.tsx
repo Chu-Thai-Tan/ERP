@@ -3,13 +3,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { HomeStack } from './homeStack';
 import { AuthStack } from './authStack';
 import { useSelector } from 'react-redux';
-import { authStatus } from '../store/auth/selectors';
 import {
   isReadyRef,
   navigate,
   navigationRef,
 } from '../helpers/NavigateService';
 import { useEffect } from 'react';
+import { authStatus } from '../screens/Login/store/selectors';
 
 export const RootNavigation = () => {
   const isLogin = useSelector(authStatus);

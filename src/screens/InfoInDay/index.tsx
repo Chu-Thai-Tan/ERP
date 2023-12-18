@@ -1,24 +1,6 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { Stack, Text, styled } from 'tamagui';
-import { Wrapper } from '../components/atoms/Wrapper';
-
-const ItemWrapper = styled(Stack, {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginBottom: 10,
-});
-
-const CustomTitle = styled(Text, {
-  fontSize: '$6',
-  color: '#800080',
-  fontWeight: 'bold',
-});
-const CustomDes = styled(Text, {
-  fontSize: '$6',
-  color: '#800080',
-  fontWeight: '$400',
-});
+import { CustomDes, CustomTitle, ItemWrapper } from './styles';
+import { Wrapper } from '../../components/atoms/Wrapper';
 
 export const InfoInDay = () => {
   const route: RouteProp<{ params: { date: string } }, 'params'> = useRoute();

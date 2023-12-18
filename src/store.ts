@@ -7,8 +7,8 @@ import {
 import { TypedUseSelectorHook, useDispatch } from 'react-redux';
 // import { ThunkDispatch } from 'redux-thunk';
 import { useSelector } from 'react-redux';
-import { checkInReducer } from './checkin/slice';
-import { authReducer } from './auth/slice';
+import { authReducer } from './screens/Login/store/slice';
+import { checkInReducer } from './screens/CheckIn/store/slice';
 
 export const store = configureStore({
   reducer: {

@@ -1,15 +1,15 @@
-import { navigate } from '../helpers/NavigateService';
-import { useAppDispatch } from '../store';
-import { logout } from '../store/auth/slice';
+import { navigate } from '../../helpers/NavigateService';
+import { useAppDispatch } from '../../store';
 import { Stack } from 'tamagui';
-import { Button } from '../components/atoms/Button';
-import { Text } from '../components/atoms/Text';
-import { Clock } from '../components/molecules/Clock';
+import { Button } from '../../components/atoms/Button';
+import { Text } from '../../components/atoms/Text';
+import { Clock } from '../../components/molecules/Clock';
 import { useSelector } from 'react-redux';
-import { faceApiStatus, faceResponse } from '../store/checkin/selectors';
-import { recognize } from '../store/checkin/slice';
-import { Calendar } from '../components/molecules/Calendar';
-import { Wrapper } from '../components/atoms/Wrapper';
+import { Calendar } from '../../components/molecules/Calendar';
+import { Wrapper } from '../../components/atoms/Wrapper';
+import { logout } from '../Login/store/slice';
+import { faceApiStatus, faceResponse } from '../CheckIn/store/selectors';
+import { recognize } from '../CheckIn/store/slice';
 
 export const Home = () => {
   const dispatch = useAppDispatch();

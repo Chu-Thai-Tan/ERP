@@ -1,21 +1,16 @@
 import { useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Form, Stack } from 'tamagui';
-import { Logo } from '../components/atoms/Logo';
-import { Button } from '../components/atoms/Button';
-import { Text } from '../components/atoms/Text';
-import { navigate } from '../helpers/NavigateService';
-import { IconInput } from '../components/molecules/IconInput';
-import { Wrapper } from '../components/atoms/Wrapper';
-import AppLogo from '../assets/images/Logo.png';
+import { Logo } from '../../components/atoms/Logo';
+import { Button } from '../../components/atoms/Button';
+import { Text } from '../../components/atoms/Text';
+import { navigate } from '../../helpers/NavigateService';
+import { IconInput } from '../../components/molecules/IconInput';
+import { Wrapper } from '../../components/atoms/Wrapper';
+import AppLogo from '../../assets/images/Logo.png';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-
-interface RegisterType {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { styles } from './styles';
+import { RegisterType } from './types';
 
 export const Register = () => {
   const [value, setValue] = useState<RegisterType>({
@@ -166,17 +161,3 @@ export const Register = () => {
     </Wrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  form: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  errorText: {
-    color: 'red',
-    width: '80%',
-    marginTop: 5,
-  },
-});
