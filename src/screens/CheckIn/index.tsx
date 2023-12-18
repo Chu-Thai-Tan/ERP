@@ -8,6 +8,7 @@ import { ToastService } from '../../helpers/ToastService';
 import { faceApiStatus, faceResponse } from './store/selectors';
 import { useAppDispatch } from '../../store';
 import { recognize } from './store/slice';
+import { routerNames } from '../../routes/routerNames';
 
 export const CheckIn = () => {
   const [setDataImage] = useRecognitionData();
@@ -26,7 +27,7 @@ export const CheckIn = () => {
         ToastService.show({
           message: 'Face recognize successfully!',
         });
-        navigate('Home');
+        navigate(routerNames.HOME);
         break;
     }
     return () => {

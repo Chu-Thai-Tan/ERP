@@ -11,6 +11,7 @@ import AppLogo from '../../assets/images/Logo.png';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { styles } from './styles';
 import { RegisterType } from './types';
+import { routerNames } from '../../routes/routerNames';
 
 export const Register = () => {
   const [value, setValue] = useState<RegisterType>({
@@ -27,7 +28,7 @@ export const Register = () => {
     confirmPassword: '',
   });
   const handleLogin = () => {
-    navigate('Login');
+    navigate(routerNames.LOGIN);
   };
   const handleNextStep = () => {
     const errors = handleValidateInput();
@@ -38,7 +39,7 @@ export const Register = () => {
       !errors.password &&
       !errors.confirmPassword;
     if (isFormValid) {
-      navigate('RegisterSecondStep');
+      navigate(routerNames.REGISTER_SECOND_STEP);
     }
   };
 

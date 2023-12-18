@@ -13,6 +13,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { ILoginType } from './types';
 import { login } from './store/slice';
 import { styles } from './styles';
+import { routerNames } from '../../routes/routerNames';
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ export const Login = () => {
   });
 
   const handleNavigate = () => {
-    navigate('Register');
+    navigate(routerNames.REGISTER);
   };
 
   console.log(errors);

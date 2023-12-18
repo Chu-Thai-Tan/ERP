@@ -10,6 +10,7 @@ import { Wrapper } from '../../components/atoms/Wrapper';
 import { logout } from '../Login/store/slice';
 import { faceApiStatus, faceResponse } from '../CheckIn/store/selectors';
 import { recognize } from '../CheckIn/store/slice';
+import { routerNames } from '../../routes/routerNames';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ export const Home = () => {
   const response = useSelector(faceResponse);
 
   const handleCheckIn = () => {
-    navigate('CheckIn');
+    navigate(routerNames.CHECK_IN);
   };
 
   const handleCheckOut = () => {

@@ -1,7 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 
-import { HomeStack } from './homeStack';
-import { AuthStack } from './authStack';
 import { useSelector } from 'react-redux';
 import {
   isReadyRef,
@@ -10,14 +8,20 @@ import {
 } from '../helpers/NavigateService';
 import { useEffect } from 'react';
 import { authStatus } from '../screens/Login/store/selectors';
+import { routerNames } from './routerNames';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StackScreen } from './StackScreen';
+import { authScreens, homeScreens } from './routerRoutes';
+
+export const Stack = createNativeStackNavigator();
 
 export const RootNavigation = () => {
   const isLogin = useSelector(authStatus);
   useEffect(() => {
     if (!isLogin) {
-      navigate('Login');
+      navigate(routerNames.LOGIN);
     } else {
-      navigate('Home');
+      navigate(routerNames.HOME);
     }
   }, [isLogin]);
 
@@ -28,7 +32,11 @@ export const RootNavigation = () => {
         isReadyRef.current = true;
       }}
     >
-      {isLogin ? <HomeStack /> : <AuthStack />}
+      {isLogin ? (
+        <StackScreen screens={homeScreens} />
+      ) : (
+        <StackScreen screens={authScreens} />
+      )}
     </NavigationContainer>
   );
 };

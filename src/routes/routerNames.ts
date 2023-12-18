@@ -1,0 +1,8 @@
+export const routerNames = {
+  HOME: 'HOME',
+  CHECK_IN: 'CHECK_IN',
+  INFO_IN_DAY: 'INFO_IN_DAY',
+  REGISTER: 'REGISTER',
+  REGISTER_SECOND_STEP: 'REGISTER_SECOND_STEP',
+  LOGIN: 'LOGIN',
+};
