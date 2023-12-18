@@ -18,6 +18,7 @@ export const Login = () => {
   const dispatch = useAppDispatch();
 
   const emailRef = useRef<any>(null);
+  const passwordRef = useRef<any>(null);
 
   const [value, setValue] = useState<ILoginType>({
     email: '',
@@ -35,7 +36,14 @@ export const Login = () => {
   console.log(errors);
 
   const loginHandler = () => {
-    console.log('#Duy Phan console', emailRef.current.defaultValue);
+    console.log(
+      '#Duy Phan console',
+      emailRef.current._internalFiberInstanceHandleDEV.memoizedProps.value,
+    );
+    console.log(
+      '#Duy Phan console',
+      passwordRef.current._internalFiberInstanceHandleDEV.memoizedProps.value,
+    );
     const errors = handleValidateInput();
     setErrors(errors);
     if (!errors.email && !errors.password) {
@@ -89,7 +97,7 @@ export const Login = () => {
       errorCondition: errors.password.length !== 0,
       errorMessage: errors.password,
       isSecure: true,
-      ref: undefined,
+      ref: passwordRef,
     },
   ];
 
@@ -108,7 +116,7 @@ export const Login = () => {
               icon={input.icon as IconProp}
               value={input.value}
               secureTextEntry={input.isSecure}
-              ref={emailRef}
+              ref={input.ref}
             />
             {input.errorCondition && (
               <Text style={styles.errorText}>{input.errorMessage}</Text>
