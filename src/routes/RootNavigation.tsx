@@ -6,7 +6,7 @@ import {
   navigate,
   navigationRef,
 } from '../helpers/NavigateService';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { authStatus } from '../screens/Login/store/selectors';
 import { routerNames } from './routerNames';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -25,6 +25,10 @@ export const RootNavigation = () => {
     }
   }, [isLogin]);
 
+  const screens = useMemo(() => {
+    return isLogin ? homeScreens : authScreens;
+  }, [isLogin]);
+
   return (
     <NavigationContainer
       ref={navigationRef}
@@ -32,11 +36,7 @@ export const RootNavigation = () => {
         isReadyRef.current = true;
       }}
     >
-      {isLogin ? (
-        <StackScreen screens={homeScreens} />
-      ) : (
-        <StackScreen screens={authScreens} />
-      )}
+      <StackScreen screens={screens} />
     </NavigationContainer>
   );
 };
