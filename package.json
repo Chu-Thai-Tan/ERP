@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "test": "jest",
-    "prettier": "prettier --loglevel=error --write ."
+    "prettier": "prettier --loglevel=error --write .",
+    "postinstall": "node_modules/.bin/rn-nodeify --install fs --hack"
   },
   "dependencies": {
     "@exadel/compreface-js-sdk": "^1.0.0",
@@ -59,7 +60,6 @@
     "@react-native/metro-config": "^0.72.11",
     "@tamagui/babel-plugin": "^1.79.6",
     "@tsconfig/react-native": "^3.0.0",
-    "@types/prop-types": "^15.7.11",
     "@types/react": "^18.0.24",
     "@types/react-redux": "^7.1.31",
     "@types/react-test-renderer": "^18.0.0",
@@ -69,7 +69,10 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "metro-react-native-babel-preset": "0.76.8",
     "prettier": "^2.4.1",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "@typescript-eslint/eslint-plugin": "6.13.2",
+    "@typescript-eslint/parser": "6.13.2",
+    "eslint-plugin-filename-export": "1.0.4"
   },
   "engines": {
     "node": ">=16"
