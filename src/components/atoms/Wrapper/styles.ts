@@ -1,4 +1,4 @@
-import { Stack, styled } from 'tamagui';
+import { Stack, styled } from 'tamagui'
 
 export const CustomWrapper = styled(Stack, {
   backgroundColor: '#E6E6FA',
@@ -6,4 +6,4 @@ export const CustomWrapper = styled(Stack, {
   flex: 1,
   display: 'flex',
   alignItems: 'center',
-});
+})

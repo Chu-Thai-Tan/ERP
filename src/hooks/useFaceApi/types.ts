@@ -1,4 +1,1 @@
-export type THookReturnType = [
-  React.Dispatch<React.SetStateAction<string>>,
-];
-
+export type THookReturnType = [React.Dispatch<React.SetStateAction<string>>]

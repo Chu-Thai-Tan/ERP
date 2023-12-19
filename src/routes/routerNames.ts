@@ -5,4 +5,4 @@ export const routerNames = {
   REGISTER: 'REGISTER',
   REGISTER_SECOND_STEP: 'REGISTER_SECOND_STEP',
   LOGIN: 'LOGIN',
-};
+}

@@ -1,4 +1,4 @@
-import { Button as TamaguiButton, styled } from 'tamagui';
+import { Button as TamaguiButton, styled } from 'tamagui'
 
 export const CustomButton = styled(TamaguiButton, {
   size: '$3',
@@ -7,4 +7,4 @@ export const CustomButton = styled(TamaguiButton, {
   bg: '#DA70D6',
   br: '$6',
   textAlign: 'center',
-});
+})

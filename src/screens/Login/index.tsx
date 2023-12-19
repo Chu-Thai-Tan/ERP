@@ -1,83 +1,83 @@
-import { useRef, useState } from 'react';
-import { navigate } from '../../helpers/NavigateService';
-import { useAppDispatch } from '../../store';
-import { TouchableOpacity } from 'react-native';
-import { Form, Stack } from 'tamagui';
-import { Logo } from '../../components/atoms/Logo';
-import { Text } from '../../components/atoms/Text';
-import { Button } from '../../components/atoms/Button';
-import { IconInput } from '../../components/molecules/IconInput';
-import { Wrapper } from '../../components/atoms/Wrapper';
-import AppLogo from '../../assets/images/Logo.png';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { ILoginType } from './types';
-import { login } from './store/slice';
-import { styles } from './styles';
-import { routerNames } from '../../routes/routerNames';
+import { useRef, useState } from 'react'
+import { navigate } from '../../helpers/NavigateService'
+import { useAppDispatch } from '../../store'
+import { TouchableOpacity } from 'react-native'
+import { Form, Stack } from 'tamagui'
+import { Logo } from '../../components/atoms/Logo'
+import { Text } from '../../components/atoms/Text'
+import { Button } from '../../components/atoms/Button'
+import { IconInput } from '../../components/molecules/IconInput'
+import { Wrapper } from '../../components/atoms/Wrapper'
+import AppLogo from '../../assets/images/Logo.png'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { ILoginType } from './types'
+import { login } from './store/slice'
+import { styles } from './styles'
+import { routerNames } from '../../routes/routerNames'
 
 export const Login = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
-  const emailRef = useRef<any>(null);
-  const passwordRef = useRef<any>(null);
+  const emailRef = useRef<any>(null)
+  const passwordRef = useRef<any>(null)
 
   const [value, setValue] = useState<ILoginType>({
     email: '',
     password: '',
-  });
+  })
   const [errors, setErrors] = useState<ILoginType>({
     email: '',
     password: '',
-  });
+  })
 
   const handleNavigate = () => {
-    navigate(routerNames.REGISTER);
-  };
+    navigate(routerNames.REGISTER)
+  }
 
-  console.log(errors);
+  console.log(errors)
 
   const loginHandler = () => {
     console.log(
       '#Duy Phan console',
       emailRef.current._internalFiberInstanceHandleDEV.memoizedProps.value,
-    );
+    )
     console.log(
       '#Duy Phan console',
       passwordRef.current._internalFiberInstanceHandleDEV.memoizedProps.value,
-    );
-    const errors = handleValidateInput();
-    setErrors(errors);
+    )
+    const errors = handleValidateInput()
+    setErrors(errors)
     if (!errors.email && !errors.password) {
-      dispatch(login());
+      dispatch(login())
     }
-  };
+  }
 
   const handleInputChange = (text: string, type: string) => {
     setValue(prev => {
-      return { ...prev, [type]: text };
-    });
-  };
+      return { ...prev, [type]: text }
+    })
+  }
 
   const handleValidateInput = () => {
-    let errors: ILoginType = { email: '', password: '' };
+    let errors: ILoginType = { email: '', password: '' }
 
     if (value.email.length == 0) {
-      errors.email = 'Email is required';
+      errors.email = 'Email is required'
     } else if (!/\S+@\S+\.\S+/.test(value.email)) {
-      errors.email = 'Email is invalid.';
+      errors.email = 'Email is invalid.'
     }
 
     if (!value.password.length) {
-      errors.password = 'Password is required.';
+      errors.password = 'Password is required.'
     } else if (value.password.length < 6) {
-      errors.password = 'Password must be at least 6 characters';
+      errors.password = 'Password must be at least 6 characters'
     } else if (value.password.search(/[a-z]/i) < 0) {
-      errors.password = 'Password must contain at least one letter';
+      errors.password = 'Password must contain at least one letter'
     } else if (value.password.search(/[0-9]/) < 0) {
-      errors.password = 'Password must contain at least one digit';
+      errors.password = 'Password must contain at least one digit'
     }
-    return errors;
-  };
+    return errors
+  }
 
   const Input = [
     {
@@ -100,7 +100,7 @@ export const Login = () => {
       isSecure: true,
       ref: passwordRef,
     },
-  ];
+  ]
 
   return (
     <Wrapper style={{ justifyContent: 'center' }}>
@@ -131,7 +131,7 @@ export const Login = () => {
           </Button>
         </Form.Trigger>
       </Form>
-      <Stack mt={10} dsp="flex" fd="row">
+      <Stack mt={10} dsp='flex' fd='row'>
         <Text ml={5} fow={'$normal'}>
           You don't have an account?{' '}
         </Text>
@@ -140,5 +140,5 @@ export const Login = () => {
         </TouchableOpacity>
       </Stack>
     </Wrapper>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   form: {
@@ -12,4 +12,4 @@ export const styles = StyleSheet.create({
     width: '80%',
     marginTop: 5,
   },
-});
+})

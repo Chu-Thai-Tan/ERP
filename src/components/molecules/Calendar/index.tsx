@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import { View } from 'react-native';
+import { useState } from 'react'
+import { View } from 'react-native'
 import {
   ExpandableCalendar,
   CalendarProvider,
   DateData,
-} from 'react-native-calendars';
-import moment from 'moment';
-import { styles } from './styles';
-import { navigate } from '../../../helpers/NavigateService';
-import { routerNames } from '../../../routes/routerNames';
+} from 'react-native-calendars'
+import moment from 'moment'
+import { styles } from './styles'
+import { navigate } from '../../../helpers/NavigateService'
+import { routerNames } from '../../../routes/routerNames'
 
 export const Calendar = () => {
   const [date, setDate] = useState<string>(
     moment(new Date()).format('YYYY-MM-DD'),
-  );
+  )
 
   const handleOnPress = (d: DateData) => {
-    setDate(d.dateString);
+    setDate(d.dateString)
     //if (status === 'Success') {
-    navigate(routerNames.INFO_IN_DAY, { date: d.dateString });
+    navigate(routerNames.INFO_IN_DAY, { date: d.dateString })
     //}
-  };
+  }
 
   // const CustomWeekday = ({ day }: { day: any }) => {
   //   console.log('#Duy Phan console', day);
@@ -62,9 +62,9 @@ export const Calendar = () => {
               },
             },
           }}
-          markingType="custom"
+          markingType='custom'
         />
       </CalendarProvider>
     </View>
-  );
-};
+  )
+}

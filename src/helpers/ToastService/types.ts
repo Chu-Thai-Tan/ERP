@@ -1,4 +1,4 @@
-import { CreateNativeToastOptions } from '@tamagui/toast/src/types';
+import { CreateNativeToastOptions } from '@tamagui/toast/src/types'
 
 export enum EToastType {
   Error = 0,
@@ -6,12 +6,12 @@ export enum EToastType {
 }
 
 export type TToastState = {
-  open: boolean;
-  id: string;
-  options: TToastOptions;
-};
+  open: boolean
+  id: string
+  options: TToastOptions
+}
 
 export type TToastOptions = CreateNativeToastOptions & {
-  type?: EToastType;
-  message: string;
-};
+  type?: EToastType
+  message: string
+}

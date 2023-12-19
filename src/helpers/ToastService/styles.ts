@@ -1,5 +1,5 @@
-import { Toast } from '@tamagui/toast';
-import { styled } from 'tamagui';
+import { Toast } from '@tamagui/toast'
+import { styled } from 'tamagui'
 
 export const CustomToast = styled(Toast, {
   fd: 'row',
@@ -14,10 +14,10 @@ export const CustomToast = styled(Toast, {
   shadowOpacity: 0.25,
   shadowRadius: 3.84,
   elevation: 5,
-});
+})
 
 export const CustomToastDescription = styled(Toast.Description, {
   size: '$4',
   fow: '$400',
   col: '#0F0F0F',
-});
+})

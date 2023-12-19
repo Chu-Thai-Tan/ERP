@@ -1,5 +1,5 @@
 export interface Screen {
-  component: React.FC;
-  name: string;
-  title: string;
+  component: React.FC
+  name: string
+  title: string
 }

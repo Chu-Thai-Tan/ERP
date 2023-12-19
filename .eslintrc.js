@@ -16,6 +16,6 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/jsx-uses-react': 0,
     'comma-dangle': [1],
-    quotes: [1, 'single', {avoidEscape: true}],
+    quotes: [1, 'single', { avoidEscape: true }],
   },
-};
+}

@@ -1,34 +1,34 @@
-import { useEffect } from 'react';
-import { Camera } from '../../components/molecules/Camera';
-import { useRecognitionData } from '../../hooks/useFaceApi';
-import { useSelector } from 'react-redux';
-import { navigate } from 'react-navigation-helpers';
-import { Wrapper } from '../../components/atoms/Wrapper';
-import { ToastService } from '../../helpers/ToastService';
-import { faceApiStatus, faceResponse } from './store/selectors';
-import { useAppDispatch } from '../../store';
-import { recognize } from './store/slice';
-import { routerNames } from '../../routes/routerNames';
+import { useEffect } from 'react'
+import { Camera } from '../../components/molecules/Camera'
+import { useRecognitionData } from '../../hooks/useFaceApi'
+import { useSelector } from 'react-redux'
+import { navigate } from 'react-navigation-helpers'
+import { Wrapper } from '../../components/atoms/Wrapper'
+import { ToastService } from '../../helpers/ToastService'
+import { faceApiStatus, faceResponse } from './store/selectors'
+import { useAppDispatch } from '../../store'
+import { recognize } from './store/slice'
+import { routerNames } from '../../routes/routerNames'
 
 export const CheckIn = () => {
-  const [setDataImage] = useRecognitionData();
-  const dispatch = useAppDispatch();
-  const status = useSelector(faceApiStatus);
-  const response = useSelector(faceResponse);
+  const [setDataImage] = useRecognitionData()
+  const dispatch = useAppDispatch()
+  const status = useSelector(faceApiStatus)
+  const response = useSelector(faceResponse)
 
   useEffect(() => {
     switch (status) {
       case 'Error':
         ToastService.show({
           message: response,
-        });
-        break;
+        })
+        break
       case 'Success':
         ToastService.show({
           message: 'Face recognize successfully!',
-        });
-        navigate(routerNames.HOME);
-        break;
+        })
+        navigate(routerNames.HOME)
+        break
     }
     return () => {
       dispatch(
@@ -36,17 +36,17 @@ export const CheckIn = () => {
           status: 'NotCheckedIn',
           response: null,
         }),
-      );
-    };
-  }, [status]);
+      )
+    }
+  }, [status])
 
   const onTakePhoto = (data: string) => {
-    setDataImage(data);
-  };
+    setDataImage(data)
+  }
 
   return (
     <Wrapper>
       <Camera onTakePhoto={onTakePhoto} isLoading={status === 'Loading'} />
     </Wrapper>
-  );
-};
+  )
+}

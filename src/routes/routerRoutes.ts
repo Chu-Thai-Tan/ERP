@@ -1,11 +1,11 @@
-import { CheckIn } from '../screens/CheckIn';
-import { Home } from '../screens/Home';
-import { InfoInDay } from '../screens/InfoInDay';
-import { Login } from '../screens/Login';
-import { Register } from '../screens/Register';
-import { RegisterSecondStep } from '../screens/RegisterSecondStep';
-import { routerNames } from './routerNames';
-import { Screen } from './types';
+import { CheckIn } from '../screens/CheckIn'
+import { Home } from '../screens/Home'
+import { InfoInDay } from '../screens/InfoInDay'
+import { Login } from '../screens/Login'
+import { Register } from '../screens/Register'
+import { RegisterSecondStep } from '../screens/RegisterSecondStep'
+import { routerNames } from './routerNames'
+import { Screen } from './types'
 
 export const authScreens: Screen[] = [
   {
@@ -23,7 +23,7 @@ export const authScreens: Screen[] = [
     name: routerNames.REGISTER_SECOND_STEP,
     title: 'Register',
   },
-];
+]
 
 export const homeScreens: Screen[] = [
   {
@@ -41,4 +41,4 @@ export const homeScreens: Screen[] = [
     name: routerNames.INFO_IN_DAY,
     title: 'Status',
   },
-];
+]

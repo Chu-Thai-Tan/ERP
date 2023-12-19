@@ -1,25 +1,25 @@
-import { navigate } from '../../helpers/NavigateService';
-import { useAppDispatch } from '../../store';
-import { Stack } from 'tamagui';
-import { Button } from '../../components/atoms/Button';
-import { Text } from '../../components/atoms/Text';
-import { Clock } from '../../components/molecules/Clock';
-import { useSelector } from 'react-redux';
-import { Calendar } from '../../components/molecules/Calendar';
-import { Wrapper } from '../../components/atoms/Wrapper';
-import { logout } from '../Login/store/slice';
-import { faceApiStatus, faceResponse } from '../CheckIn/store/selectors';
-import { recognize } from '../CheckIn/store/slice';
-import { routerNames } from '../../routes/routerNames';
+import { navigate } from '../../helpers/NavigateService'
+import { useAppDispatch } from '../../store'
+import { Stack } from 'tamagui'
+import { Button } from '../../components/atoms/Button'
+import { Text } from '../../components/atoms/Text'
+import { Clock } from '../../components/molecules/Clock'
+import { useSelector } from 'react-redux'
+import { Calendar } from '../../components/molecules/Calendar'
+import { Wrapper } from '../../components/atoms/Wrapper'
+import { logout } from '../Login/store/slice'
+import { faceApiStatus, faceResponse } from '../CheckIn/store/selectors'
+import { recognize } from '../CheckIn/store/slice'
+import { routerNames } from '../../routes/routerNames'
 
 export const Home = () => {
-  const dispatch = useAppDispatch();
-  const status = useSelector(faceApiStatus);
-  const response = useSelector(faceResponse);
+  const dispatch = useAppDispatch()
+  const status = useSelector(faceApiStatus)
+  const response = useSelector(faceResponse)
 
   const handleCheckIn = () => {
-    navigate(routerNames.CHECK_IN);
-  };
+    navigate(routerNames.CHECK_IN)
+  }
 
   const handleCheckOut = () => {
     dispatch(
@@ -27,12 +27,12 @@ export const Home = () => {
         status: 'NotCheckedIn',
         response: null,
       }),
-    );
-  };
+    )
+  }
 
   const logoutHandler = () => {
-    dispatch(logout());
-  };
+    dispatch(logout())
+  }
 
   const renderCheckIn = () => {
     switch (status) {
@@ -47,15 +47,15 @@ export const Home = () => {
               <Text mt={0}>Check Out</Text>
             </Button>
           </>
-        );
+        )
       default:
         return (
           <Button onPress={handleCheckIn}>
             <Text mt={0}>Check In</Text>
           </Button>
-        );
+        )
     }
-  };
+  }
 
   return (
     <Wrapper>
@@ -69,5 +69,5 @@ export const Home = () => {
       </Wrapper>
       {/* </W> */}
     </Wrapper>
-  );
-};
+  )
+}

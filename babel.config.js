@@ -20,8 +20,8 @@ module.exports = {
         importsWhitelist: ['constants.js', 'colors.js'],
         logTimings: true,
         disableExtraction: true,
-      }
+      },
     ],
     ['macros'],
   ],
-};
+}

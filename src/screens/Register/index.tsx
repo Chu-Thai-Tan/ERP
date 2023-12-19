@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Form, Stack } from 'tamagui';
-import { Logo } from '../../components/atoms/Logo';
-import { Button } from '../../components/atoms/Button';
-import { Text } from '../../components/atoms/Text';
-import { navigate } from '../../helpers/NavigateService';
-import { IconInput } from '../../components/molecules/IconInput';
-import { Wrapper } from '../../components/atoms/Wrapper';
-import AppLogo from '../../assets/images/Logo.png';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { styles } from './styles';
-import { RegisterType } from './types';
-import { routerNames } from '../../routes/routerNames';
+import { useState } from 'react'
+import { TouchableOpacity } from 'react-native'
+import { Form, Stack } from 'tamagui'
+import { Logo } from '../../components/atoms/Logo'
+import { Button } from '../../components/atoms/Button'
+import { Text } from '../../components/atoms/Text'
+import { navigate } from '../../helpers/NavigateService'
+import { IconInput } from '../../components/molecules/IconInput'
+import { Wrapper } from '../../components/atoms/Wrapper'
+import AppLogo from '../../assets/images/Logo.png'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { styles } from './styles'
+import { RegisterType } from './types'
+import { routerNames } from '../../routes/routerNames'
 
 export const Register = () => {
   const [value, setValue] = useState<RegisterType>({
@@ -19,35 +19,35 @@ export const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
-  });
+  })
 
   const [errors, setErrors] = useState<RegisterType>({
     name: '',
     email: '',
     password: '',
     confirmPassword: '',
-  });
+  })
   const handleLogin = () => {
-    navigate(routerNames.LOGIN);
-  };
+    navigate(routerNames.LOGIN)
+  }
   const handleNextStep = () => {
-    const errors = handleValidateInput();
-    setErrors(errors);
+    const errors = handleValidateInput()
+    setErrors(errors)
     const isFormValid =
       !errors.name &&
       !errors.email &&
       !errors.password &&
-      !errors.confirmPassword;
+      !errors.confirmPassword
     if (isFormValid) {
-      navigate(routerNames.REGISTER_SECOND_STEP);
+      navigate(routerNames.REGISTER_SECOND_STEP)
     }
-  };
+  }
 
   const handleInputChange = (text: string, type: string) => {
     setValue(prev => {
-      return { ...prev, [type]: text };
-    });
-  };
+      return { ...prev, [type]: text }
+    })
+  }
 
   const handleValidateInput = () => {
     let errors: RegisterType = {
@@ -55,35 +55,35 @@ export const Register = () => {
       email: '',
       password: '',
       confirmPassword: '',
-    };
+    }
 
     if (value.name.length == 0) {
-      errors.name = 'Name is required';
+      errors.name = 'Name is required'
     }
 
     if (value.email.length == 0) {
-      errors.email = 'Email is required';
+      errors.email = 'Email is required'
     } else if (!/\S+@\S+\.\S+/.test(value.email)) {
-      errors.email = 'Email is invalid.';
+      errors.email = 'Email is invalid.'
     }
 
     if (value.password.length == 0) {
-      errors.password = 'Password is required.';
+      errors.password = 'Password is required.'
     } else if (value.password.length < 6) {
-      errors.password = 'Password must be at least 6 characters';
+      errors.password = 'Password must be at least 6 characters'
     } else if (value.password.search(/[a-z]/i) < 0) {
-      errors.password = 'Password must contain at least one letter';
+      errors.password = 'Password must contain at least one letter'
     } else if (value.password.search(/[0-9]/) < 0) {
-      errors.password = 'Password must contain at least one digit';
+      errors.password = 'Password must contain at least one digit'
     }
 
     if (value.confirmPassword.length == 0) {
-      errors.confirmPassword = 'ConfirmPassword is required.';
+      errors.confirmPassword = 'ConfirmPassword is required.'
     } else if (value.confirmPassword !== value.password) {
-      errors.confirmPassword = 'ConfirmPassword is not matches the password';
+      errors.confirmPassword = 'ConfirmPassword is not matches the password'
     }
-    return errors;
-  };
+    return errors
+  }
 
   const Input = [
     {
@@ -122,7 +122,7 @@ export const Register = () => {
       errorMessage: errors.confirmPassword,
       isSecure: true,
     },
-  ];
+  ]
 
   return (
     <Wrapper style={{ justifyContent: 'center' }}>
@@ -151,7 +151,7 @@ export const Register = () => {
           </Button>
         </Form.Trigger>
       </Form>
-      <Stack mt={10} dsp="flex" fd="row">
+      <Stack mt={10} dsp='flex' fd='row'>
         <Text ml={5} fow={'$normal'}>
           You have an account?{' '}
         </Text>
@@ -160,5 +160,5 @@ export const Register = () => {
         </TouchableOpacity>
       </Stack>
     </Wrapper>
-  );
-};
+  )
+}

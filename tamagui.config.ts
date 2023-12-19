@@ -1,6 +1,6 @@
-import { config } from '@tamagui/config/v2-native';
+import { config } from '@tamagui/config/v2-native'
 
-import { createFont, createTamagui } from 'tamagui';
+import { createFont, createTamagui } from 'tamagui'
 
 const robotoFace = {
   normal: { normal: 'Poppins-Regular', italic: 'Poppins-Italic' },
@@ -14,7 +14,7 @@ const robotoFace = {
   700: { normal: 'Poppins-Bold', italic: 'Poppins-BoldItalic' },
   800: { normal: 'Poppins-ExtraBold', italic: 'Poppins-ExtraBoldItalic' },
   900: { normal: 'Poppins-Black', italic: 'Poppins-BlackItalic' },
-};
+}
 
 const bodyFont = createFont({
   ...config.fonts.body,
@@ -33,16 +33,16 @@ const bodyFont = createFont({
     800: 800,
     900: 900,
   },
-});
+})
 const tamaguiConfig = createTamagui({
   ...config,
   fonts: {
     ...config.fonts,
     body: bodyFont,
   },
-});
-type Conf = typeof tamaguiConfig;
+})
+type Conf = typeof tamaguiConfig
 declare module 'tamagui' {
   interface TamaguiCustomConfig extends Conf {}
 }
-export default tamaguiConfig;
+export default tamaguiConfig

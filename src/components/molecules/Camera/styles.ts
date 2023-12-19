@@ -1,19 +1,19 @@
-import { StyleSheet } from 'react-native';
-import { Stack, styled } from 'tamagui';
+import { StyleSheet } from 'react-native'
+import { Stack, styled } from 'tamagui'
 
 export const Wrapper = styled(Stack, {
   ai: 'center',
   jc: 'space-between',
   h: '100%',
   w: '100%',
-});
+})
 export const CameraSlot = styled(Stack, {
   w: 350,
   h: 350,
   br: 999,
   ov: 'hidden',
   mt: '15%',
-});
+})
 
 export const styles = StyleSheet.create({
   button: {
@@ -37,4 +37,4 @@ export const styles = StyleSheet.create({
     borderColor: 'black',
     borderStyle: 'solid',
   },
-});
+})

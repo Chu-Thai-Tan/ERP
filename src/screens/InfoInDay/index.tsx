@@ -1,16 +1,16 @@
-import { RouteProp, useRoute } from '@react-navigation/native';
-import { CustomDes, CustomTitle, ItemWrapper } from './styles';
-import { Wrapper } from '../../components/atoms/Wrapper';
+import { RouteProp, useRoute } from '@react-navigation/native'
+import { CustomDes, CustomTitle, ItemWrapper } from './styles'
+import { Wrapper } from '../../components/atoms/Wrapper'
 
 export const InfoInDay = () => {
-  const route: RouteProp<{ params: { date: string } }, 'params'> = useRoute();
-  const { date } = route.params;
+  const route: RouteProp<{ params: { date: string } }, 'params'> = useRoute()
+  const { date } = route.params
   const data = [
     { title: 'Date:', value: date },
     { title: 'Check In At:', value: '8:00AM' },
     { title: 'Check Out At:', value: '6:00PM' },
     { title: 'Working Time:', value: '8 hours' },
-  ];
+  ]
   return (
     <Wrapper style={{ justifyContent: 'center' }}>
       {data.map(item => (
@@ -20,5 +20,5 @@ export const InfoInDay = () => {
         </ItemWrapper>
       ))}
     </Wrapper>
-  );
-};
+  )
+}

@@ -1,3 +1,3 @@
-import { RootState } from '../../../store';
+import { RootState } from '../../../store'
 
-export const authStatus = (state: RootState) => state.auth.isAuthenticated;
+export const authStatus = (state: RootState) => state.auth.isAuthenticated

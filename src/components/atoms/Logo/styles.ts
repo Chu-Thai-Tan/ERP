@@ -1,4 +1,4 @@
-import { ImageProps } from 'tamagui';
+import { ImageProps } from 'tamagui'
 
 export const CustomImageProps: Omit<ImageProps, 'source'> = {
   marginBottom: 60,
@@ -6,4 +6,4 @@ export const CustomImageProps: Omit<ImageProps, 'source'> = {
   height: 38,
   alt: 'Logo',
   style: { objectFit: 'contain' },
-};
+}

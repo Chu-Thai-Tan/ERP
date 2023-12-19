@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "test": "jest",
-    "postinstall": "node_modules/.bin/rn-nodeify --install fs --hack"
+    "prettier": "prettier --loglevel=error --write ."
   },
   "dependencies": {
     "@exadel/compreface-js-sdk": "^1.0.0",

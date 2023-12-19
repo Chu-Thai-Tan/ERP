@@ -1,6 +1,6 @@
 export interface FaceCheckState {
-  response?: any;
-  status: TStatus;
+  response?: any
+  status: TStatus
 }
 
-export type TStatus = 'Loading' | 'Error' | 'Success' | 'NotCheckedIn';
+export type TStatus = 'Loading' | 'Error' | 'Success' | 'NotCheckedIn'

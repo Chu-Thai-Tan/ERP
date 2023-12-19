@@ -1,4 +1,4 @@
-import { Input as TamaInput, styled } from 'tamagui';
+import { Input as TamaInput, styled } from 'tamagui'
 
 export const CustomInput = styled(TamaInput, {
   size: '$3',
@@ -12,4 +12,4 @@ export const CustomInput = styled(TamaInput, {
   bg: '$colorTransparent',
   boc: '$colorTransparent',
   bbc: '#DA70D6',
-});
+})

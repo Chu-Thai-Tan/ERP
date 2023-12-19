@@ -1,9 +1,9 @@
-import { Stack } from './RootNavigation';
-import { Screen } from './types';
+import { Stack } from './RootNavigation'
+import { Screen } from './types'
 
 type Props = {
-  screens: Screen[];
-};
+  screens: Screen[]
+}
 
 export const StackScreen: React.FC<Props> = ({ screens }) => {
   return (
@@ -17,5 +17,5 @@ export const StackScreen: React.FC<Props> = ({ screens }) => {
         />
       ))}
     </Stack.Navigator>
-  );
-};
+  )
+}
