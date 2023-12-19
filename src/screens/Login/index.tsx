@@ -30,13 +30,14 @@ export const Login = () => {
     password: '',
   })
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleNavigate = () => {
     navigate(routerNames.REGISTER)
   }
 
-  console.log(errors)
-
   const loginHandler = () => {
+    setIsLoading(true)
     console.log(
       '#Duy Phan console',
       emailRef.current._internalFiberInstanceHandleDEV.memoizedProps.value,
@@ -48,7 +49,13 @@ export const Login = () => {
     const errors = handleValidateInput()
     setErrors(errors)
     if (!errors.email && !errors.password) {
-      dispatch(login())
+      const timer = setTimeout(() => {
+        setIsLoading(false)
+        clearTimeout(timer)
+        dispatch(login())
+      }, 2000)
+    } else {
+      setIsLoading(false)
     }
   }
 
@@ -126,7 +133,7 @@ export const Login = () => {
         ))}
 
         <Form.Trigger asChild>
-          <Button mt={40}>
+          <Button mt={40} isLoading={isLoading}>
             <Text mt={0}>Login</Text>
           </Button>
         </Form.Trigger>
