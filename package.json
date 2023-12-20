@@ -7,9 +7,7 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
-    "test": "jest",
-    "test-prettier": "prettier --loglevel=error --write .",
-    "test-eslint": "eslint --ignore-path=.gitignore --ext=.js,.jsx,.ts,.tsx --fix .",
+    "format": "eslint --ignore-path=.gitignore --ext=.js,.jsx,.ts,.tsx --fix . && prettier --loglevel=error --write .",
     "postinstall": "node_modules/.bin/rn-nodeify --install fs --hack"
   },
   "dependencies": {
