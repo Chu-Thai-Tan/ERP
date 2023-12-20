@@ -1,8 +1,9 @@
-import { Icon } from '../../atoms/Icon'
+import { forwardRef } from 'react'
 import { View } from 'tamagui'
+
+import { Icon } from '../../atoms/Icon'
 import { Input } from '../../atoms/Input'
 import { TIconInputProps } from './types'
-import { forwardRef } from 'react'
 
 export const IconInput = forwardRef(
   ({ icon, iconProps, ...inputProps }: TIconInputProps, ref: any) => {

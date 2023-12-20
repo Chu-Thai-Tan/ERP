@@ -1,4 +1,4 @@
-import { Stack, Text, styled } from 'tamagui'
+import { Stack, styled, Text } from 'tamagui'
 
 export const ItemWrapper = styled(Stack, {
   display: 'flex',

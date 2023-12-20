@@ -1,10 +1,11 @@
+import moment from 'moment'
 import { useMemo, useState } from 'react'
 import { View } from 'react-native'
-import { DateData, Calendar as CustomCalendar } from 'react-native-calendars'
-import moment from 'moment'
-import { styles } from './styles'
+import { Calendar as CustomCalendar, DateData } from 'react-native-calendars'
+
 import { navigate } from '../../../helpers/NavigateService'
 import { routerNames } from '../../../routes/routerNames'
+import { styles } from './styles'
 
 export const Calendar = () => {
   const [date, setDate] = useState<string>(
@@ -13,9 +14,9 @@ export const Calendar = () => {
 
   const handleOnPress = (d: DateData) => {
     setDate(d.dateString)
-    //if (status === 'Success') {
+    // if (status === 'Success') {
     navigate(routerNames.INFO_IN_DAY, { date: d.dateString })
-    //}
+    // }
   }
 
   const marked = useMemo(

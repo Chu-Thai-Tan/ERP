@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
+
+import { recognize } from '../../screens/CheckIn/store/slice'
 import { useAppDispatch } from '../../store'
 import { recognitionService } from '../../utils/compreFaceService'
 import { THookReturnType } from './types'
-import { recognize } from '../../screens/CheckIn/store/slice'
 
 export const useRecognitionData: () => THookReturnType = () => {
   const [dataImage, setDataImage] = useState<string>('')

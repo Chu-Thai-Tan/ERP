@@ -1,14 +1,15 @@
+import { blackA } from '@tamagui/colors/src'
 import { FC, useRef } from 'react'
 import { Pressable, View } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { Stack } from 'tamagui'
-import { blackA } from '@tamagui/colors/src'
-import { Spinner } from '../../atoms/Spinner'
-import { useAppDispatch } from '../../../store'
-import { CameraSlot, Wrapper, styles } from './styles'
-import { convertImageToBase64 } from './utils/convertImageToBase64'
-import { TCameraProps } from './types'
+
 import { recognize } from '../../../screens/CheckIn/store/slice'
+import { useAppDispatch } from '../../../store'
+import { Spinner } from '../../atoms/Spinner'
+import { CameraSlot, styles, Wrapper } from './styles'
+import { TCameraProps } from './types'
+import { convertImageToBase64 } from './utils/convertImageToBase64'
 
 export const Camera: FC<TCameraProps> = ({ onTakePhoto, isLoading }) => {
   const cameraRef = useRef<RNCamera>(null)

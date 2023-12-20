@@ -1,11 +1,13 @@
 import { CreateNativeToastOptions } from '@tamagui/toast/src/types'
 import { Component } from 'react'
-import { EToastType, TToastOptions, TToastState } from './types'
+
 import { Icon } from '../../components/atoms/Icon'
 import {
-  CustomToastDescription as ToastDescription,
   CustomToast as Toast,
+  CustomToastDescription as ToastDescription,
 } from './styles'
+import { EToastType, TToastOptions, TToastState } from './types'
+
 export class ToastModule extends Component<any, TToastState> {
   constructor(props: any) {
     super(props)

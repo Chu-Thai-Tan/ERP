@@ -1,6 +1,6 @@
+import { Wrapper } from '../../components/atoms/Wrapper'
 import { Camera } from '../../components/molecules/Camera'
 import { useRecognitionData } from '../../hooks/useFaceApi'
-import { Wrapper } from '../../components/atoms/Wrapper'
 import { styles } from './styles'
 
 export const RegisterSecondStep = () => {

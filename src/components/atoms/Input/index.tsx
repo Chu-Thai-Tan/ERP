@@ -1,8 +1,9 @@
-import { View } from 'tamagui'
-import { CustomInput } from './styles'
-import { TInputProps } from './types'
 import { forwardRef } from 'react'
 import { TextInput } from 'react-native'
+import { View } from 'tamagui'
+
+import { CustomInput } from './styles'
+import { TInputProps } from './types'
 
 export const Input = forwardRef(
   ({ containerProps, ...inputProps }: TInputProps, ref: any) => {

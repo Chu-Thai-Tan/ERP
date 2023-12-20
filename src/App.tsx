@@ -1,19 +1,19 @@
 import './polyfill'
 
-import { StatusBar, ViewStyle, useColorScheme } from 'react-native'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
-
-import { Provider } from 'react-redux'
-import { store } from './store'
 import notifee from '@notifee/react-native'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { TamaguiProvider, Theme } from 'tamagui'
-import tamaguiConfig from '../tamagui.config'
-import { RootNavigation } from './routes/RootNavigation'
 import { ToastProvider } from '@tamagui/toast'
 import { ToastImperativeProvider } from '@tamagui/toast/src/ToastImperative'
+import { StatusBar, useColorScheme, ViewStyle } from 'react-native'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { Provider } from 'react-redux'
+import { TamaguiProvider, Theme } from 'tamagui'
+
+import tamaguiConfig from '../tamagui.config'
 import { ToastModule } from './helpers/ToastService'
 import { SafeToastViewport } from './helpers/ToastService/SafeToastViewport'
+import { RootNavigation } from './routes/RootNavigation'
+import { store } from './store'
 
 notifee.registerForegroundService(notification => {
   console.log('notifi', notification)

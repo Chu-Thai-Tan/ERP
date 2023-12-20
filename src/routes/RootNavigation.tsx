@@ -1,13 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native'
-
-import { useSelector } from 'react-redux'
-import { isReadyRef, navigate, navigationRef } from '../helpers/NavigateService'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useEffect, useMemo } from 'react'
+import { useSelector } from 'react-redux'
+
+import { isReadyRef, navigate, navigationRef } from '../helpers/NavigateService'
 import { authStatus } from '../screens/Login/store/selectors'
 import { routerNames } from './routerNames'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { StackScreen } from './StackScreen'
 import { authScreens, homeScreens } from './routerRoutes'
+import { StackScreen } from './StackScreen'
 
 export const Stack = createNativeStackNavigator()
 

@@ -1,5 +1,4 @@
 import { config } from '@tamagui/config/v2-native'
-
 import { createFont, createTamagui } from 'tamagui'
 
 const robotoFace = {

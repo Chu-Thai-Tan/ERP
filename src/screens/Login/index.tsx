@@ -1,19 +1,21 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { useRef, useState } from 'react'
-import { navigate } from '../../helpers/NavigateService'
-import { useAppDispatch } from '../../store'
 import { TouchableOpacity } from 'react-native'
 import { Form, Stack } from 'tamagui'
+
+import AppLogo from '../../assets/images/Logo.png'
+
+import { Button } from '../../components/atoms/Button'
 import { Logo } from '../../components/atoms/Logo'
 import { Text } from '../../components/atoms/Text'
-import { Button } from '../../components/atoms/Button'
-import { IconInput } from '../../components/molecules/IconInput'
 import { Wrapper } from '../../components/atoms/Wrapper'
-import AppLogo from '../../assets/images/Logo.png'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { ILoginType } from './types'
+import { IconInput } from '../../components/molecules/IconInput'
+import { navigate } from '../../helpers/NavigateService'
+import { routerNames } from '../../routes/routerNames'
+import { useAppDispatch } from '../../store'
 import { login } from './store/slice'
 import { styles } from './styles'
-import { routerNames } from '../../routes/routerNames'
+import { ILoginType } from './types'
 
 export const Login = () => {
   const dispatch = useAppDispatch()
@@ -66,7 +68,7 @@ export const Login = () => {
   }
 
   const handleValidateInput = () => {
-    let errors: ILoginType = { email: '', password: '' }
+    const errors: ILoginType = { email: '', password: '' }
 
     if (value.email.length == 0) {
       errors.email = 'Email is required'

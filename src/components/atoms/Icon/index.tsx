@@ -1,13 +1,14 @@
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { Props as FAProps } from '@fortawesome/react-native-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck'
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons/faCircleExclamation'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
 import { faKey } from '@fortawesome/free-solid-svg-icons/faKey'
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
 import { faUser } from '@fortawesome/free-solid-svg-icons/faUser'
-import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons/faCircleExclamation'
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck'
+import {
+  FontAwesomeIcon,
+  Props as FAProps,
+} from '@fortawesome/react-native-fontawesome'
 
 library.add(
   faUser,

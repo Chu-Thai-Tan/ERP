@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { Form, Stack } from 'tamagui'
-import { Logo } from '../../components/atoms/Logo'
-import { Button } from '../../components/atoms/Button'
-import { Text } from '../../components/atoms/Text'
-import { navigate } from '../../helpers/NavigateService'
-import { IconInput } from '../../components/molecules/IconInput'
-import { Wrapper } from '../../components/atoms/Wrapper'
+
 import AppLogo from '../../assets/images/Logo.png'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+
+import { Button } from '../../components/atoms/Button'
+import { Logo } from '../../components/atoms/Logo'
+import { Text } from '../../components/atoms/Text'
+import { Wrapper } from '../../components/atoms/Wrapper'
+import { IconInput } from '../../components/molecules/IconInput'
+import { navigate } from '../../helpers/NavigateService'
+import { routerNames } from '../../routes/routerNames'
 import { styles } from './styles'
 import { InputType, RegisterType } from './types'
-import { routerNames } from '../../routes/routerNames'
 
 export const Register = () => {
   const [value, setValue] = useState<RegisterType>({
@@ -50,7 +51,7 @@ export const Register = () => {
   }
 
   const handleValidateInput = () => {
-    let errors: RegisterType = {
+    const errors: RegisterType = {
       name: '',
       email: '',
       password: '',

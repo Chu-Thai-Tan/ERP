@@ -1,7 +1,8 @@
+import { forwardRef, Ref, useMemo } from 'react'
 import { TamaguiElement } from 'tamagui'
-import { CustomButton } from './styles'
-import { Ref, forwardRef, useMemo } from 'react'
+
 import { Spinner } from '../Spinner'
+import { CustomButton } from './styles'
 import { TButtonProps } from './types'
 
 export const Button = forwardRef(

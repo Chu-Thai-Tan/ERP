@@ -1,6 +1,7 @@
 import { RouteProp, useRoute } from '@react-navigation/native'
-import { CustomDes, CustomTitle, ItemWrapper } from './styles'
+
 import { Wrapper } from '../../components/atoms/Wrapper'
+import { CustomDes, CustomTitle, ItemWrapper } from './styles'
 
 export const InfoInDay = () => {
   const route: RouteProp<{ params: { date: string } }, 'params'> = useRoute()

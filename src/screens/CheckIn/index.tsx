@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
-import { Camera } from '../../components/molecules/Camera'
-import { useRecognitionData } from '../../hooks/useFaceApi'
-import { useSelector } from 'react-redux'
 import { navigate } from 'react-navigation-helpers'
+import { useSelector } from 'react-redux'
+
 import { Wrapper } from '../../components/atoms/Wrapper'
+import { Camera } from '../../components/molecules/Camera'
 import { ToastService } from '../../helpers/ToastService'
-import { faceApiStatus, faceResponse } from './store/selectors'
-import { useAppDispatch } from '../../store'
-import { recognize } from './store/slice'
+import { useRecognitionData } from '../../hooks/useFaceApi'
 import { routerNames } from '../../routes/routerNames'
+import { useAppDispatch } from '../../store'
+import { faceApiStatus, faceResponse } from './store/selectors'
+import { recognize } from './store/slice'
 
 export const CheckIn = () => {
   const [setDataImage] = useRecognitionData()

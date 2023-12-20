@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { View } from 'react-native'
+
 import { Text } from '../../atoms/Text'
 import { ITimeRef } from './types'
 import { getTimeAmount } from './utils/getTimeAmount'

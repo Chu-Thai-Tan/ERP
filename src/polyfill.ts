@@ -1,6 +1,6 @@
-import { ViewPropTypes } from 'deprecated-react-native-prop-types'
-import { Buffer } from 'buffer'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Buffer } from 'buffer'
+import { ViewPropTypes } from 'deprecated-react-native-prop-types'
 import * as RN from 'react-native'
 import RN2 from 'react-native'
 

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { FaceCheckState, TStatus } from '../types'
 
 const initialState: FaceCheckState = {
