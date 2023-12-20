@@ -1,157 +1,119 @@
-import { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
-import { Form, Stack } from 'tamagui'
-
-import AppLogo from '../../assets/images/Logo.png'
-
-import { Button } from '../../components/atoms/Button'
+import { Stack } from 'tamagui'
 import { Logo } from '../../components/atoms/Logo'
+import { Button } from '../../components/atoms/Button'
 import { Text } from '../../components/atoms/Text'
-import { Wrapper } from '../../components/atoms/Wrapper'
-import { IconInput } from '../../components/molecules/IconInput'
 import { navigate } from '../../helpers/NavigateService'
-import { routerNames } from '../../routes/routerNames'
+import { IconInput } from '../../components/molecules/IconInput'
+import { Wrapper } from '../../components/atoms/Wrapper'
+import AppLogo from '../../assets/images/Logo.png'
 import { styles } from './styles'
-import { InputType, RegisterType } from './types'
+import { routerNames } from '../../routes/routerNames'
+import { Formik } from 'formik'
+import * as yup from 'yup'
+import { useState } from 'react'
+import { IRegister } from './types'
 
 export const Register = () => {
-  const [value, setValue] = useState<RegisterType>({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  })
+  const [isLoading, setIsLoading] = useState(false)
 
-  const [errors, setErrors] = useState<RegisterType>({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  })
   const handleLogin = () => {
     navigate(routerNames.LOGIN)
   }
-  const handleNextStep = () => {
-    const errors = handleValidateInput()
-    setErrors(errors)
-    const isFormValid =
-      !errors.name &&
-      !errors.email &&
-      !errors.password &&
-      !errors.confirmPassword
-    if (isFormValid) {
+  const handleNextStep = (values: IRegister) => {
+    console.log(values)
+    setIsLoading(true)
+
+    console.log(values)
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+      clearTimeout(timer)
       navigate(routerNames.REGISTER_SECOND_STEP)
-    }
+    }, 1000)
   }
 
-  const handleInputChange = (text: string, type: string) => {
-    setValue(prev => {
-      return { ...prev, [type]: text }
-    })
-  }
-
-  const handleValidateInput = () => {
-    const errors: RegisterType = {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    }
-
-    if (value.name.length == 0) {
-      errors.name = 'Name is required'
-    }
-
-    if (value.email.length == 0) {
-      errors.email = 'Email is required'
-    } else if (!/\S+@\S+\.\S+/.test(value.email)) {
-      errors.email = 'Email is invalid.'
-    }
-
-    if (value.password.length == 0) {
-      errors.password = 'Password is required.'
-    } else if (value.password.length < 6) {
-      errors.password = 'Password must be at least 6 characters'
-    } else if (value.password.search(/[a-z]/i) < 0) {
-      errors.password = 'Password must contain at least one letter'
-    } else if (value.password.search(/[0-9]/) < 0) {
-      errors.password = 'Password must contain at least one digit'
-    }
-
-    if (value.confirmPassword.length == 0) {
-      errors.confirmPassword = 'ConfirmPassword is required.'
-    } else if (value.confirmPassword !== value.password) {
-      errors.confirmPassword = 'Confirm password is not matches the password'
-    }
-    return errors
-  }
-
-  const Input: InputType[] = [
-    {
-      type: 'name',
-      placeholder: 'Name',
-      icon: 'user',
-      value: value.name,
-      errorCondition: errors.name.length !== 0,
-      errorMessage: errors.name,
-      isSecure: false,
-    },
-    {
-      type: 'email',
-      placeholder: 'Email',
-      icon: 'envelope',
-      value: value.email,
-      errorCondition: errors.email.length !== 0,
-      errorMessage: errors.email,
-      isSecure: false,
-    },
-    {
-      type: 'password',
-      placeholder: 'Password',
-      icon: 'key',
-      value: value.password,
-      errorCondition: errors.password.length !== 0,
-      errorMessage: errors.password,
-      isSecure: true,
-    },
-    {
-      type: 'confirmPassword',
-      placeholder: 'Confirm Password',
-      icon: 'key',
-      value: value.confirmPassword,
-      errorCondition: errors.confirmPassword.length !== 0,
-      errorMessage: errors.confirmPassword,
-      isSecure: true,
-    },
-  ]
+  const registerValidationSchema = yup.object().shape({
+    name: yup.string().required('Name is Required'),
+    email: yup
+      .string()
+      .email('Please enter valid email')
+      .required('Email Address is Required'),
+    password: yup
+      .string()
+      .min(8, ({ min }) => `Password must be at least ${min} characters`)
+      .required('Password is required'),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password')], 'Passwords must match'),
+  })
 
   return (
     <Wrapper style={{ justifyContent: 'center' }}>
       <Logo source={AppLogo} />
-      <Form onSubmit={handleNextStep} style={styles.form}>
-        {Input.map(input => (
-          <Stack
-            key={input.type}
-            style={{ display: 'flex', width: '100%', alignItems: 'center' }}
-          >
+
+      <Formik
+        validationSchema={registerValidationSchema}
+        initialValues={{
+          email: '',
+          password: '',
+          name: '',
+          confirmPassword: '',
+        }}
+        onSubmit={handleNextStep}
+      >
+        {({ handleChange, handleSubmit, values, errors }) => (
+          <>
             <IconInput
-              onChangeText={text => handleInputChange(text, input.type)}
-              placeholder={input.placeholder}
-              icon={input.icon}
-              value={input.value}
-              secureTextEntry={input.isSecure}
+              onChangeText={handleChange('name')}
+              placeholder={'Name'}
+              icon={'user'}
+              value={values.name}
             />
-            {input.errorCondition && (
-              <Text style={styles.errorText}>{input.errorMessage}</Text>
+            {errors.email && (
+              <Text style={styles.errorText}>{errors.name}</Text>
             )}
-          </Stack>
-        ))}
-        <Form.Trigger asChild>
-          <Button mt={40}>
-            <Text mt={0}>Next</Text>
-          </Button>
-        </Form.Trigger>
-      </Form>
+
+            <IconInput
+              onChangeText={handleChange('email')}
+              placeholder={'Email Address'}
+              icon={'envelope'}
+              value={values.email}
+            />
+            {errors.email && (
+              <Text style={styles.errorText}>{errors.email}</Text>
+            )}
+            <IconInput
+              onChangeText={handleChange('password')}
+              placeholder={'Password'}
+              icon={'key'}
+              value={values.password}
+              secureTextEntry
+            />
+            {errors.password && (
+              <Text style={styles.errorText}>{errors.password}</Text>
+            )}
+
+            <IconInput
+              onChangeText={handleChange('confirmPassword')}
+              placeholder={'Confirm Password'}
+              icon={'key'}
+              value={values.confirmPassword}
+              secureTextEntry
+            />
+            {errors.confirmPassword && (
+              <Text style={styles.errorText}>{errors.confirmPassword}</Text>
+            )}
+            <Button
+              mt={40}
+              isLoading={isLoading}
+              onPress={() => handleSubmit()}
+            >
+              <Text mt={0}>Next</Text>
+            </Button>
+          </>
+        )}
+      </Formik>
+
       <Stack mt={10} dsp='flex' fd='row'>
         <Text ml={5} fow={'$normal'}>
           You have an account?{' '}
