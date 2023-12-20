@@ -4,9 +4,7 @@ import {
   ThunkAction,
   ThunkDispatch,
 } from '@reduxjs/toolkit'
-import { TypedUseSelectorHook, useDispatch } from 'react-redux'
-// import { ThunkDispatch } from 'redux-thunk';
-import { useSelector } from 'react-redux'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 import { checkInReducer } from './screens/CheckIn/store/slice'
 import { authReducer } from './screens/Login/store/slice'

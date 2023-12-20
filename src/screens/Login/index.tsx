@@ -1,21 +1,22 @@
+import { Formik } from 'formik'
 import { useState } from 'react'
-import { navigate } from '../../helpers/NavigateService'
-import { useAppDispatch } from '../../store'
 import { TouchableOpacity } from 'react-native'
 import { Stack } from 'tamagui'
+import * as yup from 'yup'
+
+import AppLogo from '../../assets/images/Logo.png'
 
 import { Button } from '../../components/atoms/Button'
 import { Logo } from '../../components/atoms/Logo'
 import { Text } from '../../components/atoms/Text'
 import { Wrapper } from '../../components/atoms/Wrapper'
-import AppLogo from '../../assets/images/Logo.png'
+import { IconInput } from '../../components/molecules/IconInput'
+import { navigate } from '../../helpers/NavigateService'
+import { routerNames } from '../../routes/routerNames'
+import { useAppDispatch } from '../../store'
 import { login } from './store/slice'
 import { styles } from './styles'
-import { routerNames } from '../../routes/routerNames'
-import { Formik } from 'formik'
-import * as yup from 'yup'
 import { ILogin } from './types'
-import { IconInput } from '../../components/molecules/IconInput'
 
 export const Login = () => {
   const dispatch = useAppDispatch()
