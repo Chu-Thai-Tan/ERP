@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { FaceCheckState, TStatus } from '../types'
+import { FaceCheckState } from '../types'
 
 const initialState: FaceCheckState = {
   status: 'NotCheckedIn',
