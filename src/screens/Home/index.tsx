@@ -1,6 +1,5 @@
 import { navigate } from '../../helpers/NavigateService'
 import { useAppDispatch } from '../../store'
-import { Stack } from 'tamagui'
 import { Button } from '../../components/atoms/Button'
 import { Text } from '../../components/atoms/Text'
 import { Clock } from '../../components/molecules/Clock'
@@ -39,11 +38,9 @@ export const Home = () => {
       case 'Success':
         return (
           <>
-            <Text fow={'$normal'}>Hi {response.subject ?? 'User'}!</Text>
-            <Stack marginTop={'40%'} marginBottom={'40%'}>
-              <Clock />
-            </Stack>
-            <Button onPress={handleCheckOut} flex={1}>
+            <Text fow={'$normal'}>Hi {response?.subject ?? 'User'}!</Text>
+            <Clock />
+            <Button onPress={handleCheckOut}>
               <Text mt={0}>Check Out</Text>
             </Button>
           </>
@@ -60,14 +57,12 @@ export const Home = () => {
   return (
     <Wrapper>
       <Calendar />
-      {/* <W flex={1} w={'100%'}> */}
-      <Wrapper>
+      <Wrapper display={'flex'} justifyContent={'center'}>
         {renderCheckIn()}
         <Button onPress={logoutHandler}>
           <Text>Log Out</Text>
         </Button>
       </Wrapper>
-      {/* </W> */}
     </Wrapper>
   )
 }

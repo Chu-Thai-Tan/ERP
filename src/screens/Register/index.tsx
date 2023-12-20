@@ -10,7 +10,7 @@ import { Wrapper } from '../../components/atoms/Wrapper'
 import AppLogo from '../../assets/images/Logo.png'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { styles } from './styles'
-import { RegisterType } from './types'
+import { InputType, RegisterType } from './types'
 import { routerNames } from '../../routes/routerNames'
 
 export const Register = () => {
@@ -80,12 +80,12 @@ export const Register = () => {
     if (value.confirmPassword.length == 0) {
       errors.confirmPassword = 'ConfirmPassword is required.'
     } else if (value.confirmPassword !== value.password) {
-      errors.confirmPassword = 'ConfirmPassword is not matches the password'
+      errors.confirmPassword = 'Confirm password is not matches the password'
     }
     return errors
   }
 
-  const Input = [
+  const Input: InputType[] = [
     {
       type: 'name',
       placeholder: 'Name',
@@ -136,7 +136,7 @@ export const Register = () => {
             <IconInput
               onChangeText={text => handleInputChange(text, input.type)}
               placeholder={input.placeholder}
-              icon={input.icon as IconProp}
+              icon={input.icon}
               value={input.value}
               secureTextEntry={input.isSecure}
             />

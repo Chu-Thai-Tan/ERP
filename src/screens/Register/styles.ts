@@ -11,5 +11,6 @@ export const styles = StyleSheet.create({
     color: 'red',
     width: '80%',
     marginTop: 5,
+    fontWeight: '400',
   },
 })
