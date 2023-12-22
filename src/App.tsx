@@ -2,7 +2,6 @@ import './polyfill'
 
 import notifee from '@notifee/react-native'
 import { ToastProvider } from '@tamagui/toast'
-import { ToastImperativeProvider } from '@tamagui/toast/src/ToastImperative'
 import { StatusBar, useColorScheme, ViewStyle } from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 import { SafeAreaProvider } from 'react-native-safe-area-context'

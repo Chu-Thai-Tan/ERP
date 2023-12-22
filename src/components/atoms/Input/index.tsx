@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-import { TextInput } from 'react-native'
 import { View } from 'tamagui'
 
 import { CustomInput } from './styles'
